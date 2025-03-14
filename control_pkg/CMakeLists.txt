@@ -22,10 +22,13 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-add_executable(testingPanter src/testingPanter.cpp)
+add_executable(testingROS src/testingROS.cpp)
+add_executable(controller src/controller.cpp)
+
 
 install(TARGETS
-  testingPanter
+  testingROS
+  controller
   DESTINATION lib/${PROJECT_NAME}
 )
 
