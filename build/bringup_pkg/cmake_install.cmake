@@ -43,6 +43,13 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bringup_pkg" TYPE DIRECTORY FILES
+    "/home/jorge/panter_ws/src/bringup_pkg/launch"
+    "/home/jorge/panter_ws/src/bringup_pkg/include"
+    )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/jorge/panter_ws/src/build/bringup_pkg/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/bringup_pkg")
 endif()
 
