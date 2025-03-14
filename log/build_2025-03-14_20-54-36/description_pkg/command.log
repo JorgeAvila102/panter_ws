@@ -1,6 +1,0 @@
-Invoking command in '/home/jorge/panter_ws/src/build/description_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/jorge/panter_ws/src/description_pkg -DCMAKE_INSTALL_PREFIX=/home/jorge/panter_ws/src/install/description_pkg
-Invoked command in '/home/jorge/panter_ws/src/build/description_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/jorge/panter_ws/src/description_pkg -DCMAKE_INSTALL_PREFIX=/home/jorge/panter_ws/src/install/description_pkg
-Invoking command in '/home/jorge/panter_ws/src/build/description_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/jorge/panter_ws/src/build/description_pkg -- -j12 -l12
-Invoked command in '/home/jorge/panter_ws/src/build/description_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/jorge/panter_ws/src/build/description_pkg -- -j12 -l12
-Invoking command in '/home/jorge/panter_ws/src/build/description_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/jorge/panter_ws/src/build/description_pkg
-Invoked command in '/home/jorge/panter_ws/src/build/description_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/jorge/panter_ws/src/build/description_pkg
