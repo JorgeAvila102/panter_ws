@@ -1,0 +1,105 @@
+[0.008s] Invoking command in '/home/jorge/panter_ws/src/build/description_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/jorge/panter_ws/src/description_pkg -DCMAKE_INSTALL_PREFIX=/home/jorge/panter_ws/src/install/description_pkg
+[0.088s] -- The C compiler identification is GNU 11.4.0
+[0.136s] -- The CXX compiler identification is GNU 11.4.0
+[0.142s] -- Detecting C compiler ABI info
+[0.191s] -- Detecting C compiler ABI info - done
+[0.196s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.196s] -- Detecting C compile features
+[0.196s] -- Detecting C compile features - done
+[0.198s] -- Detecting CXX compiler ABI info
+[0.261s] -- Detecting CXX compiler ABI info - done
+[0.266s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.266s] -- Detecting CXX compile features
+[0.267s] -- Detecting CXX compile features - done
+[0.268s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.376s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.449s] -- Found rclpy: 3.3.15 (/opt/ros/humble/share/rclpy/cmake)
+[0.450s] -- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+[0.477s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.480s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.486s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.494s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.504s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.533s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.534s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.606s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.631s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.659s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.664s] -- Looking for pthread.h
+[0.725s] -- Looking for pthread.h - found
+[0.725s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.793s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.794s] -- Found Threads: TRUE  
+[0.826s] -- Found ros_gz_sim: 0.244.16 (/opt/ros/humble/share/ros_gz_sim/cmake)
+[0.829s] -- Found urdf: 2.6.1 (/opt/ros/humble/share/urdf/cmake)
+[0.851s] -- Found xacro: 2.0.8 (/opt/ros/humble/share/xacro/cmake)
+[0.852s] -- Found rviz2: 11.2.16 (/opt/ros/humble/share/rviz2/cmake)
+[0.853s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.904s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.905s] -- Added test 'lint_cmake' to check CMake code style
+[0.906s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.907s] -- Added test 'xmllint' to check XML markup files
+[0.908s] -- Configuring done
+[0.910s] -- Generating done
+[0.911s] -- Build files have been written to: /home/jorge/panter_ws/src/build/description_pkg
+[0.918s] Invoked command in '/home/jorge/panter_ws/src/build/description_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/jorge/panter_ws/src/description_pkg -DCMAKE_INSTALL_PREFIX=/home/jorge/panter_ws/src/install/description_pkg
+[0.919s] Invoking command in '/home/jorge/panter_ws/src/build/description_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/jorge/panter_ws/src/build/description_pkg -- -j12 -l12
+[0.957s] Invoked command in '/home/jorge/panter_ws/src/build/description_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/jorge/panter_ws/src/build/description_pkg -- -j12 -l12
+[0.958s] Invoking command in '/home/jorge/panter_ws/src/build/description_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/jorge/panter_ws/src/build/description_pkg
+[0.966s] -- Install configuration: ""
+[0.966s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/urdf
+[0.966s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/urdf/panter.urdf
+[0.967s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes
+[0.967s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/ED_DCH.STL
+[0.973s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/ST03_IZQ.STL
+[0.973s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/ST02_IZQ.STL
+[0.973s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/SD02_DCH.STL
+[0.973s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/SD03_IZQ.STL
+[0.973s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/ET_IZQ.STL
+[0.978s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/ET_DCH.STL
+[0.983s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/CH.STL
+[0.984s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/ST03_DCH.STL
+[0.984s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/ST01_IZQ.STL
+[0.985s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/ST02_DCH.STL
+[0.985s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/MGT_IZQ.STL
+[0.985s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/MGT_DCH.STL
+[0.985s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/ED_IZQ.STL
+[0.991s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/MGD_IZQ.STL
+[0.991s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/SD01_IZQ.STL
+[0.992s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/MGD_DCH.STL
+[0.992s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/SD02_IZQ.STL
+[0.992s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/SD03_DCH.STL
+[0.992s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/ST01_DCH.STL
+[0.993s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/meshes/SD01_DCH.STL
+[0.994s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/launch
+[0.994s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/launch/sim_sdf.launch.py
+[0.994s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/launch/pantersim.launch.py
+[0.994s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/launch/sim.launch.py
+[0.994s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/launch/panter_setup.launch.py
+[0.994s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/rviz
+[0.994s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/rviz/panter.rviz
+[0.994s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/worlds
+[0.994s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/worlds/my_world.sdf
+[0.994s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/worlds/terrain1.sdf
+[0.995s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/worlds/terrain1.dae
+[0.996s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/worlds/my_mangueta.sdf
+[0.996s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/sdf
+[0.996s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/sdf/reserva_11_3.sdf
+[0.996s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/sdf/panter.sdf
+[0.997s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/sdf/reserva_v2.sdf
+[0.997s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/ament_index/resource_index/package_run_dependencies/description_pkg
+[0.997s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/ament_index/resource_index/parent_prefix_path/description_pkg
+[0.997s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/environment/ament_prefix_path.sh
+[0.997s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/environment/ament_prefix_path.dsv
+[0.997s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/environment/path.sh
+[0.997s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/environment/path.dsv
+[0.997s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/local_setup.bash
+[0.997s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/local_setup.sh
+[0.998s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/local_setup.zsh
+[0.998s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/local_setup.dsv
+[0.998s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/package.dsv
+[0.998s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/ament_index/resource_index/packages/description_pkg
+[0.998s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/cmake/description_pkgConfig.cmake
+[0.998s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/cmake/description_pkgConfig-version.cmake
+[0.998s] -- Installing: /home/jorge/panter_ws/src/install/description_pkg/share/description_pkg/package.xml
+[1.000s] Invoked command in '/home/jorge/panter_ws/src/build/description_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/jorge/panter_ws/src/build/description_pkg

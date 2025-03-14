@@ -1,0 +1,75 @@
+[0.008s] Invoking command in '/home/jorge/panter_ws/src/build/control_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/jorge/panter_ws/src/control_pkg -DCMAKE_INSTALL_PREFIX=/home/jorge/panter_ws/src/install/control_pkg
+[0.089s] -- The C compiler identification is GNU 11.4.0
+[0.126s] -- The CXX compiler identification is GNU 11.4.0
+[0.131s] -- Detecting C compiler ABI info
+[0.186s] -- Detecting C compiler ABI info - done
+[0.191s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.191s] -- Detecting C compile features
+[0.192s] -- Detecting C compile features - done
+[0.194s] -- Detecting CXX compiler ABI info
+[0.250s] -- Detecting CXX compiler ABI info - done
+[0.255s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.255s] -- Detecting CXX compile features
+[0.255s] -- Detecting CXX compile features - done
+[0.257s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.373s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.436s] -- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+[0.479s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.482s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.488s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.496s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.506s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.535s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.536s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.608s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.630s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.658s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.664s] -- Looking for pthread.h
+[0.725s] -- Looking for pthread.h - found
+[0.725s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.794s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.795s] -- Found Threads: TRUE  
+[0.829s] -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.837s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.892s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.892s] -- Configured cppcheck include dirs: 
+[0.892s] -- Configured cppcheck exclude dirs and/or files: 
+[0.892s] -- Added test 'lint_cmake' to check CMake code style
+[0.893s] -- Added test 'uncrustify' to check C / C++ code style
+[0.893s] -- Configured uncrustify additional arguments: 
+[0.893s] -- Added test 'xmllint' to check XML markup files
+[0.894s] -- Configuring done
+[0.897s] -- Generating done
+[0.898s] -- Build files have been written to: /home/jorge/panter_ws/src/build/control_pkg
+[0.904s] Invoked command in '/home/jorge/panter_ws/src/build/control_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/jorge/panter_ws/src/control_pkg -DCMAKE_INSTALL_PREFIX=/home/jorge/panter_ws/src/install/control_pkg
+[0.906s] Invoking command in '/home/jorge/panter_ws/src/build/control_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/jorge/panter_ws/src/build/control_pkg -- -j12 -l12
+[0.958s] [ 50%] [32mBuilding CXX object CMakeFiles/testingPanter.dir/src/testingPanter.cpp.o[0m
+[0.966s] [01m[K/home/jorge/panter_ws/src/control_pkg/src/testingPanter.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[0.966s] [01m[K/home/jorge/panter_ws/src/control_pkg/src/testingPanter.cpp:3:15:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kargc[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.966s]     3 | int main ([01;35m[Kint argc[m[K, char** argv)
+[0.966s]       |           [01;35m[K~~~~^~~~[m[K
+[0.966s] [01m[K/home/jorge/panter_ws/src/control_pkg/src/testingPanter.cpp:3:28:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kargv[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.966s]     3 | int main (int argc, [01;35m[Kchar** argv[m[K)
+[0.966s]       |                     [01;35m[K~~~~~~~^~~~[m[K
+[0.979s] [100%] [32m[1mLinking CXX executable testingPanter[0m
+[1.015s] [100%] Built target testingPanter
+[1.025s] Invoked command in '/home/jorge/panter_ws/src/build/control_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/jorge/panter_ws/src/build/control_pkg -- -j12 -l12
+[1.026s] Invoking command in '/home/jorge/panter_ws/src/build/control_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/jorge/panter_ws/src/build/control_pkg
+[1.036s] -- Install configuration: ""
+[1.036s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/lib/control_pkg/testingPanter
+[1.036s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/ament_index/resource_index/package_run_dependencies/control_pkg
+[1.036s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/ament_index/resource_index/parent_prefix_path/control_pkg
+[1.036s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/environment/ament_prefix_path.sh
+[1.036s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/environment/ament_prefix_path.dsv
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/environment/path.sh
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/environment/path.dsv
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/local_setup.bash
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/local_setup.sh
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/local_setup.zsh
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/local_setup.dsv
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/package.dsv
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/ament_index/resource_index/packages/control_pkg
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/cmake/control_pkgConfig.cmake
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/cmake/control_pkgConfig-version.cmake
+[1.037s] -- Installing: /home/jorge/panter_ws/src/install/control_pkg/share/control_pkg/package.xml
+[1.040s] Invoked command in '/home/jorge/panter_ws/src/build/control_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/jorge/panter_ws/src/build/control_pkg
