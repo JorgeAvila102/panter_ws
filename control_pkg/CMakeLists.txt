@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -25,6 +26,9 @@ endif()
 add_executable(testingROS src/testingROS.cpp)
 add_executable(controller src/controller.cpp)
 
+include_directories(
+  include
+)
 
 install(TARGETS
   testingROS
@@ -36,5 +40,7 @@ install(
 	DIRECTORY launch config include
 	DESTINATION share/${PROJECT_NAME}
 )
+
+ament_target_dependencies(controller rclcpp std_msgs geometry_msgs)
 
 ament_package()
