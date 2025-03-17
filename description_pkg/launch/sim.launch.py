@@ -14,11 +14,8 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    # urdf_file = os.path.join(get_package_share_directory('description_pkg'),'urdf', 'simple.urdf')
-    # urdf_file = os.path.join(get_package_share_directory('description_pkg'),'urdf', 'panter40cm.urdf')
     urdf_file = os.path.join(get_package_share_directory('description_pkg'),'urdf', 'panter.urdf')
     world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'my_world.sdf')
-    #world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'mars.sdf')
     rviz_file = os.path.join(get_package_share_directory('description_pkg'),'rviz', 'panter.rviz')
 
     
@@ -54,7 +51,6 @@ def generate_launch_description():
         # condition= IfCondition(LaunchConfiguration('gui'))
     )  
 
-
 # Gazebo launcher
     launch_gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([get_package_share_directory('ros_gz_sim'), '/launch', '/gz_sim.launch.py']),
@@ -63,15 +59,12 @@ def generate_launch_description():
     }.items(),
     )
 
-
 # Robot Panter spawner in Gazebo
     spawn_panter = Node(
-    package='ros_gz_sim',
-    executable='create',
-    output='screen',
-    # arguments=["-file", "description_pkg/urdf/simple.urdf"]
-    # arguments=["-file", "description_pkg/urdf/panter40cm.urdf"]
-    arguments=["-file", "description_pkg/urdf/panter.urdf"]
+        package='ros_gz_sim',
+        executable='create',
+        output='screen',
+        arguments=["-file", "description_pkg/urdf/panter.urdf"]
     )
 
     node_rviz = Node(
@@ -88,9 +81,9 @@ def generate_launch_description():
         node_robot_state_publisher,
         node_joint_state_publisher_gui, # Hace que tenemos la posibilidad de modificar las posiciones de los joints a mano
         node_joint_state_publisher,
-        node_rviz,
-        launch_gazebo,
-        spawn_panter
+        node_rviz
+        #launch_gazebo,
+        #spawn_panter
     ])
 
 

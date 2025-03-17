@@ -9,17 +9,17 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="-0.00880173011979828 0.622679586820786 0.409100824362744"
+        xyz="-0.00880173011979828 -0.4226795868207859 0.673550824362744"
         rpy="0 0 0" />
       <mass
         value="16.2395734011937" />
       <inertia
-        ixx="0.662204805344214"
-        ixy="0.00106283123214879"
-        ixz="3.4341611745379E-05"
-        iyy="1.36310261321388"
-        iyz="-0.00185780886666987"
-        izz="0.826413764651877" />
+        ixx="210.9428277"
+        ixy="0"
+        ixz="0"
+        iyy="79.04789433"
+        iyz="0"
+        izz="260.5199333" />
     </inertial>
     <visual>
       <origin
@@ -37,11 +37,11 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
+        xyz="0 -0.44 0.675"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://description_pkg/meshes/CH.STL" />
+        <box size="1.5 2.62 0.718"/>
+        
       </geometry>
     </collision>
   </link>
@@ -98,11 +98,7 @@
       link="SD01_IZQ" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
 
   <link
@@ -158,14 +154,10 @@
     <axis
       xyz="1 0 0" />
       <!-- xyz="0.069756 0.99756 0" /> -->
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
   <link
-    name="Mangueta_del_izq">
+    name="MGD_IZQ">
     <inertial>
       <origin
         xyz="-0.00497345711760122 -0.210444823308728 0.028708631857455"
@@ -205,17 +197,18 @@
     </collision>
   </link>
   <joint
-    name="Mangueta_del_izq_joint"
-    type="fixed">
+    name="MGD_IZQ_joint"
+    type="revolute">
     <origin
       xyz="-0.11217 0.52087 -0.23886"
       rpy="0 0 0" />
     <parent
       link="SD02_IZQ" />
     <child
-      link="Mangueta_del_izq" />
+      link="MGD_IZQ" />
     <axis
-      xyz="0 0 0" />
+      xyz="0 0 1" />
+      <limit effort="50.0" velocity="1.0" lower="-0.52" upper="0.52"/>
   </joint>
   <link
     name="ED_IZQ">
@@ -249,27 +242,31 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="1.5707 0 0" />
+        xyz="0 0.0075 0"
+        rpy="0 1.5707 1.5707" />
       <geometry>
-        <mesh
-          filename="package://description_pkg/meshes/ED_IZQ.STL" />
+        <cylinder radius="0.343" length="0.23"/>
+        
       </geometry>
     </collision>
   </link>
   <joint
     name="ED_IZQ_joint"
-    type="continuous">
+    type="revolute">
     <origin
       xyz="0 0 0"
       rpy="0 0 0" />
     <parent
-      link="Mangueta_del_izq" />
+      link="MGD_IZQ" />
     <child
       link="ED_IZQ" />
     <axis
       xyz="0 1 0" />
+
+      <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
+
   </joint>
+  
   <link
     name="SD03_IZQ">
     <inertial>
@@ -375,12 +372,9 @@
       link="SD01_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
   <link
     name="SD02_DCH">
     <inertial>
@@ -433,14 +427,10 @@
       link="SD02_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
   <link
-    name="Mangueta_del_dch">
+    name="MGD_DCH">
     <inertial>
       <origin
         xyz="-0.00499672613858615 0.101475946327662 0.0231953048014176"
@@ -479,19 +469,22 @@
       </geometry>
     </collision>
   </link>
+
   <joint
-    name="Mangueta_del_dch_joint"
-    type="fixed">
+    name="MGD_DCH_joint"
+    type="revolute">
     <origin
       xyz="-0.11198 -0.51968 -0.24274"
       rpy="0 0 0" />
     <parent
       link="SD02_DCH" />
     <child
-      link="Mangueta_del_dch" />
+      link="MGD_DCH" />
     <axis
-      xyz="0 0 0" />
+      xyz="0 0 1" />
+      <limit effort="50" velocity="1.0" lower="-0.52" upper="0.52"/>
   </joint>
+
   <link
     name="ED_DCH">
     <inertial>
@@ -524,27 +517,29 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="-1.5707 0 0" />
+        xyz="0 -0.0065 0"
+        rpy="0 1.5707 1.5707" />
       <geometry>
-        <mesh
-          filename="package://description_pkg/meshes/ED_DCH.STL" />
+        <cylinder radius="0.343" length="0.23"/>
       </geometry>
     </collision>
   </link>
   <joint
     name="ED_DCH_joint"
-    type="continuous">
+    type="revolute">
     <origin
       xyz="0 0 0"
       rpy="0 0 0" />
     <parent
-      link="Mangueta_del_dch" />
+      link="MGD_DCH" />
     <child
       link="ED_DCH" />
     <axis
       xyz="0 1 0" />
+    <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
+
   </joint>
+
   <link
     name="SD03_DCH">
     <inertial>
@@ -597,12 +592,9 @@
       link="SD03_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
   <link
     name="ST01_IZQ">
     <inertial>
@@ -655,11 +647,7 @@
       link="ST01_IZQ" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
   <link
     name="ST02_IZQ">
@@ -713,11 +701,7 @@
       link="ST02_IZQ" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
   <link
     name="ST03_IZQ">
@@ -771,11 +755,7 @@
       link="ST03_IZQ" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
   <link
     name="ST01_DCH">
@@ -829,11 +809,7 @@
       link="ST01_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
   <link
     name="ST02_DCH">
@@ -887,14 +863,10 @@
       link="ST02_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
   <link
-    name="Mangueta_tras_dch">
+    name="MGT_DCH">
     <inertial>
       <origin
         xyz="4.52389224525618E-07 0.113286548456591 -0.00345190812278645"
@@ -934,7 +906,7 @@
     </collision>
   </link>
   <joint
-    name="Mangueta_tras_dch_joint"
+    name="MGT_DCH_joint"
     type="fixed">
     <origin
       xyz="0.15 -0.51022 -0.14431"
@@ -942,7 +914,7 @@
     <parent
       link="ST02_DCH" />
     <child
-      link="Mangueta_tras_dch" />
+      link="MGT_DCH" />
     <axis
       xyz="0 0 0" />
   </joint>
@@ -978,26 +950,29 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="1.5707 0 0" />
+        xyz="0 0.025 0"
+        rpy="0 1.5707 1.5707" />
       <geometry>
-        <mesh
-          filename="package://description_pkg/meshes/ET_DCH.STL" />
+        <cylinder radius="0.343" length="0.285"/>
+        
       </geometry>
     </collision>
   </link>
   <joint
     name="ET_DCH_joint"
-    type="continuous">
+    type="revolute">
     <origin
       xyz="0 0 0"
       rpy="0 0 0" />
     <parent
-      link="Mangueta_tras_dch" />
+      link="MGT_DCH" />
     <child
       link="ET_DCH" />
     <axis
       xyz="0 1 0" />
+
+    <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
+
   </joint>
   <link
     name="ST03_DCH">
@@ -1051,11 +1026,7 @@
       link="ST03_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit
-      lower="0"
-      upper="0"
-      effort="0"
-      velocity="0" />
+    <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
 
 <link
@@ -1132,8 +1103,9 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://description_pkg/meshes/ET_IZQ.STL" />
+          <mesh
+            filename="package://description_pkg/meshes/ET_IZQ.STL" />
+        
       </geometry>
       <material
         name="">
@@ -1143,17 +1115,16 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 -0.038 0"
+        rpy="0 1.5707 1.5707" />
       <geometry>
-        <mesh
-          filename="package://description_pkg/meshes/ET_IZQ.STL" />
+        <cylinder radius="0.343" length="0.285"/>
       </geometry>
     </collision>
   </link>
   <joint
     name="ET_IZQ_joint"
-    type="continuous">
+    type="revolute">
     <origin
       xyz="0.067 -0.144 0"
       rpy="3.1314 1.5708 0" />
@@ -1163,6 +1134,8 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
+            <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
+
   </joint>
 
 

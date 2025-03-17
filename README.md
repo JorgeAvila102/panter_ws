@@ -8,6 +8,8 @@ Gazebo Fortress: https://gazebosim.org/docs/fortress/install_ubuntu/
 
 sudo apt install ros-humble-joint-state-publisher
 
+sudo apt install ros-humble-joint-state-publisher-gui
+
 sudo apt install gedit
 
 sudo apt install terminator
