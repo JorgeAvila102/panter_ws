@@ -35,6 +35,8 @@ int main ( int argc, char * argv[] )
 
     rclcpp::Rate loop_rate(5);
   
+    printf("Hello world\n");
+
     while (rclcpp::ok())
     {
         rclcpp::spin_some(node);

@@ -19,8 +19,8 @@ def generate_launch_description():
 
     # Lanzar el puente de comunicación entre ROS 2 y Gazebo (ros_gz_bridge)
     bridge_node = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
+        package='description_pkg',
+        executable='config/ros_gz_bridge',
         arguments=['/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'],
         output='screen'
     )
@@ -28,13 +28,13 @@ def generate_launch_description():
     # Lanzar el nodo de control en C++
     control_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(control_pkg, 'launch', 'control.launch.py')
+            os.path.join(control_pkg, 'launch', 'ros.launch.py')
         )
     )
 
     return LaunchDescription([
         
-        #bridge_node,
-        #control_launch,
+        bridge_node,
+        # control_launch,
         gazebo_launch
     ])
