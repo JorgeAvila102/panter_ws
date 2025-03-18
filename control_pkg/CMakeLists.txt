@@ -25,6 +25,7 @@ endif()
 
 add_executable(testingROS src/testingROS.cpp)
 add_executable(controller src/controller.cpp)
+add_executable(keyboardcontrol src/keyboardcontrol.cpp)
 
 include_directories(
   include
@@ -33,6 +34,7 @@ include_directories(
 install(TARGETS
   testingROS
   controller
+  keyboardcontrol
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -42,5 +44,6 @@ install(
 )
 
 ament_target_dependencies(controller rclcpp std_msgs geometry_msgs)
+ament_target_dependencies(keyboardcontrol rclcpp std_msgs geometry_msgs)
 
 ament_package()
