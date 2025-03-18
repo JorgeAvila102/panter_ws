@@ -107,8 +107,8 @@
           <velocity>0</velocity>
         </limit>
         <dynamics>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
+          <spring_reference>0</spring_reference>  <!-- Referencia del resorte -->
+          <spring_stiffness>10</spring_stiffness>  <!-- Rigidez del resorte -->
         </dynamics>
       </axis>
     </joint>
@@ -441,7 +441,7 @@
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
+          <spring_stiffness>10</spring_stiffness>
         </dynamics>
       </axis>
     </joint>
@@ -776,7 +776,7 @@
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
+          <spring_stiffness>10</spring_stiffness>
         </dynamics>
       </axis>
     </joint>
@@ -1089,7 +1089,7 @@
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
+          <spring_stiffness>10</spring_stiffness>
         </dynamics>
       </axis>
     </joint>
