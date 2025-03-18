@@ -609,7 +609,7 @@
         </material>
       </visual>
 
-        <collision name='collision'>
+      <collision name='collision'>
         <pose>-0.11217 0.5208700000000001 -0.23886 0 0 0</pose>
         <geometry>
           <mesh>
