@@ -19,9 +19,13 @@ def generate_launch_description():
 
     # Lanzar el puente de comunicación entre ROS 2 y Gazebo (ros_gz_bridge)
     bridge_node = Node(
-        package='description_pkg',
-        executable='config/ros_gz_bridge',
-        arguments=['/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'],
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        parameters=[{
+            'config_file': os.path.join(description_pkg, 'config', 'ros_gz_bridge.yaml')
+            #'qos_overrides./tf_static.publisher.durability': 'transient_local',
+        }],
+        # arguments=['/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'],
         output='screen'
     )
 
