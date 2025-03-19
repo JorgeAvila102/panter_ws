@@ -378,8 +378,19 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
+          <damping>0.2</damping> <!-- también ayuda a la estabilidad -->
         </dynamics>
       </axis>
+      <physics>
+        <ode>
+          <friction>
+            <ode>
+              <mu>0.9</mu>    <!-- Fricción en la dirección principal -->
+              <mu2>0.8</mu2>  <!-- Fricción lateral -->
+            </ode>
+          </friction>
+        </ode>
+      </physics>
     </joint>
 
 
@@ -712,8 +723,19 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
+          <damping>0.2</damping> <!-- también ayuda a la estabilidad -->
         </dynamics>
       </axis>
+      <physics>
+        <ode>
+          <friction>
+            <ode>
+              <mu>0.9</mu>    <!-- Fricción en la dirección principal -->
+              <mu2>0.8</mu2>  <!-- Fricción lateral -->
+            </ode>
+          </friction>
+        </ode>
+      </physics>
     </joint>
 
 <!-- ###################### EJE TRASERO ######################-->
@@ -1026,9 +1048,21 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
+          <damping>0.2</damping> <!-- también ayuda a la estabilidad -->
         </dynamics>
       </axis>
+      <physics>
+        <ode>
+          <friction>
+            <ode>
+              <mu>0.9</mu>    <!-- Fricción en la dirección principal -->
+              <mu2>0.8</mu2>  <!-- Fricción lateral -->
+            </ode>
+          </friction>
+        </ode>
+      </physics>
     </joint>
+
 
 
 <!-- AMORTIGUADOR TRASERO IZQUIERDO -->
@@ -1340,8 +1374,19 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
+          <damping>0.2</damping> <!-- también ayuda a la estabilidad -->
         </dynamics>
       </axis>
+      <physics>
+        <ode>
+          <friction>
+            <ode>
+              <mu>0.9</mu>    <!-- Fricción en la dirección principal -->
+              <mu2>0.8</mu2>  <!-- Fricción lateral -->
+            </ode>
+          </friction>
+        </ode>
+      </physics>
     </joint>
 
 <!-- ###################### PLUGIN ######################-->

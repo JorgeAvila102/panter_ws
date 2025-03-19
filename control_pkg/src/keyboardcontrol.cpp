@@ -62,7 +62,7 @@ void Keyboardcontrol:: manual_drive_panter()
     RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
 
     msg.linear.x = 0; // Velocidad en m/s
-    msg.angular.z = 0.5; // Velocidad en rad/s
+    msg.angular.z = -0.5; // Velocidad en rad/s
 
     pub_cmd_vel -> publish(msg);
     
@@ -76,7 +76,7 @@ void Keyboardcontrol:: manual_drive_panter()
     RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
 
     msg.linear.x = 0; // Velocidad en m/s
-    msg.angular.z = -0.5; // Velocidad en rad/s
+    msg.angular.z = 0.5; // Velocidad en rad/s
 
     pub_cmd_vel -> publish(msg);
     
