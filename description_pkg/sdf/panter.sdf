@@ -153,17 +153,18 @@
         <xyz>0 1 0</xyz>
         <use_parent_model_frame>false</use_parent_model_frame>
         <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>0</effort>
-          <velocity>0</velocity>
+          <lower>0</lower>     <!-- m -->
+          <upper>0.3</upper>
+          <effort>4000</effort>   <!-- N -->
+          <velocity>0</velocity>    <!-- Límete en m/s -->
         </limit>
         <dynamics>
-          <spring_reference>0</spring_reference>  <!-- Referencia del resorte -->
-          <spring_stiffness>10</spring_stiffness>  <!-- Rigidez del resorte -->
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>15000</spring_stiffness>
         </dynamics>
       </axis>
     </joint>
+
 
 <!-- BRAZO DELANTERO SUSPENSION SUPERIOR DERECHO -->
 
