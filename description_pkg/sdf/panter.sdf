@@ -169,7 +169,8 @@
 <!-- BRAZO DELANTERO SUSPENSION SUPERIOR DERECHO -->
 
     <link name='SD02_DCH'>
-      <pose relative_to='SD02_DCH_CH_joint'>0 0 0 0 0 0</pose>
+      <!-- <pose relative_to='SD02_DCH_CH_joint'>0 0 0 0 0 0</pose> -->
+      <pose relative_to='CH'>-0.1865 -1.6482 0.53091 0 0 -1.5708</pose>
 
       <inertial>
         <pose>-0.1087663182382292 -0.2973823518047529 -0.1447752478166711 0 0 0</pose>
@@ -210,17 +211,37 @@
 
     </link>
 
-    <joint name='SD02_DCH_CH_joint' type='revolute'>
+    <!-- <joint name='SD02_DCH_CH_joint' type='revolute'>
       <pose relative_to='CH'>-0.1865 -1.6482 0.53091 0 0 -1.5708</pose>
       <parent>CH</parent>
       <child>SD02_DCH</child>
       <axis>
         <xyz>1 0 0</xyz>
         <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>0</effort>
-          <velocity>0</velocity>
+          <lower>-0.52</lower>
+          <upper>0.52</upper>
+          <effort>150</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint> -->
+
+    <joint name='SD02_DCH_SD01_joint' type='revolute'>
+      <!-- <pose relative_to='CH'>-0.1865 -1.6482 0.53091 0 0 -1.5708</pose> -->
+      <pose relative_to='SD01_PISTON_DCH'>0 -0.3815 0 3.1416 0.093703 3.1416</pose>
+      <parent>SD01_BODY_DCH</parent>
+      <child>SD02_DCH</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.52</lower>
+          <upper>0.52</upper>
+          <effort>150</effort>
+          <velocity>5</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
@@ -280,10 +301,10 @@
       <axis>
         <xyz>1 0 0</xyz>
         <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>0</effort>
-          <velocity>0</velocity>
+          <lower>-0.52</lower>
+          <upper>0.52</upper>
+          <effort>150</effort>
+          <velocity>5</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
@@ -291,7 +312,6 @@
         </dynamics>
       </axis>
     </joint>
-
 
 <!-- MANGUETA DELANTERA DERECHA -->
 
@@ -567,7 +587,8 @@
 <!-- BRAZO DELANTERO SUSPENSION SUPERIOR IZQUIERDA -->
 
     <link name='SD02_IZQ'>
-      <pose relative_to='SD02_IZQ_CH_joint'>0 0 0 0 0 0</pose>
+      <!-- <pose relative_to='SD02_IZQ_CH_joint'>0 0 0 0 0 0</pose> -->
+      <pose relative_to='CH'>0.1865 -1.6482 0.53091 0 0 -1.5708</pose>
 
       <inertial>
         <pose>-0.1133703115010046 0.1621182424082311 -0.1160946284954628 0 0 0</pose>
@@ -608,9 +629,29 @@
 
     </link> 
 
-    <joint name='SD02_IZQ_CH_joint' type='revolute'>
+    <!-- <joint name='SD02_IZQ_CH_joint' type='revolute'>
       <pose relative_to='CH'>0.1865 -1.6482 0.53091 0 0 -1.5708</pose>
       <parent>CH</parent>
+      <child>SD02_IZQ</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint> -->
+
+    <joint name='SD02_IZQ_SD01_joint' type='revolute'>
+      <!-- <pose relative_to='CH'>0.1865 -1.6482 0.53091 0 0 -1.5708</pose> -->
+      <pose relative_to='SD01_PISTON_IZQ'>0 -0.3815 0 3.1416 0.093703 -3.1416</pose>
+      <parent>SD01_BODY_IZQ</parent>
       <child>SD02_IZQ</child>
       <axis>
         <xyz>1 0 0</xyz>
@@ -678,14 +719,10 @@
       <axis>
         <xyz>1 0 0.07</xyz>
         <limit>
-          <!-- <lower>-3.1415899999999999</lower>
-          <upper>3.1415899999999999</upper>
-          <effort>1000</effort>
-          <velocity>50</velocity> -->
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>0</effort>
-          <velocity>0</velocity>
+          <lower>-0.52</lower>
+          <upper>0.52</upper>
+          <effort>150</effort>
+          <velocity>5</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
@@ -967,7 +1004,8 @@
 <!-- BRAZO TRASERO SUSPENSION SUPERIOR DERECHO -->
 
     <link name='ST02_DCH'>
-      <pose relative_to='ST02_DCH_CH_joint'>0 0 0 0 0 0</pose>
+      <!-- <pose relative_to='ST02_DCH_CH_joint'>0 0 0 0 0 0</pose> -->
+      <pose relative_to='CH'>-0.19 0.80618 0.45222 0 0 -1.5708</pose>
 
       <inertial>
         <pose>0.1500001860261832 -0.2676662614145961 -0.0810993046741976 0 0 0</pose>
@@ -1008,9 +1046,29 @@
 
     </link>
 
-    <joint name='ST02_DCH_CH_joint' type='revolute'>
+    <!-- <joint name='ST02_DCH_CH_joint' type='revolute'>
       <pose relative_to='CH'>-0.19 0.80618 0.45222 0 0 -1.5708</pose>
       <parent>CH</parent>
+      <child>ST02_DCH</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint> -->
+
+    <joint name='ST02_DCH_CH_joint' type='revolute'>
+      <!-- <pose relative_to='CH'>-0.19 0.80618 0.45222 0 0 -1.5708</pose> -->
+      <pose relative_to='ST01_PISTON_DCH'>0 0.352 0 0 1.3806 -3.1416</pose>
+      <parent>ST01_BODY_DCH</parent>
       <child>ST02_DCH</child>
       <axis>
         <xyz>1 0 0</xyz>
@@ -1078,10 +1136,10 @@
       <axis>
         <xyz>1 0 0</xyz>
         <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>0</effort>
-          <velocity>0</velocity>
+          <lower>-0.52</lower>
+          <upper>0.52</upper>
+          <effort>150</effort>
+          <velocity>5</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
@@ -1346,7 +1404,8 @@
 <!-- BRAZO TRASERO SUSPENSION SUPERIOR IZQUIERDO -->
 
     <link name='ST02_IZQ'>
-      <pose relative_to='ST02_IZQ_CH_joint'>0 0 0 0 0 0</pose>
+      <!-- <pose relative_to='ST02_IZQ_CH_joint'>0 0 0 0 0 0</pose> -->
+      <pose relative_to='CH'>0.19 0.80618 0.45222 0 0 -1.5708</pose>
 
       <inertial>
         <pose>0.150000005167412 0.17487915113979 -0.0332493411124752 0 0 0</pose>
@@ -1387,9 +1446,29 @@
 
     </link>
 
-    <joint name='ST02_IZQ_CH_joint' type='revolute'>
+    <!-- <joint name='ST02_IZQ_CH_joint' type='revolute'>
       <pose relative_to='CH'>0.19 0.80618 0.45222 0 0 -1.5708</pose>
       <parent>CH</parent>
+      <child>ST02_IZQ</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint> -->
+
+    <joint name='ST02_IZQ_CH_joint' type='revolute'>
+      <!-- <pose relative_to='CH'>0.19 0.80618 0.45222 0 0 -1.5708</pose> -->
+      <pose relative_to='ST01_PISTON_IZQ'>0 -0.24964 0.24816 -1.7587 -0.77038 1.8374</pose>
+      <parent>ST01_BODY_IZQ</parent>
       <child>ST02_IZQ</child>
       <axis>
         <xyz>1 0 0</xyz>
@@ -1457,10 +1536,10 @@
       <axis>
         <xyz>1 0 0</xyz>
         <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>0</effort>
-          <velocity>0</velocity>
+          <lower>-0.52</lower>
+          <upper>0.52</upper>
+          <effort>150</effort>
+          <velocity>5</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
