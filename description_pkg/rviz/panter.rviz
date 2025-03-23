@@ -62,119 +62,115 @@ Visualization Manager:
       Enabled: true
       Links:
         All Links Enabled: true
+        CH:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ED_DCH:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ED_IZQ:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ET_DCH:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ET_IZQ:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        P_CH:
+        MGD_DCH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_ED04_DCH:
+        MGD_IZQ:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_ED04_IZQ:
+        MGT_DCH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_ED_DCH:
+        MGT_IZQ:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_ED_IZQ:
+        SD01_DCH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_ET03_DCH:
+        SD01_IZQ:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_ET03_IZQ:
+        SD02_DCH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_ET_DCH:
+        SD02_IZQ:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_ET_IZQ:
+        SD03_DCH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_SD01_DCH:
+        SD03_IZQ:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_SD01_IZQ:
+        ST01_DCH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_SD02_DCH:
+        ST01_IZQ:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_SD02_IZQ:
+        ST02_DCH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_SD03_DCH:
+        ST02_IZQ:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_SD03_IZQ:
+        ST03_DCH:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_ST01_DCH:
+        ST03_IZQ:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        P_ST01_IZQ:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        P_ST02_DCH:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        P_ST02_IZQ:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        P_ST03_DCH:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        P_ST03_IZQ:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
       Mass Properties:
         Inertia: false
         Mass: false
@@ -188,49 +184,47 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        P_CH:
+        CH:
           Value: true
-        P_ED04_DCH:
+        ED_DCH:
           Value: true
-        P_ED04_IZQ:
+        ED_IZQ:
           Value: true
-        P_ED_DCH:
+        ET_DCH:
           Value: true
-        P_ED_IZQ:
+        ET_IZQ:
           Value: true
-        P_ET03_DCH:
+        MGD_DCH:
           Value: true
-        P_ET03_IZQ:
+        MGD_IZQ:
           Value: true
-        P_ET_DCH:
+        MGT_DCH:
           Value: true
-        P_ET_IZQ:
+        MGT_IZQ:
           Value: true
-        P_SD01_DCH:
+        SD01_DCH:
           Value: true
-        P_SD01_IZQ:
+        SD01_IZQ:
           Value: true
-        P_SD02_DCH:
+        SD02_DCH:
           Value: true
-        P_SD02_IZQ:
+        SD02_IZQ:
           Value: true
-        P_SD03_DCH:
+        SD03_DCH:
           Value: true
-        P_SD03_IZQ:
+        SD03_IZQ:
           Value: true
-        P_ST01_DCH:
+        ST01_DCH:
           Value: true
-        P_ST01_IZQ:
+        ST01_IZQ:
           Value: true
-        P_ST02_DCH:
+        ST02_DCH:
           Value: true
-        P_ST02_IZQ:
+        ST02_IZQ:
           Value: true
-        P_ST03_DCH:
+        ST03_DCH:
           Value: true
-        P_ST03_IZQ:
-          Value: true
-        base_link:
+        ST03_IZQ:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -238,46 +232,45 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        base_link:
-          P_CH:
-            P_SD01_DCH:
-              {}
-            P_SD01_IZQ:
-              {}
-            P_SD02_DCH:
-              P_ED04_DCH:
-                P_ED_DCH:
-                  {}
-            P_SD02_IZQ:
-              P_ED04_IZQ:
-                P_ED_IZQ:
-                  {}
-            P_SD03_DCH:
-              {}
-            P_SD03_IZQ:
-              {}
-            P_ST01_DCH:
-              {}
-            P_ST01_IZQ:
-              {}
-            P_ST02_DCH:
-              P_ET03_DCH:
-                P_ET_DCH:
-                  {}
-            P_ST02_IZQ:
-              P_ET03_IZQ:
-                P_ET_IZQ:
-                  {}
-            P_ST03_DCH:
-              {}
-            P_ST03_IZQ:
-              {}
+        CH:
+          SD01_DCH:
+            {}
+          SD01_IZQ:
+            {}
+          SD02_DCH:
+            MGD_DCH:
+              ED_DCH:
+                {}
+          SD02_IZQ:
+            MGD_IZQ:
+              ED_IZQ:
+                {}
+          SD03_DCH:
+            {}
+          SD03_IZQ:
+            {}
+          ST01_DCH:
+            {}
+          ST01_IZQ:
+            {}
+          ST02_DCH:
+            MGT_DCH:
+              ET_DCH:
+                {}
+          ST02_IZQ:
+            MGT_IZQ:
+              ET_IZQ:
+                {}
+          ST03_DCH:
+            {}
+          ST03_IZQ:
+            {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: CH
     Frame Rate: 30
   Name: root
   Tools:

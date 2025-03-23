@@ -49,7 +49,7 @@ def generate_launch_description():
         name= 'joint_state_publisher_gui',
         arguments=[urdf_file]
         # condition= IfCondition(LaunchConfiguration('gui'))
-    )  
+    )   
 
 # Gazebo launcher
     launch_gazebo = IncludeLaunchDescription(
@@ -64,7 +64,7 @@ def generate_launch_description():
         package='ros_gz_sim',
         executable='create',
         output='screen',
-        arguments=["-file", "description_pkg/urdf/panter.urdf"]
+        arguments=["-file", "description_pkg/urdf/panter.urdf", "-z", "0.08"]
     )
 
     node_rviz = Node(
@@ -81,9 +81,9 @@ def generate_launch_description():
         node_robot_state_publisher,
         node_joint_state_publisher_gui, # Hace que tenemos la posibilidad de modificar las posiciones de los joints a mano
         node_joint_state_publisher,
-        node_rviz
-        #launch_gazebo,
-        #spawn_panter
+        node_rviz,
+        launch_gazebo,
+        spawn_panter
     ])
 
 

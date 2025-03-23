@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
-     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
-     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 
 <robot
   name="panter">
+<!-- CHASIS -->
+
   <link
-    name="base_link">
+    name="CH">
     <inertial>
       <origin
         xyz="-0.00880173011979828 -0.4226795868207859 0.673550824362744"
         rpy="0 0 0" />
       <mass
-        value="16.2395734011937" />
+        value="343" />
       <inertia
         ixx="210.9428277"
         ixy="0"
@@ -32,7 +31,7 @@
       <material
         name="">
         <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+          rgba="0.4 0.4 0.4 1" />
       </material>
     </visual>
     <collision>
@@ -45,6 +44,9 @@
       </geometry>
     </collision>
   </link>
+
+<!-- AMORTIGUADOR DELANTERO IZQUIERDO -->
+
   <link
     name="SD01_IZQ">
     <inertial>
@@ -93,13 +95,15 @@
       xyz="0.364 -1.4598 0.85354"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="SD01_IZQ" />
     <axis
       xyz="1 0 0" />
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
+<!-- BRAZO SUPERIOR DELANTERO IZQUIERDO -->
 
   <link
     name="SD02_IZQ">
@@ -141,6 +145,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="SD02_IZQ_CH_joint"
     type="revolute">
@@ -148,7 +153,7 @@
       xyz="0.1865 -1.6482 0.53091"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="SD02_IZQ" />
     <axis
@@ -156,6 +161,9 @@
       <!-- xyz="0.069756 0.99756 0" /> -->
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
+<!-- MANGUETA DELANTERA IZQUIERDA -->
+
   <link
     name="MGD_IZQ">
     <inertial>
@@ -196,6 +204,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="MGD_IZQ_joint"
     type="revolute">
@@ -210,6 +219,9 @@
       xyz="0 0 1" />
       <limit effort="50.0" velocity="1.0" lower="-0.52" upper="0.52"/>
   </joint>
+
+<!-- RUEDA DELANTERA IZQUIERDA -->
+
   <link
     name="ED_IZQ">
     <inertial>
@@ -237,7 +249,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0.1 0.1 0.1 1" />
       </material>
     </visual>
     <collision>
@@ -250,8 +262,8 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="ED_IZQ_joint"
+
+  <joint name="ED_IZQ_joint"
     type="revolute">
     <origin
       xyz="0 0 0"
@@ -267,6 +279,8 @@
 
   </joint>
   
+<!-- BRAZO INFERIOR DELANTERO IZQUIERDO -->
+
   <link
     name="SD03_IZQ">
     <inertial>
@@ -308,17 +322,19 @@
     </collision>
   </link>
 
-<joint name="SD03_IZQ_CH_joint" type="revolute">
-  <parent link="base_link"/>
-  <child link="SD03_IZQ"/>
-  <!-- <axis xyz="1 0 0" /> -->
-  <axis xyz="1 0 0.07"/>
-  <!-- hay que ajustar el eje sobre el que gira, no esta alineado con x, pero con solid lo podemos obtener  .069756 -->
-  <limit lower="-3.14159" upper="3.14159" velocity="50.0" effort="1000.0"/>
-  <origin
-      xyz="0.151 -1.6306 0.37054"
-      rpy="0 0 -1.5708" />
-</joint>
+  <joint name="SD03_IZQ_CH_joint" type="revolute">
+    <parent link="CH"/>
+    <child link="SD03_IZQ"/>
+    <!-- <axis xyz="1 0 0" /> -->
+    <axis xyz="1 0 0.07"/>
+    <!-- hay que ajustar el eje sobre el que gira, no esta alineado con x, pero con solid lo podemos obtener  .069756 -->
+    <limit lower="-3.14159" upper="3.14159" velocity="50.0" effort="1000.0"/>
+    <origin
+        xyz="0.151 -1.6306 0.37054"
+        rpy="0 0 -1.5708" />
+  </joint>
+
+<!-- AMORTIGUADOR DELANTERO DERECHO -->
 
   <link
     name="SD01_DCH">
@@ -360,6 +376,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="SD01_DCH_sup_joint"
     type="revolute">
@@ -367,13 +384,15 @@
       xyz="-0.364 -1.4682 0.85496"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="SD01_DCH" />
     <axis
       xyz="1 0 0" />
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
+<!-- BRAZO SUPERIOR DELANTERO DERECHO -->
 
   <link
     name="SD02_DCH">
@@ -415,6 +434,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="SD02_DCH_CH_joint"
     type="revolute">
@@ -422,13 +442,16 @@
       xyz="-0.1865 -1.6482 0.53091"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="SD02_DCH" />
     <axis
       xyz="1 0 0" />
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
+<!-- MANGUETA DELANTERA DERECHA -->
+
   <link
     name="MGD_DCH">
     <inertial>
@@ -485,6 +508,8 @@
       <limit effort="50" velocity="1.0" lower="-0.52" upper="0.52"/>
   </joint>
 
+<!-- RUEDA DELANTERA DERECHA -->
+
   <link
     name="ED_DCH">
     <inertial>
@@ -512,7 +537,7 @@
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0.1 0.1 0.1 1" />
       </material>
     </visual>
     <collision>
@@ -524,6 +549,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="ED_DCH_joint"
     type="revolute">
@@ -539,6 +565,8 @@
     <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
+
+<!-- BRAZO INFERIOR DELANTERO DERECHO -->
 
   <link
     name="SD03_DCH">
@@ -580,6 +608,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="SD03_DCH_CH_joint"
     type="revolute">
@@ -587,13 +616,15 @@
       xyz="-0.151 -1.6306 0.37054"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="SD03_DCH" />
     <axis
       xyz="1 0 0" />
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
+<!-- AMORTIGUADOR TRASERO IZQUIERDO -->
 
   <link
     name="ST01_IZQ">
@@ -635,6 +666,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="ST01_IZQ_sup_joint"
     type="revolute">
@@ -642,13 +674,16 @@
       xyz="0.3275 0.66468 0.79122"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="ST01_IZQ" />
     <axis
       xyz="1 0 0" />
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
+<!-- BRAZO SUPERIOR TRASERO IZQUIERDO -->
+
   <link
     name="ST02_IZQ">
     <inertial>
@@ -689,6 +724,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="ST02_IZQ_CH_joint"
     type="revolute">
@@ -696,13 +732,16 @@
       xyz="0.19 0.80618 0.45222"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="ST02_IZQ" />
     <axis
       xyz="1 0 0" />
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
+<!-- BRAZO INFERIOR TRASERO IZQUIERDO -->
+
   <link
     name="ST03_IZQ">
     <inertial>
@@ -743,6 +782,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="ST03_IZQ_CH_joint"
     type="revolute">
@@ -750,13 +790,16 @@
       xyz="0.178 0.80618 0.34222"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="ST03_IZQ" />
     <axis
       xyz="1 0 0" />
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
+<!-- AMORTIGUADOR TRASERO DERECHO -->
+
   <link
     name="ST01_DCH">
     <inertial>
@@ -797,6 +840,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="ST01_DCH_sup_joint"
     type="revolute">
@@ -804,13 +848,16 @@
       xyz="-0.3275 0.66468 0.79122"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="ST01_DCH" />
     <axis
       xyz="1 0 0" />
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
+<!-- BRAZO SUPERIOR TRASERO DERECHO -->
+
   <link
     name="ST02_DCH">
     <inertial>
@@ -851,6 +898,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="ST02_DCH_CH_joint"
     type="revolute">
@@ -858,13 +906,16 @@
       xyz="-0.19 0.80618 0.45222"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="ST02_DCH" />
     <axis
       xyz="1 0 0" />
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
+
+<!-- MANGUETA TRASERA DERECHA -->
+
   <link
     name="MGT_DCH">
     <inertial>
@@ -905,6 +956,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="MGT_DCH_joint"
     type="fixed">
@@ -918,6 +970,9 @@
     <axis
       xyz="0 0 0" />
   </joint>
+
+<!-- RUEDA TRASERA DERECHA -->
+
   <link
     name="ET_DCH">
     <inertial>
@@ -945,7 +1000,7 @@
       <material
         name="">
         <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+          rgba="0.1 0.1 0.1 1" />
       </material>
     </visual>
     <collision>
@@ -958,6 +1013,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="ET_DCH_joint"
     type="revolute">
@@ -974,6 +1030,9 @@
     <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
+
+<!-- BRAZO INFERIOR TRASERO DERECHO -->
+
   <link
     name="ST03_DCH">
     <inertial>
@@ -1014,6 +1073,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="ST03_DCH_CH_joint"
     type="revolute">
@@ -1021,7 +1081,7 @@
       xyz="-0.178 0.80618 0.34222"
       rpy="0 0 -1.5708" />
     <parent
-      link="base_link" />
+      link="CH" />
     <child
       link="ST03_DCH" />
     <axis
@@ -1029,7 +1089,9 @@
     <limit effort="1.0" velocity="5.0" lower="-3.14" upper="3.14"/>
   </joint>
 
-<link
+<!-- MANGUETA TRASERA IZQUIERDA -->
+
+  <link
     name="MGT_IZQ">
     <inertial>
       <origin
@@ -1069,6 +1131,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="MGT_IZQ_joint"
     type="fixed">
@@ -1082,6 +1145,9 @@
     <axis
       xyz="0 0 0" />
   </joint>
+
+<!-- RUEDA TRASERA IZQUIERDA -->
+
   <link
     name="ET_IZQ">
     <inertial>
@@ -1110,7 +1176,7 @@
       <material
         name="">
         <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+          rgba="0.1 0.1 0.1 1" />
       </material>
     </visual>
     <collision>
@@ -1122,6 +1188,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="ET_IZQ_joint"
     type="revolute">
@@ -1134,9 +1201,19 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
-            <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
+        <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
 
+<!-- 
+  <gazebo>
+    <plugin name="ackermann_steering_plugin" filename="libAckermannSteeringPlugin.so">
+      <steering_joint>MGD_IZQ_SUP_joint</steering_joint>
+      <steering_joint>MGD_DCH_SUP_joint</steering_joint>
+      <steering_ratio>1.0</steering_ratio>
+      <max_steering_angle>0.5</max_steering_angle>
+      <wheelbase>1.0</wheelbase>
+    </plugin> 
+  </gazebo>   -->
 
 </robot>

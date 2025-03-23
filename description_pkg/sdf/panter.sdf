@@ -161,6 +161,7 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>15000</spring_stiffness>
+          <damping>100</damping>
         </dynamics>
       </axis>
     </joint>
