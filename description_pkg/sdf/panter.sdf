@@ -1,5 +1,28 @@
 <?xml version="1.0"?>
+<!-- RUEDA TRASERA 19.95 kg +++> 25.2kg
+Amortiguador trasero 5.35
+disco freno trasero 4.35
+MG trasera 2.20
+Brazo superior trasero 2.65
+Brazo inf trasero 2.70
+"Palier trasero" 4.95 voy a añadirle el peso del palier delantero
 
+3333333
+
+Rueda delantera 15.95
+disco delantero 3.9
+punta palier 0.9
+total = 20.75
+
+
+MG delantera 2.95
+Amortiguador delantero 3.75
+Brazo inferior delantero 2.55
+brazo superior delantero 2.75
+
+
+
+-->
 <sdf version='1.9'>
 
     <physics type="ode"> <!-- Cambiar 'ode' por 'bullet' si prefieres ese motor -->
