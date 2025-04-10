@@ -168,7 +168,7 @@
     <child
       link="SD02_IZQ" />
     <axis xyz="1 0 0"/>
-    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.05" upper="0.05"/>
   </joint>
 
 <!-- BRAZO INFERIOR DELANTERO IZQUIERDO -->
@@ -447,7 +447,7 @@
       link="SD02_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.05" upper="0.05"/>
   </joint>
 
 <!-- BRAZO INFERIOR DELANTERO DERECHO -->
@@ -725,7 +725,7 @@
       link="ST02_IZQ" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.05" upper="0.05"/>
   </joint>
 
 <!-- BRAZO INFERIOR TRASERO IZQUIERDO -->
@@ -1003,7 +1003,7 @@
       link="ST02_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.05" upper="0.05"/>
   </joint>
 
 <!-- BRAZO INFERIOR TRASERO DERECHO -->
