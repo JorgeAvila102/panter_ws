@@ -13,8 +13,8 @@ def generate_launch_description():
     # Lanzar Gazebo con el robot en SDF
     gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(description_pkg, 'launch', 'sim_sdf.launch.py')
-            #os.path.join(description_pkg, 'launch', 'sim_urdf.launch.py')
+            #os.path.join(description_pkg, 'launch', 'sim_sdf.launch.py')
+            os.path.join(description_pkg, 'launch', 'sim_urdf.launch.py')
         )
     )
 

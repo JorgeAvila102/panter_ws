@@ -106,18 +106,6 @@
     </collision>
   </link>
 
-  <!-- <joint name="SD01_IZQ_CH_joint" type="revolute">
-    <origin
-      xyz="0.364 -1.4598 0.85354"
-      rpy="0 0 -1.5708" />
-    <parent
-      link="CH" />
-    <child
-      link="SD01_IZQ" />
-    <axis
-      xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
-  </joint> -->
 
   <joint name="SD01_IZQ_CH_joint" type="fixed">
     <origin
@@ -128,10 +116,6 @@
     <child
       link="SD01_IZQ" />
   </joint>
-
-  <!-- <gazebo reference="SD01_IZQ">
-    <material>Gazebo/Wood</material>
-  </gazebo> -->
 
 <!-- BRAZO SUPERIOR DELANTERO IZQUIERDO -->
 
@@ -174,10 +158,6 @@
       </geometry>
     </collision>
   </link>
-<!-- 
-  <gazebo reference="SD02_IZQ">
-    <material>Gazebo/Wood</material>
-  </gazebo> -->
 
   <joint name="SD02_IZQ_CH_joint" type="revolute">
     <origin
@@ -187,41 +167,9 @@
       link="CH" />
     <child
       link="SD02_IZQ" />
-    <axis
-      xyz="1 0 0.07" />
-      <!--  xyz="0.069756 0.99756 0" /> -->
-    <limit effort="1.0" velocity="5.0" lower="-0.3" upper="0.3"/>
-  </joint> 
-<!-- 
-  <joint name="SD02_IZQ_CH_joint" type="fixed">
-    <origin
-      xyz="0.1865 -1.6482 0.53091"
-      rpy="0 0 -1.5708" />
-    <parent
-      link="CH" />
-    <child
-      link="SD02_IZQ" />
-  </joint> -->
-
-  <gazebo>
-    <joint name="SD01_to_SD02_IZQ_joint" type="fixed">
-      <pose>0 -0.38151 0 3.1416 0.093703 -3.1416</pose>
-      <parent>SD01_IZQ</parent>
-      <child>SD02_IZQ</child>
-      <!-- <axis>
-        <xyz>1 0 0</xyz>
-        <limit>
-          <lower>-0.1</lower>
-          <upper>0.1</upper>
-        </limit> -->
-    </joint>  
-  </gazebo>
-
-  <!-- <joint name="SD01_TO_SD02_IZQ_joint" type="fixed">
-    <origin xyz="0 -0.3815 0" rpy="3.1416 0.093703 -3.1416" />
-    <parent link="SD02_IZQ" />
-    <child link="SD01_IZQ" />
-  </joint> -->
+    <axis xyz="1 0 0"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
+  </joint>
 
 <!-- BRAZO INFERIOR DELANTERO IZQUIERDO -->
 
@@ -271,12 +219,11 @@
     <!-- <axis xyz="1 0 0" /> -->
     <axis xyz="1 0 0.07"/>
     <!-- hay que ajustar el eje sobre el que gira, no esta alineado con x, pero con solid lo podemos obtener  .069756 -->
-    <limit effort="1.0" velocity="5.0" lower="-0.3" upper="0.3"/>
+    <!-- <limit effort="1.0" velocity="5.0" lower="-0.3" upper="0.3"/> -->
+    <limit effort="1.0" velocity="5.0" lower="-0" upper="0"/>
     <origin
         xyz="0.151 -1.6306 0.37054"
         rpy="0 0 -1.5708" />
-
-    <mimic joint="SD02_IZQ_CH_joint" multiplier="1.0" offset="0.0"/>
   </joint>
 
 <!-- MANGUETA DELANTERA IZQUIERDA -->
@@ -386,7 +333,7 @@
       link="ED_IZQ" />
     <axis
       xyz="0 1 0" />
-
+      <dynamics damping="0.2" friction="0.3" />
       <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
@@ -435,7 +382,7 @@
     </collision>
   </link>
 
-  <joint name="SD01_DCH_sup_joint" type="revolute">
+  <joint name="SD01_DCH_CH_joint" type="revolute">
     <origin
       xyz="-0.364 -1.4682 0.85496"
       rpy="0 0 -1.5708" />
@@ -445,7 +392,7 @@
       link="SD01_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
+    <limit effort="1.0" velocity="5.0" lower="-0" upper="0"/>
   </joint>
 
 <!-- BRAZO SUPERIOR DELANTERO DERECHO -->
@@ -500,7 +447,7 @@
       link="SD02_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.3" upper="0.3"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
   </joint>
 
 <!-- BRAZO INFERIOR DELANTERO DERECHO -->
@@ -555,7 +502,7 @@
       link="SD03_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.3" upper="0.3"/>
+    <limit effort="1.0" velocity="5.0" lower="-0" upper="0"/>
   </joint>
 
 <!-- MANGUETA DELANTERA DERECHA -->
@@ -664,6 +611,7 @@
       link="ED_DCH" />
     <axis
       xyz="0 1 0" />
+      <dynamics damping="0.2" friction="0.3" />
     <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
@@ -712,7 +660,7 @@
     </collision>
   </link>
 
-  <joint name="ST01_IZQ_sup_joint" type="revolute">
+  <joint name="ST01_IZQ_CH_joint" type="revolute">
     <origin
       xyz="0.3275 0.66468 0.79122"
       rpy="0 0 -1.5708" />
@@ -722,7 +670,7 @@
       link="ST01_IZQ" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
+    <limit effort="1.0" velocity="5.0" lower="-0" upper="0"/>
   </joint>
 
 <!-- BRAZO SUPERIOR TRASERO IZQUIERDO -->
@@ -777,7 +725,7 @@
       link="ST02_IZQ" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.3" upper="0.3"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
   </joint>
 
 <!-- BRAZO INFERIOR TRASERO IZQUIERDO -->
@@ -832,7 +780,7 @@
       link="ST03_IZQ" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.3" upper="0.3"/>
+    <limit effort="1.0" velocity="5.0" lower="-0" upper="0"/>
   </joint>
 
 <!-- MANGUETA TRASERA IZQUIERDA -->
@@ -941,7 +889,8 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
-        <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
+      <dynamics damping="0.2" friction="0.3" />
+      <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
 
@@ -989,7 +938,7 @@
     </collision>
   </link>
 
-  <joint name="ST01_DCH_sup_joint" type="revolute">
+  <joint name="ST01_DCH_CH_joint" type="revolute">
     <origin
       xyz="-0.3275 0.66468 0.79122"
       rpy="0 0 -1.5708" />
@@ -999,7 +948,7 @@
       link="ST01_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
+    <limit effort="1.0" velocity="5.0" lower="-0" upper="0"/>
   </joint>
 
 <!-- BRAZO SUPERIOR TRASERO DERECHO -->
@@ -1054,7 +1003,7 @@
       link="ST02_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.3" upper="0.3"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.1" upper="0.1"/>
   </joint>
 
 <!-- BRAZO INFERIOR TRASERO DERECHO -->
@@ -1109,7 +1058,7 @@
       link="ST03_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.3" upper="0.3"/>
+    <limit effort="1.0" velocity="5.0" lower="-0" upper="0"/>
   </joint>
 
 
@@ -1219,19 +1168,31 @@
       link="ET_DCH" />
     <axis
       xyz="0 1 0" />
-
+      <dynamics damping="0.2" friction="0.3" />
     <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
   </joint>
 
-<!-- 
   <gazebo>
-    <plugin name="ackermann_steering_plugin" filename="libAckermannSteeringPlugin.so">
-      <steering_joint>MGD_IZQ_SUP_joint</steering_joint>
-      <steering_joint>MGD_DCH_SUP_joint</steering_joint>
-      <steering_ratio>1.0</steering_ratio>
-      <max_steering_angle>0.5</max_steering_angle>
-      <wheelbase>1.0</wheelbase>
-    </plugin> 
-  </gazebo>   -->
+    <plugin filename="libignition-gazebo-ackermann-steering-system.so" name="ignition::gazebo::systems::AckermannSteering">
+
+      <left_steering_joint>MGD_IZQ_joint</left_steering_joint>
+      <left_joint>ED_IZQ_joint</left_joint>
+      <right_steering_joint>MGD_DCH_joint</right_steering_joint>
+      <right_joint>ED_DCH_joint</right_joint>
+
+      <left_joint>ET_IZQ_joint</left_joint>
+      <right_joint>ET_DCH_joint</right_joint>  
+
+      <wheel_separation>1.41</wheel_separation> 
+      <wheel_radius>0.343</wheel_radius>
+      <min_velocity>-15.0</min_velocity> 
+      <max_velocity>15.0</max_velocity>
+      <min_acceleration>-0.5</min_acceleration>
+      <max_acceleration>0.5</max_acceleration> 
+
+      <topic>cmd_vel</topic> 
+
+    </plugin>
+  </gazebo>   
 
 </robot>
