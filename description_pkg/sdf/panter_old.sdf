@@ -1,15 +1,6 @@
 <?xml version="1.0"?>
 
 <sdf version='1.9'>
-
-    <physics type="ode"> <!-- Cambiar 'ode' por 'bullet' si prefieres ese motor -->
-    <max_step_size>0.001</max_step_size>
-    <real_time_update_rate>1000</real_time_update_rate>
-    <real_time_factor>1.0</real_time_factor>
-    <gravity>0 0 -9.81</gravity>
-  </physics>
-
-
   <model name='panter'>
     <pose>0 0 1 0 0 0</pose>
 
@@ -58,139 +49,66 @@
 
 <!-- ###################### EJE DELANTERO ######################-->
 
-<!-- PISTÓN AMORTIGUADOR DELANTERO DERECHO -->
+<!-- AMORTIGUADOR DELANTERO DERECHO -->
 
-    <link name='SD01_PISTON_FAKE_DCH'>
-      <pose relative_to='SD01_PISTON_DCH_joint'>0 0 0 0 0 0</pose>
+    <link name='SD01_DCH'>
+      <pose relative_to='SD01_DCH_CH_joint'>0 0 0 0 0 0</pose>
+
       <inertial>
-        <mass>0</mass>
+        <pose>0.0147151277156394 -0.0466016638374874 -0.188936395717115 0 0 0</pose>
+        <mass>1.5644373485476</mass>
         <inertia>
-          <ixx>0</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0</iyy>
-          <iyz>-0</iyz>
-          <izz>0</izz>
+          <ixx>0.0054735160173384201</ixx>
+          <ixy>0.0002025684338576</ixy>
+          <ixz>0.000799273132675563</ixz>
+          <iyy>0.0053176293368268302</iyy>
+          <iyz>-0.0011458003645297</iyz>
+          <izz>0.00103217687096616</izz>
         </inertia>
       </inertial>
+
+      <collision name='collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://description_pkg/meshes/SD01_DCH.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name='visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://description_pkg/meshes/SD01_DCH.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.941176 0.941176 0.941176 1</diffuse>
+          <ambient>0.941176 0.941176 0.941176 1</ambient>
+        </material>
+      </visual>
+
     </link>
 
-    <joint name='SD01_PISTON_FAKE_DCH_joint' type='fixed'>
-      <pose relative_to='CH'>-0.364 -1.4515 0.85213 1.8129 0.16755 1.5708</pose>
+
+    <joint name='SD01_DCH_CH_joint' type='revolute'>
+      <pose relative_to='CH'>-0.364 -1.4682 0.8549600000000001 0 0 -1.5708</pose>
       <parent>CH</parent>
-      <child>SD01_PISTON_FAKE_DCH</child>
-    </joint>
-
-    <link name='SD01_PISTON_DCH'>
-      <pose relative_to='SD01_PISTON_DCH_joint'>0 0 0 0 0 0</pose>
-
-      <inertial>
-        <pose>0.0147151277156394 -0.0466016638374874 -0.188936395717115 0 0 0</pose>
-        <mass>1.5644373485476</mass>
-        <inertia>
-          <ixx>0.0054735160173384201</ixx>
-          <ixy>0.0002025684338576</ixy>
-          <ixz>0.000799273132675563</ixz>
-          <iyy>0.0053176293368268302</iyy>
-          <iyz>-0.0011458003645297</iyz>
-          <izz>0.00103217687096616</izz>
-        </inertia>
-      </inertial>
-
-      <collision name='collision'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/SD01_PISTON_DCH.STL</uri>
-          </mesh>
-        </geometry>
-      </collision>
-
-      <visual name='visual'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/SD01_PISTON_DCH.STL</uri>
-          </mesh>
-        </geometry>
-        <material>
-          <diffuse>0.941176 0.941176 0.941176 1</diffuse>
-          <ambient>0.941176 0.941176 0.941176 1</ambient>
-        </material>
-      </visual>
-
-    </link>
-
-    <joint name='SD01_PISTON_DCH_joint' type='fixed'>
-      <pose relative_to='CH'>-0.364 -1.4515 0.85213 1.8129 0.16755 1.5708</pose>
-      <parent>SD01_PISTON_FAKE_DCH</parent>
-      <child>SD01_PISTON_DCH</child>
-    </joint>
-
-<!-- CUERPO AMORTIGUADOR DELANTERO DERECHO -->
-
-    <link name='SD01_BODY_DCH'>
-      <pose relative_to='SD01_BODY_DCH_joint'>0 0 0 0 0 0</pose>
-
-      <inertial>
-        <pose>0.0147151277156394 -0.0466016638374874 -0.188936395717115 0 0 0</pose>
-        <mass>1.5644373485476</mass>
-        <inertia>
-          <ixx>0.0054735160173384201</ixx>
-          <ixy>0.0002025684338576</ixy>
-          <ixz>0.000799273132675563</ixz>
-          <iyy>0.0053176293368268302</iyy>
-          <iyz>-0.0011458003645297</iyz>
-          <izz>0.00103217687096616</izz>
-        </inertia>
-      </inertial>
-
-      <collision name='collision'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/SD01_BODY_DCH.STL</uri>
-          </mesh>
-        </geometry>
-      </collision>
-
-      <visual name='visual'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/SD01_BODY_DCH.STL</uri>
-          </mesh>
-        </geometry>
-        <material>
-          <diffuse>0.941176 0.941176 0.941176 1</diffuse>
-          <ambient>0.941176 0.941176 0.941176 1</ambient>
-        </material>
-      </visual>
-
-    </link>
-
-
-    <joint name='SD01_BODY_DCH_joint' type='prismatic'>
-      <pose relative_to='SD01_PISTON_DCH'>0 -0.3815 0 3.1416 0.093703 3.1416</pose>
-      <parent>SD01_PISTON_DCH</parent>
-      <child>SD01_BODY_DCH</child>
+      <child>SD01_DCH</child>
       <axis>
-        <xyz>0 1 0</xyz>
-        <use_parent_model_frame>false</use_parent_model_frame>
+        <xyz>1 0 0</xyz>
         <limit>
-          <lower>0</lower>     <!-- m -->
-          <upper>0.25</upper>
-          <effort>4000</effort>   <!-- N -->
-          <velocity>10</velocity>    <!-- Límete en m/s -->
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>10000</spring_stiffness>
-          <damping>100</damping>
+          <spring_stiffness>0</spring_stiffness>
         </dynamics>
       </axis>
     </joint>
@@ -198,8 +116,7 @@
 <!-- BRAZO DELANTERO SUSPENSION SUPERIOR DERECHO -->
 
     <link name='SD02_DCH'>
-      <!-- <pose relative_to='SD02_DCH_CH_joint'>0 0 0 0 0 0</pose> -->
-      <pose relative_to='CH'>-0.1865 -1.6482 0.53091 0 0 -1.5708</pose>
+      <pose relative_to='SD02_DCH_CH_joint'>0 0 0 0 0 0</pose>
 
       <inertial>
         <pose>-0.1087663182382292 -0.2973823518047529 -0.1447752478166711 0 0 0</pose>
@@ -242,35 +159,15 @@
 
     <joint name='SD02_DCH_CH_joint' type='revolute'>
       <pose relative_to='CH'>-0.1865 -1.6482 0.53091 0 0 -1.5708</pose>
-      <parent>SD02_DCH</parent>
-      <child>CH</child>
-      <axis>
-        <xyz>1 0 0</xyz>
-        <limit>
-          <lower>-0.52</lower>
-          <upper>0.52</upper>
-          <effort>150</effort>
-          <velocity>5</velocity>
-        </limit>
-        <dynamics>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
-        </dynamics>
-      </axis>
-    </joint>
-
-    <joint name='SD02_DCH_SD01_joint' type='revolute'>
-      <!-- <pose relative_to='CH'>-0.1865 -1.6482 0.53091 0 0 -1.5708</pose> -->
-      <pose relative_to='SD01_PISTON_DCH'>0 -0.3815 0 3.1416 0.093703 3.1416</pose>
-      <parent>SD01_BODY_DCH</parent>
+      <parent>CH</parent>
       <child>SD02_DCH</child>
       <axis>
         <xyz>1 0 0</xyz>
         <limit>
-          <lower>-0.52</lower>
-          <upper>0.52</upper>
-          <effort>150</effort>
-          <velocity>5</velocity>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
@@ -330,10 +227,10 @@
       <axis>
         <xyz>1 0 0</xyz>
         <limit>
-          <lower>-0.52</lower>
-          <upper>0.52</upper>
-          <effort>150</effort>
-          <velocity>5</velocity>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
@@ -341,6 +238,7 @@
         </dynamics>
       </axis>
     </joint>
+
 
 <!-- MANGUETA DELANTERA DERECHA -->
 
@@ -480,36 +378,26 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.2</damping> <!-- también ayuda a la estabilidad -->
         </dynamics>
       </axis>
-      <physics>
-        <ode>
-          <friction>
-            <ode>
-              <mu>0.9</mu>    <!-- Fricción en la dirección principal -->
-              <mu2>0.8</mu2>  <!-- Fricción lateral -->
-            </ode>
-          </friction>
-        </ode>
-      </physics>
     </joint>
 
-<!-- PISTON AMORTIGUADOR DELANTERO IZQUIERDO -->
 
-    <link name='SD01_PISTON_IZQ'>
-      <pose relative_to='CH'>0.364 -1.4515 0.85213 1.8129 -0.16755 -1.5708</pose>
+<!-- AMORTIGUADOR DELANTERO IZQUIERDO -->
+
+    <link name='SD01_IZQ'>
+      <pose relative_to='SD01_IZQ_CH_joint'>0 0 0 0 0 0</pose>
 
       <inertial>
-        <pose>0.00849916904573988 0.0657819927228204 -0.159438279696458 0 0 0</pose>
-        <mass>1.6865239792604101</mass>
+        <pose>0.023095387698848 0.0466016681758654 -0.187519014527033 0 0 0</pose>
+        <mass>1.56443700619495</mass>
         <inertia>
-          <ixx>0.0063338001559970197</ixx>
-          <ixy>-1.45261475353967e-05</ixy>
-          <ixz>3.5266726696435297e-05</ixz>
-          <iyy>0.0055250803137681997</iyy>
-          <iyz>0.0019468091581656001</iyz>
-          <izz>0.00160836691478163</izz>
+          <ixx>0.0054896363326847001</ixx>
+          <ixy>-0.00018551496856869401</ixy>
+          <ixz>0.00075298015942053004</ixz>
+          <iyy>0.0053176287981363899</iyy>
+          <iyz>0.00114868462288693</iyz>
+          <izz>0.0010160558596513799</izz>
         </inertia>
       </inertial>
 
@@ -518,7 +406,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/SD01_PISTON_IZQ.STL</uri>
+            <uri>model://description_pkg/meshes/SD01_IZQ.STL</uri>
           </mesh>
         </geometry>
       </collision>
@@ -528,7 +416,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/SD01_PISTON_IZQ.STL</uri>
+            <uri>model://description_pkg/meshes/SD01_IZQ.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -539,75 +427,21 @@
 
     </link>
 
-    <joint name='SD01_PISTON_IZQ_joint' type='fixed'>
-      <pose relative_to='CH'>0.364 -1.4515 0.85213 1.8129 -0.16755 -1.5708</pose>
+    <joint name='SD01_IZQ_CH_joint' type='revolute'>
+      <pose relative_to='CH'>0.364 -1.4598 0.85354 0 0 -1.5708</pose>
       <parent>CH</parent>
-      <child>SD01_PISTON_IZQ</child>
-    </joint>
-
-
-<!-- CUERPO AMORTIGUADOR DELANTERO IZQUIERDO -->
-
-    <link name='SD01_BODY_IZQ'>
-      <pose relative_to='SD01_PISTON_IZQ'>0 -0.3815 0 3.1416 0.093703 -3.1416</pose>
-
-      <inertial>
-        <pose>0.00849916904573988 0.0657819927228204 -0.159438279696458 0 0 0</pose>
-        <mass>1.6865239792604101</mass>
-        <inertia>
-          <ixx>0.0063338001559970197</ixx>
-          <ixy>-1.45261475353967e-05</ixy>
-          <ixz>3.5266726696435297e-05</ixz>
-          <iyy>0.0055250803137681997</iyy>
-          <iyz>0.0019468091581656001</iyz>
-          <izz>0.00160836691478163</izz>
-        </inertia>
-      </inertial>
-
-      <collision name='collision'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/SD01_BODY_IZQ.STL</uri>
-          </mesh>
-        </geometry>
-      </collision>
-
-      <visual name='visual'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/SD01_BODY_IZQ.STL</uri>
-          </mesh>
-        </geometry>
-        <material>
-          <diffuse>0.941176 0.941176 0.941176 1</diffuse>
-          <ambient>0.941176 0.941176 0.941176 1</ambient>
-        </material>
-      </visual>
-
-    </link>
-
-    <joint name='SD01_BODY_IZQ_joint' type='prismatic'>
-      <!-- <pose relative_to='CH'>0.3275 0.66468 0.79122 0 0 -1.5708</pose> -->
-      <pose relative_to='SD01_PISTON_IZQ'>0 -0.3815 0 3.1416 0.093703 -3.1416</pose>
-      <parent>SD01_PISTON_IZQ</parent>
-      <child>SD01_BODY_IZQ</child>
+      <child>SD01_IZQ</child>
       <axis>
-        <xyz>0 1 0</xyz>
-        <use_parent_model_frame>false</use_parent_model_frame>
+        <xyz>1 0 0</xyz>
         <limit>
-          <lower>0</lower>     <!-- m -->
-          <upper>0.25</upper>
-          <effort>4000</effort>   <!-- N -->
-          <velocity>10</velocity>    <!-- Límete en m/s -->
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>10000</spring_stiffness>
-          <damping>100</damping>
+          <spring_stiffness>0</spring_stiffness>
         </dynamics>
       </axis>
     </joint>
@@ -616,8 +450,7 @@
 <!-- BRAZO DELANTERO SUSPENSION SUPERIOR IZQUIERDA -->
 
     <link name='SD02_IZQ'>
-      <!-- <pose relative_to='SD02_IZQ_CH_joint'>0 0 0 0 0 0</pose> -->
-      <pose relative_to='CH'>0.1865 -1.6482 0.53091 0 0 -1.5708</pose>
+      <pose relative_to='SD02_IZQ_CH_joint'>0 0 0 0 0 0</pose>
 
       <inertial>
         <pose>-0.1133703115010046 0.1621182424082311 -0.1160946284954628 0 0 0</pose>
@@ -658,29 +491,9 @@
 
     </link> 
 
-    <!-- <joint name='SD02_IZQ_CH_joint' type='revolute'>
+    <joint name='SD02_IZQ_CH_joint' type='revolute'>
       <pose relative_to='CH'>0.1865 -1.6482 0.53091 0 0 -1.5708</pose>
       <parent>CH</parent>
-      <child>SD02_IZQ</child>
-      <axis>
-        <xyz>1 0 0</xyz>
-        <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>0</effort>
-          <velocity>0</velocity>
-        </limit>
-        <dynamics>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
-        </dynamics>
-      </axis>
-    </joint> -->
-
-    <joint name='SD02_IZQ_SD01_joint' type='revolute'>
-      <!-- <pose relative_to='CH'>0.1865 -1.6482 0.53091 0 0 -1.5708</pose> -->
-      <pose relative_to='SD01_PISTON_IZQ'>0 -0.3815 0 3.1416 0.093703 -3.1416</pose>
-      <parent>SD01_BODY_IZQ</parent>
       <child>SD02_IZQ</child>
       <axis>
         <xyz>1 0 0</xyz>
@@ -748,10 +561,14 @@
       <axis>
         <xyz>1 0 0.07</xyz>
         <limit>
-          <lower>-0.52</lower>
-          <upper>0.52</upper>
-          <effort>150</effort>
-          <velocity>5</velocity>
+          <!-- <lower>-3.1415899999999999</lower>
+          <upper>3.1415899999999999</upper>
+          <effort>1000</effort>
+          <velocity>50</velocity> -->
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
@@ -792,7 +609,7 @@
         </material>
       </visual>
 
-      <collision name='collision'>
+        <collision name='collision'>
         <pose>-0.11217 0.5208700000000001 -0.23886 0 0 0</pose>
         <geometry>
           <mesh>
@@ -895,39 +712,27 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.2</damping> <!-- también ayuda a la estabilidad -->
         </dynamics>
       </axis>
-      <physics>
-        <ode>
-          <friction>
-            <ode>
-              <mu>0.9</mu>    <!-- Fricción en la dirección principal -->
-              <mu2>0.8</mu2>  <!-- Fricción lateral -->
-            </ode>
-          </friction>
-        </ode>
-      </physics>
     </joint>
 
 <!-- ###################### EJE TRASERO ######################-->
 
+<!-- AMORTIGUADOR TRASERO DERECHO -->
 
-<!-- PISTON AMORTIGUADOR TRASERO DERECHO -->
-
-    <link name='ST01_PISTON_DCH'>
-      <pose relative_to='CH'>-0.3275 0.65618 0.79122 -1.962 0 -1.5708</pose>
+    <link name='ST01_DCH'>
+      <pose relative_to='ST01_DCH_CH_joint'>0 0 0 0 0 0</pose>
 
       <inertial>
-        <pose>0.00849916904573988 0.0657819927228204 -0.159438279696458 0 0 0</pose>
+        <pose>0.00850083095421039 -0.0657819927229779 -0.159438279696522 0 0 0</pose>
         <mass>1.6865239792604101</mass>
         <inertia>
-          <ixx>0.0063338001559970197</ixx>
-          <ixy>-1.45261475353967e-05</ixy>
-          <ixz>3.5266726696435297e-05</ixz>
-          <iyy>0.0055250803137681997</iyy>
-          <iyz>0.0019468091581656001</iyz>
-          <izz>0.00160836691478163</izz>
+          <ixx>0.0063338001559969798</ixx>
+          <ixy>-1.45261475354718e-05</ixy>
+          <ixz>-3.5266726696614102e-05</ixz>
+          <iyy>0.0055250803137681702</iyy>
+          <iyz>-0.0019468091581655901</iyz>
+          <izz>0.0016083669147816399</izz>
         </inertia>
       </inertial>
 
@@ -936,7 +741,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/ST01_PISTON_DCH.STL</uri>
+            <uri>model://description_pkg/meshes/ST01_DCH.STL</uri>
           </mesh>
         </geometry>
       </collision>
@@ -946,7 +751,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/ST01_PISTON_DCH.STL</uri>
+            <uri>model://description_pkg/meshes/ST01_DCH.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -957,75 +762,21 @@
 
     </link>
 
-    <joint name='ST01_PISTON_DCH_joint' type='fixed'>
-      <pose relative_to='CH'>-0.3275 0.65618 0.79122 -1.962 0 -1.5708</pose>
+    <joint name='ST01_DCH_CH_joint' type='revolute'>
+      <pose relative_to='CH'>-0.3275 0.66468 0.79122 0 0 -1.5708</pose>
       <parent>CH</parent>
-      <child>ST01_PISTON_DCH</child>
-    </joint>
-
-
-<!-- CUERPO AMORTIGUADOR TRASERO DERECHO -->
-
-    <link name='ST01_BODY_DCH'>
-      <pose relative_to='ST01_PISTON_DCH'>0 0.352 0 0 1.3806 -3.1416</pose>
-
-      <inertial>
-        <pose>0.00849916904573988 0.0657819927228204 -0.159438279696458 0 0 0</pose>
-        <mass>1.6865239792604101</mass>
-        <inertia>
-          <ixx>0.0063338001559970197</ixx>
-          <ixy>-1.45261475353967e-05</ixy>
-          <ixz>3.5266726696435297e-05</ixz>
-          <iyy>0.0055250803137681997</iyy>
-          <iyz>0.0019468091581656001</iyz>
-          <izz>0.00160836691478163</izz>
-        </inertia>
-      </inertial>
-
-      <collision name='collision'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/ST01_BODY_DCH.STL</uri>
-          </mesh>
-        </geometry>
-      </collision>
-
-      <visual name='visual'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/ST01_BODY_DCH.STL</uri>
-          </mesh>
-        </geometry>
-        <material>
-          <diffuse>0.941176 0.941176 0.941176 1</diffuse>
-          <ambient>0.941176 0.941176 0.941176 1</ambient>
-        </material>
-      </visual>
-
-    </link>
-
-    <joint name='ST01_BODY_DCH_joint' type='prismatic'>
-      <!-- <pose relative_to='CH'>0.3275 0.66468 0.79122 0 0 -1.5708</pose> -->
-      <pose relative_to='ST01_PISTON_DCH'>0 0.352 0 0 1.3806 -3.1416</pose>
-      <parent>ST01_PISTON_DCH</parent>
-      <child>ST01_BODY_DCH</child>
+      <child>ST01_DCH</child>
       <axis>
-        <xyz>0 1 0</xyz>
-        <use_parent_model_frame>false</use_parent_model_frame>
+        <xyz>1 0 0</xyz>
         <limit>
-          <lower>0</lower>     <!-- m -->
-          <upper>0.25</upper>
-          <effort>4000</effort>   <!-- N -->
-          <velocity>10</velocity>    <!-- Límete en m/s -->
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>10000</spring_stiffness>
-          <damping>100</damping>
+          <spring_stiffness>0</spring_stiffness>
         </dynamics>
       </axis>
     </joint>
@@ -1033,8 +784,7 @@
 <!-- BRAZO TRASERO SUSPENSION SUPERIOR DERECHO -->
 
     <link name='ST02_DCH'>
-      <!-- <pose relative_to='ST02_DCH_CH_joint'>0 0 0 0 0 0</pose> -->
-      <pose relative_to='CH'>-0.19 0.80618 0.45222 0 0 -1.5708</pose>
+      <pose relative_to='ST02_DCH_CH_joint'>0 0 0 0 0 0</pose>
 
       <inertial>
         <pose>0.1500001860261832 -0.2676662614145961 -0.0810993046741976 0 0 0</pose>
@@ -1075,29 +825,9 @@
 
     </link>
 
-    <!-- <joint name='ST02_DCH_CH_joint' type='revolute'>
+    <joint name='ST02_DCH_CH_joint' type='revolute'>
       <pose relative_to='CH'>-0.19 0.80618 0.45222 0 0 -1.5708</pose>
       <parent>CH</parent>
-      <child>ST02_DCH</child>
-      <axis>
-        <xyz>1 0 0</xyz>
-        <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>0</effort>
-          <velocity>0</velocity>
-        </limit>
-        <dynamics>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
-        </dynamics>
-      </axis>
-    </joint> -->
-
-    <joint name='ST02_DCH_CH_joint' type='revolute'>
-      <!-- <pose relative_to='CH'>-0.19 0.80618 0.45222 0 0 -1.5708</pose> -->
-      <pose relative_to='ST01_PISTON_DCH'>0 0.352 0 0 1.3806 -3.1416</pose>
-      <parent>ST01_BODY_DCH</parent>
       <child>ST02_DCH</child>
       <axis>
         <xyz>1 0 0</xyz>
@@ -1165,10 +895,10 @@
       <axis>
         <xyz>1 0 0</xyz>
         <limit>
-          <lower>-0.52</lower>
-          <upper>0.52</upper>
-          <effort>150</effort>
-          <velocity>5</velocity>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
@@ -1296,25 +1026,15 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.2</damping> <!-- también ayuda a la estabilidad -->
         </dynamics>
       </axis>
-      <physics>
-        <ode>
-          <friction>
-            <ode>
-              <mu>0.9</mu>    <!-- Fricción en la dirección principal -->
-              <mu2>0.8</mu2>  <!-- Fricción lateral -->
-            </ode>
-          </friction>
-        </ode>
-      </physics>
     </joint>
 
-<!-- PISTON AMORTIGUADOR TRASERO IZQUIERDO -->
 
-    <link name='ST01_PISTON_IZQ'>
-      <pose relative_to='CH'>0.3275 0.65618 0.79122 1.962 0 1.5708</pose>
+<!-- AMORTIGUADOR TRASERO IZQUIERDO -->
+
+    <link name='ST01_IZQ'>
+      <pose relative_to='ST01_IZQ_CH_joint'>0 0 0 0 0 0</pose>
 
       <inertial>
         <pose>0.00849916904573988 0.0657819927228204 -0.159438279696458 0 0 0</pose>
@@ -1334,7 +1054,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/ST01_PISTON_IZQ.STL</uri>
+            <uri>model://description_pkg/meshes/ST01_IZQ.STL</uri>
           </mesh>
         </geometry>
       </collision>
@@ -1344,7 +1064,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/ST01_PISTON_IZQ.STL</uri>
+            <uri>model://description_pkg/meshes/ST01_IZQ.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -1355,76 +1075,21 @@
 
     </link>
 
-    <joint name='ST01_PISTON_IZQ_joint' type='fixed'>
-      <!-- <pose relative_to='CH'>0.3275 0.66468 0.79122 0 0 -1.5708</pose> -->
-      <pose relative_to='CH'>0.3275 0.65618 0.79122 1.962 0 1.5708</pose>
+    <joint name='ST01_IZQ_CH_joint' type='revolute'>
+      <pose relative_to='CH'>0.3275 0.66468 0.79122 0 0 -1.5708</pose>
       <parent>CH</parent>
-      <child>ST01_PISTON_IZQ</child>
-    </joint>
-
-
-<!-- CUERPO AMORTIGUADOR TRASERO IZQUIERDO -->
-
-    <link name='ST01_BODY_IZQ'>
-      <pose relative_to='ST01_PISTON_IZQ'>0 -0.24964 0.24816 -1.7587 -0.77038 1.8374</pose>
-
-      <inertial>
-        <pose>0.00849916904573988 0.0657819927228204 -0.159438279696458 0 0 0</pose>
-        <mass>1.6865239792604101</mass>
-        <inertia>
-          <ixx>0.0063338001559970197</ixx>
-          <ixy>-1.45261475353967e-05</ixy>
-          <ixz>3.5266726696435297e-05</ixz>
-          <iyy>0.0055250803137681997</iyy>
-          <iyz>0.0019468091581656001</iyz>
-          <izz>0.00160836691478163</izz>
-        </inertia>
-      </inertial>
-
-      <collision name='collision'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/ST01_BODY_IZQ.STL</uri>
-          </mesh>
-        </geometry>
-      </collision>
-
-      <visual name='visual'>
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <scale>1 1 1</scale>
-            <uri>model://description_pkg/meshes/ST01_BODY_IZQ.STL</uri>
-          </mesh>
-        </geometry>
-        <material>
-          <diffuse>0.941176 0.941176 0.941176 1</diffuse>
-          <ambient>0.941176 0.941176 0.941176 1</ambient>
-        </material>
-      </visual>
-
-    </link>
-
-    <joint name='ST01_IZQ_BODY_joint' type='prismatic'>
-      <!-- <pose relative_to='CH'>0.3275 0.66468 0.79122 0 0 -1.5708</pose> -->
-      <pose relative_to='ST01_PISTON_IZQ'>0 -0.24964 0.24816 -1.7587 -0.77038 1.8374</pose>
-      <parent>ST01_PISTON_IZQ</parent>
-      <child>ST01_BODY_IZQ</child>
+      <child>ST01_IZQ</child>
       <axis>
-        <xyz>0 1 0</xyz>
-        <use_parent_model_frame>false</use_parent_model_frame>
+        <xyz>1 0 0</xyz>
         <limit>
-          <lower>0</lower>     <!-- m -->
-          <upper>0.25</upper>
-          <effort>4000</effort>   <!-- N -->
-          <velocity>10</velocity>    <!-- Límete en m/s -->
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>10000</spring_stiffness>
-          <damping>100</damping>
+          <spring_stiffness>0</spring_stiffness>
         </dynamics>
       </axis>
     </joint>
@@ -1433,8 +1098,7 @@
 <!-- BRAZO TRASERO SUSPENSION SUPERIOR IZQUIERDO -->
 
     <link name='ST02_IZQ'>
-      <!-- <pose relative_to='ST02_IZQ_CH_joint'>0 0 0 0 0 0</pose> -->
-      <pose relative_to='CH'>0.19 0.80618 0.45222 0 0 -1.5708</pose>
+      <pose relative_to='ST02_IZQ_CH_joint'>0 0 0 0 0 0</pose>
 
       <inertial>
         <pose>0.150000005167412 0.17487915113979 -0.0332493411124752 0 0 0</pose>
@@ -1475,29 +1139,9 @@
 
     </link>
 
-    <!-- <joint name='ST02_IZQ_CH_joint' type='revolute'>
+    <joint name='ST02_IZQ_CH_joint' type='revolute'>
       <pose relative_to='CH'>0.19 0.80618 0.45222 0 0 -1.5708</pose>
       <parent>CH</parent>
-      <child>ST02_IZQ</child>
-      <axis>
-        <xyz>1 0 0</xyz>
-        <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>0</effort>
-          <velocity>0</velocity>
-        </limit>
-        <dynamics>
-          <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
-        </dynamics>
-      </axis>
-    </joint> -->
-
-    <joint name='ST02_IZQ_CH_joint' type='revolute'>
-      <!-- <pose relative_to='CH'>0.19 0.80618 0.45222 0 0 -1.5708</pose> -->
-      <pose relative_to='ST01_PISTON_IZQ'>0 -0.24964 0.24816 -1.7587 -0.77038 1.8374</pose>
-      <parent>ST01_BODY_IZQ</parent>
       <child>ST02_IZQ</child>
       <axis>
         <xyz>1 0 0</xyz>
@@ -1565,10 +1209,10 @@
       <axis>
         <xyz>1 0 0</xyz>
         <limit>
-          <lower>-0.52</lower>
-          <upper>0.52</upper>
-          <effort>150</effort>
-          <velocity>5</velocity>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
@@ -1696,19 +1340,8 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0.2</damping> <!-- también ayuda a la estabilidad -->
         </dynamics>
       </axis>
-      <physics>
-        <ode>
-          <friction>
-            <ode>
-              <mu>0.9</mu>    <!-- Fricción en la dirección principal -->
-              <mu2>0.8</mu2>  <!-- Fricción lateral -->
-            </ode>
-          </friction>
-        </ode>
-      </physics>
     </joint>
 
 <!-- ###################### PLUGIN ######################-->

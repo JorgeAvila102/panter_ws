@@ -1,14 +1,25 @@
 <?xml version="1.0"?>
 <sdf version='1.9'>
       <world name="PanterWorld">
-        <physics name="1ms" type="ignored">
-            <max_step_size>0.001</max_step_size>
-            <real_time_factor>1.0</real_time_factor>
-        </physics>
+
         <plugin
             filename="libignition-gazebo-physics-system.so"
             name="ignition::gazebo::systems::Physics">
+            <!-- <engine>bullet</engine> -->
         </plugin>
+        <!-- <physics type="ode">
+            <gravity>0 0 -9.81</gravity>
+            <max_step_size>0.01</max_step_size>
+            <real_time_update_rate>1000.0</real_time_update_rate>
+        </physics> -->
+        <!-- <physics name="bullet_physics" default="true" type="bullet">
+            <max_step_size>0.001</max_step_size>
+            <real_time_factor>1</real_time_factor>
+            <real_time_update_rate>1000</real_time_update_rate>
+        </physics> -->
+
+
+
         <plugin
             filename="libignition-gazebo-user-commands-system.so"
             name="ignition::gazebo::systems::UserCommands">
@@ -132,14 +143,6 @@
                 linear: {x: 0.0}, angular: {z: 1}
             </output>
         </plugin>
-
-
-        <!-- <ignition-gui>
-            <plugin filename="KeyPublisher" name="Key publisher">
-            </plugin>
-
-        </ignition-gui> -->
-
       
       </world>
 </sdf>

@@ -30,7 +30,7 @@ void Keyboardcontrol:: manual_drive_panter()
     {
 
 // AVANZA HACIA ADELANTE
-    case 'f':
+    case 'w':
     RCLCPP_INFO(this->get_logger(), "FORDWARDS \r\n");
 
     msg.linear.x = 2.0; // Velocidad en m/s
@@ -44,7 +44,7 @@ void Keyboardcontrol:: manual_drive_panter()
     break;
 // AVANZA HACIA ATRÁS
     
-    case 'b':
+    case 's':
     RCLCPP_INFO(this->get_logger(), "BACKWARD \r\n");
 
     msg.linear.x = -2.0; // Velocidad en m/s
@@ -58,7 +58,7 @@ void Keyboardcontrol:: manual_drive_panter()
     break;
 
 // GIRA DERECHA
-    case 'r':
+    case 'd':
     RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
 
     msg.linear.x = 0; // Velocidad en m/s
@@ -72,7 +72,7 @@ void Keyboardcontrol:: manual_drive_panter()
     break;
 
 // GIRA IZQUIERDA
-    case 'l':
+    case 'a':
     RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
 
     msg.linear.x = 0; // Velocidad en m/s

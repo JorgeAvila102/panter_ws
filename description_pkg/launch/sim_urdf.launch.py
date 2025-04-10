@@ -56,6 +56,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([get_package_share_directory('ros_gz_sim'), '/launch', '/gz_sim.launch.py']),
         launch_arguments={
         'ign_args' : world_file
+        # 'ign_args': f"{world_file} --physics-engine bullet"
     }.items(),
     )
 
@@ -64,7 +65,7 @@ def generate_launch_description():
         package='ros_gz_sim',
         executable='create',
         output='screen',
-        arguments=["-file", "description_pkg/urdf/panter.urdf", "-z", "0.08"]
+        arguments=["-file", urdf_file, "-z", "0.08"]
     )
 
     node_rviz = Node(
