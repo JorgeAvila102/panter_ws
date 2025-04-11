@@ -106,7 +106,6 @@
     </collision>
   </link>
 
-
   <joint name="SD01_IZQ_CH_joint" type="fixed">
     <origin
       xyz="0.364 -1.4598 0.85354"
@@ -163,12 +162,13 @@
     <origin
       xyz="0.1865 -1.6482 0.53091"
       rpy="0 0 -1.5708" />
+
     <parent
       link="CH" />
     <child
       link="SD02_IZQ" />
     <axis xyz="1 0 0"/>
-    <limit effort="1.0" velocity="5.0" lower="-0.05" upper="0.05"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.02" upper="0.02"/>
   </joint>
 
 <!-- BRAZO INFERIOR DELANTERO IZQUIERDO -->
@@ -333,8 +333,8 @@
       link="ED_IZQ" />
     <axis
       xyz="0 1 0" />
-      <dynamics damping="0.2" friction="0.3" />
-      <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
+      <dynamics damping="0.2" friction="0.6" />
+      <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
   
@@ -447,7 +447,7 @@
       link="SD02_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.05" upper="0.05"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.02" upper="0.02"/>
   </joint>
 
 <!-- BRAZO INFERIOR DELANTERO DERECHO -->
@@ -611,8 +611,8 @@
       link="ED_DCH" />
     <axis
       xyz="0 1 0" />
-      <dynamics damping="0.2" friction="0.3" />
-    <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
+      <dynamics damping="0.2" friction="0.6" />
+    <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
 
@@ -725,7 +725,7 @@
       link="ST02_IZQ" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.05" upper="0.05"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.02" upper="0.02"/>
   </joint>
 
 <!-- BRAZO INFERIOR TRASERO IZQUIERDO -->
@@ -889,8 +889,8 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
-      <dynamics damping="0.2" friction="0.3" />
-      <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
+      <dynamics damping="0.2" friction="0.6" />
+      <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
 
@@ -1003,7 +1003,7 @@
       link="ST02_DCH" />
     <axis
       xyz="1 0 0" />
-    <limit effort="1.0" velocity="5.0" lower="-0.05" upper="0.05"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.02" upper="0.02"/>
   </joint>
 
 <!-- BRAZO INFERIOR TRASERO DERECHO -->
@@ -1168,8 +1168,8 @@
       link="ET_DCH" />
     <axis
       xyz="0 1 0" />
-      <dynamics damping="0.2" friction="0.3" />
-    <limit effort="1.0" velocity="5.0" lower="-10000000000000000" upper="10000000000000000"/>
+      <dynamics damping="0.2" friction="0.6" />
+    <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
   </joint>
 
   <gazebo>
