@@ -3,12 +3,6 @@
 <robot
   name="panter">
 
-  <!-- <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/panter</robotNamespace>
-    </plugin>
-  </gazebo> -->
-
 <!-- <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panter"> -->
 
 <!-- CHASIS -->
@@ -23,12 +17,12 @@
       <mass
         value="343" />
       <inertia
-        ixx="210.9428277"
+        ixx="210.9428"
         ixy="0"
         ixz="0"
-        iyy="79.04789433"
+        iyy="79.0479"
         iyz="0"
-        izz="260.5199333" />
+        izz="260.5199" />
     </inertial>
     <visual>
       <origin
@@ -66,20 +60,21 @@
 
 <!-- AMORTIGUADOR DELANTERO IZQUIERDO -->
 
+
   <link name="SD01_IZQ">
     <inertial>
       <origin
         xyz="0.023095387698848 0.0466016681758654 -0.187519014527033"
-        rpy="0 0 0" />
+        rpy="-1.3265 -0.1571 0" />
       <mass
-        value="2.95" /> 
+        value="3.75" />
       <inertia
-        ixx="0.0054896363326847"
-        ixy="-0.000185514968568694"
-        ixz="0.00075298015942053"
-        iyy="0.00531762879813639"
-        iyz="0.00114868462288693"
-        izz="0.00101605585965138" />
+        ixx="0.0513"
+        ixy="0"
+        ixz="0"
+        iyy="0.0016"
+        iyz="0"
+        izz="0.0513" />
     </inertial>
     <visual>
       <origin
@@ -106,7 +101,7 @@
     </collision>
   </link>
 
-  <joint name="SD01_IZQ_CH_joint" type="fixed">
+  <joint name="SD01_IZQ_CH_joint" type="revolute">
     <origin
       xyz="0.364 -1.4598 0.85354"
       rpy="0 0 -1.5708" />
@@ -114,24 +109,27 @@
       link="CH" />
     <child
       link="SD01_IZQ" />
+    <axis
+      xyz="1 0 0" />
+    <limit effort="1.0" velocity="5.0" lower="-0" upper="0"/>
   </joint>
 
-<!-- BRAZO SUPERIOR DELANTERO IZQUIERDO -->
+<!-- BRAZO SUPERIOR DELANTERO IZQUIERDO xyz="-0.109382785122553 0.00538487649739164 -0.016693818528262"-->
 
   <link name="SD02_IZQ">
     <inertial>
       <origin
-        xyz="-0.109382785122553 0.00538487649739164 -0.016693818528262"
-        rpy="0 0 0" />
+        xyz="-0.109382785122553 0.20538487649739164 -0.080693818528262"
+        rpy="0 0.3142 1.6930" />
       <mass
         value="2.75" />
       <inertia
-        ixx="0.00677202938721807"
-        ixy="-0.00032427855560881"
-        ixz="3.65258159557858E-05"
-        iyy="0.00111523663422429"
-        iyz="0.00191718137163241"
-        izz="0.00655957488261609" />
+        ixx="0.0045"
+        ixy="0"
+        ixz="0"
+        iyy="0.0591"
+        iyz="0"
+        izz="0.0625" />
     </inertial>
     <visual>
       <origin
@@ -177,16 +175,16 @@
     <inertial>
       <origin
         xyz="-0.097367551528877 0.158067753702783 -0.0696606835357823"
-        rpy="0 0 0" />
+        rpy="0 0.4363 1.6930" />
       <mass
         value="2.55" />
       <inertia
-        ixx="0.00505911557852378"
-        ixy="-0.000121765335801827"
-        ixz="1.81818642259916E-05"
-        iyy="0.00122147601558512"
-        iyz="0.00174136109600662"
-        izz="0.00479917105508991" />
+        ixx="0.0064"
+        ixy="0"
+        ixz="0"
+        iyy="0.0574"
+        iyz="0"
+        izz="0.0630" />
     </inertial>
     <visual>
       <origin
@@ -289,14 +287,14 @@
         xyz="9.83891827921468E-06 -0.0201678086647318 0.00124512879040783"
         rpy="0 0 0" />
       <mass
-        value="15.95" />
+        value="20.75" />
       <inertia
-        ixx="0.813594658177696"
-        ixy="6.54522235780315E-08"
-        ixz="-6.14314543670018E-09"
-        iyy="1.43775571114071"
-        iyz="-0.0383150788672202"
-        izz="0.815946712920848" />
+        ixx="0.7018"
+        ixy="0"
+        ixz="0"
+        iyy="1.2206"
+        iyz="0"
+        izz="0.7018" />
     </inertial>
     <visual>
       <origin
@@ -318,8 +316,15 @@
         rpy="0 1.5707 1.5707" />
       <geometry>
         <cylinder radius="0.343" length="0.23"/>
-        
       </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
     </collision>
   </link>
 
@@ -333,7 +338,7 @@
       link="ED_IZQ" />
     <axis
       xyz="0 1 0" />
-      <dynamics damping="0.2" friction="0.6" />
+      <!-- <dynamics damping="0.2" friction="0.6" /> -->
       <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
@@ -346,16 +351,16 @@
     <inertial>
       <origin
         xyz="0.0147151277156394 -0.0466016638374874 -0.188936395717115"
-        rpy="0 0 0" />
+        rpy="1.3265 -0.1571 0" />
       <mass
         value="3.75" />
       <inertia
-        ixx="0.00547351601733842"
-        ixy="0.0002025684338576"
-        ixz="0.000799273132675563"
-        iyy="0.00531762933682683"
-        iyz="-0.0011458003645297"
-        izz="0.00103217687096616" />
+        ixx="0.0513"
+        ixy="0"
+        ixz="0"
+        iyy="0.0016"
+        iyz="0"
+        izz="0.0513" />
     </inertial>
     <visual>
       <origin
@@ -395,22 +400,22 @@
     <limit effort="1.0" velocity="5.0" lower="-0" upper="0"/>
   </joint>
 
-<!-- BRAZO SUPERIOR DELANTERO DERECHO -->
+<!-- BRAZO SUPERIOR DELANTERO DERECHO         -->
 
   <link name="SD02_DCH">
     <inertial>
       <origin
         xyz="-0.100708620793033 -0.178807887505557 -0.0713964836359323"
-        rpy="0 0 0" />
+        rpy="0 -0.3142 1.6930" />
       <mass
         value="2.75" />
       <inertia
-        ixx="0.00342642521801625"
-        ixy="-0.000175463505193739"
-        ixz="-8.53632722802387E-05"
-        iyy="0.000560176153155334"
-        iyz="-0.00101420516690993"
-        izz="0.00324706649765957" />
+        ixx="0.0045"
+        ixy="0"
+        ixz="0"
+        iyy="0.0591"
+        iyz="0"
+        izz="0.0625" />
     </inertial>
     <visual>
       <origin
@@ -456,16 +461,16 @@
     <inertial>
       <origin
         xyz="-0.0979518472036578 -0.169078002158508 -0.0764949344668193"
-        rpy="0 0 0" />
+        rpy="0 -0.4363 1.6930" />
       <mass
         value="2.55" />
       <inertia
-        ixx="0.00503011023626271"
-        ixy="0.000168676429607526"
-        ixz="4.78400238798921E-05"
-        iyy="0.00114327113657789"
-        iyz="-0.00177766605683892"
-        izz="0.00461706807689286" />
+        ixx="0.0064"
+        ixy="-0"
+        ixz="0"
+        iyy="0.0574"
+        iyz="0.0"
+        izz="0.0630" />
     </inertial>
     <visual>
       <origin
@@ -570,12 +575,12 @@
       <mass
         value="20.75" />
       <inertia
-        ixx="0.813595259424299"
-        ixy="1.6609911692007E-08"
-        ixz="1.60980609943066E-09"
-        iyy="1.43679321483636"
-        iyz="0.0454494090796915"
-        izz="0.816909826703764" />
+        ixx="0.7018"
+        ixy="0"
+        ixz="0"
+        iyy="1.2206"
+        iyz="0"
+        izz="0.7018" />
     </inertial>
     <visual>
       <origin
@@ -598,6 +603,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.23"/>
       </geometry>
+        <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
     </collision>
   </link>
 
@@ -611,7 +624,7 @@
       link="ED_DCH" />
     <axis
       xyz="0 1 0" />
-      <dynamics damping="0.2" friction="0.6" />
+      <!-- <dynamics damping="0.2" friction="0.6" /> -->
     <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
@@ -624,16 +637,16 @@
     <inertial>
       <origin
         xyz="0.00849916904573988 0.0657819927228204 -0.159438279696458"
-        rpy="0 0 0" />
+        rpy="-1.1868 0 0" />
       <mass
         value="5.35" />
       <inertia
-        ixx="0.00633380015599702"
-        ixy="-1.45261475353967E-05"
-        ixz="3.52667266964353E-05"
-        iyy="0.0055250803137682"
-        iyz="0.0019468091581656"
-        izz="0.00160836691478163" />
+        ixx="0.0844"
+        ixy="0"
+        ixz="0"
+        iyy="0.0038"
+        iyz="0"
+        izz="0.0844" />
     </inertial>
     <visual>
       <origin
@@ -847,12 +860,12 @@
       <mass
         value="25.2" />
       <inertia
-        ixx="0.862804907337477"
-        ixy="1.41722187809032E-05"
-        ixz="1.98490047156525E-07"
-        iyy="1.39717483715082"
-        iyz="0.00543022765064057"
-        izz="0.862811943500995" />
+        ixx="0.9047"
+        ixy="0"
+        ixz="0"
+        iyy="1.4824"
+        iyz="0"
+        izz="0.9047" />
     </inertial>
     <visual>
       <origin
@@ -876,6 +889,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.285"/>
       </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
     </collision>
   </link>
 
@@ -889,7 +910,7 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
-      <dynamics damping="0.2" friction="0.6" />
+      <!-- <dynamics damping="0.2" friction="0.6" /> -->
       <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
 
   </joint>
@@ -902,16 +923,16 @@
     <inertial>
       <origin
         xyz="0.00850083095421039 -0.0657819927229779 -0.159438279696522"
-        rpy="0 0 0" />
+        rpy="1.1868 0 0" />
       <mass
         value="5.35" />
       <inertia
-        ixx="0.00633380015599698"
-        ixy="-1.45261475354718E-05"
-        ixz="-3.52667266966141E-05"
-        iyy="0.00552508031376817"
-        iyz="-0.00194680915816559"
-        izz="0.00160836691478164" />
+        ixx="0.0844"
+        ixy="0"
+        ixz="0"
+        iyy="0.0038"
+        iyz="0"
+        izz="0.0844" />
     </inertial>
     <visual>
       <origin
@@ -1126,12 +1147,12 @@
       <mass
         value="25.2" />
       <inertia
-        ixx="0.862733322783274"
-        ixy="-1.41751435672682E-05"
-        ixz="-6.44850890575577E-09"
-        iyy="1.39706663655937"
-        iyz="-0.00542984633879409"
-        izz="0.862741174394592" />
+        ixx="0.9047"
+        ixy="0"
+        ixz="0"
+        iyy="1.4824"
+        iyz="0"
+        izz="0.9047" />
     </inertial>
     <visual>
       <origin
@@ -1153,8 +1174,15 @@
         rpy="0 1.5707 1.5707" />
       <geometry>
         <cylinder radius="0.343" length="0.285"/>
-        
       </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
     </collision>
   </link>
 
@@ -1168,7 +1196,7 @@
       link="ET_DCH" />
     <axis
       xyz="0 1 0" />
-      <dynamics damping="0.2" friction="0.6" />
+      <!-- <dynamics damping="0.2" friction="0.6" /> -->
     <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
   </joint>
 
