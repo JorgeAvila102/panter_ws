@@ -1,5 +1,9 @@
  # Set just topic name, applies to both
 - topic_name: "cmd_vel"
   ros_type_name: "geometry_msgs/msg/Twist"
-  gz_type_name: "gz.msgs.Twist"
+  gz_type_name: "ignition.msgs.Twist"
+
+- topic_name: "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque"
+  ros_type_name: "geometry_msgs/msg/Wrench"
+  gz_type_name: "ignition.msgs.Wrench"
 

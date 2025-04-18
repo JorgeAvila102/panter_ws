@@ -78,7 +78,7 @@
           rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -86,7 +86,7 @@
         <mesh
           filename="package://description_pkg/meshes/SD01_IZQ.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint  name="SD01_IZQ_CH_joint" type="revolute">
@@ -137,7 +137,7 @@
           rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -145,7 +145,7 @@
         <mesh
           filename="package://description_pkg/meshes/SD02_IZQ.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="SD02_IZQ_CH_joint" type="revolute">
@@ -247,7 +247,7 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -255,7 +255,7 @@
         <mesh
           filename="package://description_pkg/meshes/MGD_IZQ.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="MGD_IZQ_joint" type="revolute">
@@ -304,13 +304,29 @@
     </visual>
     <collision>
       <origin
+        xyz="0 0.0075 0"
+        rpy="0 1.5707 1.5707" />
+      <geometry>
+        <cylinder radius="0.343" length="0.23"/>
+      </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+    <!-- <collision>
+      <origin
         xyz="0 0 0"
         rpy="1.5708 0 0" />
       <geometry>
         <mesh
           filename="package://description_pkg/meshes/ED_IZQ.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="ED_IZQ_joint" type="revolute">
@@ -359,7 +375,7 @@
           rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -367,7 +383,7 @@
         <mesh
           filename="package://description_pkg/meshes/SD01_DCH.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="SD01_DCH_CH_joint" type="revolute">
@@ -418,7 +434,7 @@
           rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -426,7 +442,7 @@
         <mesh
           filename="package://description_pkg/meshes/SD02_DCH.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="SD02_DCH_CH_joint" type="revolute">
@@ -532,7 +548,7 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -540,7 +556,7 @@
         <mesh
           filename="package://description_pkg/meshes/MGD_DCH.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="MGD_DCH_joint" type="revolute">
@@ -589,13 +605,29 @@
     </visual>
     <collision>
       <origin
+        xyz="0 -0.0065 0"
+        rpy="0 1.5707 1.5707" />
+      <geometry>
+        <cylinder radius="0.343" length="0.23"/>
+      </geometry>
+        <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+    <!-- <collision>
+      <origin
         xyz="0 0 0"
         rpy="1.5708 0 3.1416" />
       <geometry>
         <mesh
           filename="package://description_pkg/meshes/ED_DCH.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="ED_DCH_joint" type="revolute">
@@ -644,7 +676,7 @@
           rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -652,7 +684,7 @@
         <mesh
           filename="package://description_pkg/meshes/ST01_IZQ.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="ST01_IZQ_CH_joint" type="revolute">
@@ -703,7 +735,7 @@
           rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -711,7 +743,7 @@
         <mesh
           filename="package://description_pkg/meshes/ST02_IZQ.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="ST02_IZQ_CH_joint" type="revolute">
@@ -817,7 +849,7 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -825,7 +857,7 @@
         <mesh
           filename="package://description_pkg/meshes/MGT_IZQ.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="MGT_IZQ_joint" type="revolute">
@@ -878,13 +910,29 @@
     </visual>
     <collision>
       <origin
+        xyz="0 -0.038 0"
+        rpy="0 1.5707 1.5707" />
+      <geometry>
+        <cylinder radius="0.343" length="0.285"/>
+      </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+    <!-- <collision>
+      <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://description_pkg/meshes/ET_IZQ.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="ET_IZQ_joint" type="revolute">
@@ -933,7 +981,7 @@
           rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -941,7 +989,7 @@
         <mesh
           filename="package://description_pkg/meshes/ST01_DCH.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="ST01_DCH_CH_joint" type="revolute">
@@ -992,7 +1040,7 @@
           rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -1000,7 +1048,7 @@
         <mesh
           filename="package://description_pkg/meshes/ST02_DCH.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="ST02_DCH_CH_joint" type="revolute">
@@ -1106,7 +1154,7 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -1114,7 +1162,7 @@
         <mesh
           filename="package://description_pkg/meshes/MGT_DCH.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="MGT_DCH_joint" type="revolute">
@@ -1167,13 +1215,29 @@
     </visual>
     <collision>
       <origin
+        xyz="0 -0.025 0"
+        rpy="0 1.5707 1.5707" />
+      <geometry>
+        <cylinder radius="0.343" length="0.285"/>
+      </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+    <!-- <collision>
+      <origin
         xyz="0 0 0"
         rpy="1.5708 0 3.1416" />
       <geometry>
         <mesh
           filename="package://description_pkg/meshes/ET_DCH.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
 
   <joint name="ET_DCH_joint" type="revolute">
@@ -1187,7 +1251,20 @@
     <axis
       xyz="0 1 0" />
     <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
+
   </joint>
+
+  <!-- Sensor de fuerza y torque en el joint -->
+  <gazebo reference="ET_DCH_joint">
+    <sensor name="force_torque_sensor" type="force_torque">
+      <update_rate>1000</update_rate> <!-- Frecuencia de actualización en Hz -->
+      <always_on>true</always_on> <!-- Sensor siempre encendido -->
+      <force_torque>
+        <frame>child</frame> <!-- Marco de referencia para la medición -->
+        <measure_direction>child_to_parent</measure_direction> <!-- Dirección de medición -->
+      </force_torque>
+    </sensor>
+  </gazebo>
 
 <!-- PLUGIN ACKERMANN -->
 
@@ -1207,7 +1284,7 @@
       <min_velocity>-15.0</min_velocity> 
       <max_velocity>15.0</max_velocity>
       <min_acceleration>-0.5</min_acceleration>
-      <max_acceleration>0.5</max_acceleration> 
+      <max_acceleration>10</max_acceleration> 
 
       <topic>cmd_vel</topic> 
 

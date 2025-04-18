@@ -1,18 +1,39 @@
 #include <stdio.h>
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
+#include "geometry_msgs/msg/wrench.hpp"
 
 #include "keyboardcontrol.hpp"
+
+using std::placeholders::_1;
 
 Keyboardcontrol::Keyboardcontrol(): Node ("keyboardcontrol")
 {
     pub_cmd_vel = this->create_publisher<geometry_msgs::msg::Twist> ("/cmd_vel", 10);
+    
+    sub_ET_DCH = this->create_subscription<geometry_msgs::msg::Wrench>(
+        "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10, 
+                            std::bind(&Keyboardcontrol::ET_DCH_callback, this, _1));
 }
 
 Keyboardcontrol::~Keyboardcontrol()
 {
     printf("Leaving gently\n");
 }
+
+void Keyboardcontrol::ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
+{
+    // // Aquí procesamos los datos recibidos en el mensaje
+    // RCLCPP_INFO(this->get_logger(), "Recibido mensaje Sensor ET_DCH: force = [%.2f], torque = [%.2f]",
+    //             msg->force, msg->torque);
+
+    ET_DCH_dato.force = msg -> force;
+    ET_DCH_dato.torque = msg -> torque;
+
+    printf("ET_DCH force: %f.\r\n", ET_DCH_dato.force );
+    printf("ET_DCH torque: %f.\r\n", ET_DCH_dato.torque );
+}
+
 
 void Keyboardcontrol:: manual_drive_panter()
 {
@@ -119,12 +140,9 @@ void Keyboardcontrol:: manual_drive_panter()
 int main ( int argc, char * argv[] )
 {
     rclcpp::init (argc, argv);
-
     auto node = std::make_shared<Keyboardcontrol>();
-
     rclcpp::Rate loop_rate(5);
   
-
     while (rclcpp::ok())
     {
         rclcpp::spin_some(node);

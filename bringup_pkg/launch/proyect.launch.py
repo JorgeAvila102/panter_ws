@@ -26,7 +26,7 @@ def generate_launch_description():
             'config_file': os.path.join(description_pkg, 'config', 'ros_gz_bridge.yaml')
             #'qos_overrides./tf_static.publisher.durability': 'transient_local',
         }],
-        # arguments=['/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'],
+        #arguments=['/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'],
         output='screen'
     )
 
