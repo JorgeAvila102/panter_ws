@@ -1,0 +1,1234 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot
+  name="panter">
+
+<!-- <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panter"> -->
+
+<!-- CHASIS -->
+
+<link
+    name="CH">
+    <inertial>
+      <origin
+        xyz="-0.00983192888400144 0.62639795388304 0.443120445078725"
+        rpy="0 0 0" />
+      <mass
+        value="16.3049342430285" />
+      <inertia
+        ixx="0.675005547889005"
+        ixy="0.00102820871392242"
+        ixz="2.91476841341558E-05"
+        iyy="1.36648911961006"
+        iyz="0.00345698135611923"
+        izz="0.827550366158993" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/CH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/CH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="SD01_IZQ">
+    <inertial>
+      <origin
+        xyz="0.023095387698854 0.0466016681758654 -0.187519014527032"
+        rpy="0 0 0" />
+      <mass
+        value="1.56443700619494" />
+      <inertia
+        ixx="0.00548963633268464"
+        ixy="-0.00018551496856869"
+        ixz="0.000752980159420513"
+        iyy="0.00531762879813634"
+        iyz="0.00114868462288691"
+        izz="0.00101605585965137" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD01_IZQ.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD01_IZQ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="SD01_IZQ_CH_joint"
+    type="revolute">
+    <origin
+      xyz="0.364 -1.4598 0.85354"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="SD01_IZQ" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="SD02_IZQ">
+    <inertial>
+      <origin
+        xyz="-0.109382785064343 0.00538487709498259 -0.0166938186536861"
+        rpy="0 0 0" />
+      <mass
+        value="0.622420648905116" />
+      <inertia
+        ixx="0.00677202938721815"
+        ixy="-0.000324278555608583"
+        ixz="3.65258159556241E-05"
+        iyy="0.00111523663422332"
+        iyz="0.00191718137163107"
+        izz="0.00655957488261709" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD02_IZQ.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD02_IZQ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="SD02_IZQ_CH_joint"
+    type="revolute">
+    <origin
+      xyz="0.1865 -1.6482 0.53091"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="SD02_IZQ" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="MGD_IZQ">
+    <inertial>
+      <origin
+        xyz="-0.0855932268768944 0.00173893668665892 -0.0563643457848181"
+        rpy="0 0 0" />
+      <mass
+        value="0.657785044151253" />
+      <inertia
+        ixx="0.00160628936815674"
+        ixy="-6.87964117180997E-06"
+        ixz="-2.77497675092375E-05"
+        iyy="0.000818666431242726"
+        iyz="-0.000112075156886058"
+        izz="0.00115594236415573" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/MGD_IZQ.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/MGD_IZQ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="MGD_IZQ_joint"
+    type="revolute">
+    <origin
+      xyz="-0.1154 0.39602 -0.15378"
+      rpy="0 0 1.5708" />
+    <parent
+      link="SD02_IZQ" />
+    <child
+      link="MGD_IZQ" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="ED_IZQ">
+    <inertial>
+      <origin
+        xyz="8.85917361692634E-09 -0.0200314381656788 0.00122958365489734"
+        rpy="0 0 0" />
+      <mass
+        value="28.7708024251051" />
+      <inertia
+        ixx="0.813510121096803"
+        ixy="6.54513861211974E-08"
+        ixz="-6.1423151286828E-09"
+        iyy="1.43765773987055"
+        iyz="-0.0383142541855921"
+        izz="0.815862125218103" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ED_IZQ.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ED_IZQ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ED_IZQ_joint"
+    type="revolute">
+    <origin
+      xyz="0.12485 -0.0032345 -0.085073"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="MGD_IZQ" />
+    <child
+      link="ED_IZQ" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="SD03_IZQ">
+    <inertial>
+      <origin
+        xyz="-0.0973675515390373 0.158067753699 -0.0696606835141533"
+        rpy="0 0 0" />
+      <mass
+        value="0.468898614819819" />
+      <inertia
+        ixx="0.00505911557852378"
+        ixy="-0.000121765335801826"
+        ixz="1.81818642259916E-05"
+        iyy="0.00122147601558512"
+        iyz="0.00174136109600662"
+        izz="0.00479917105508991" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD03_IZQ.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD03_IZQ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="SD03_IZQ_CH_joint"
+    type="revolute">
+    <origin
+      xyz="0.151 -1.6306 0.37054"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="SD03_IZQ" />
+    <axis
+      xyz="0.99756 0 0.069756" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="SD01_DCH">
+    <inertial>
+      <origin
+        xyz="0.0230960940307681 -0.0466016638376696 -0.18751886137021"
+        rpy="0 0 0" />
+      <mass
+        value="1.56443734854762" />
+      <inertia
+        ixx="0.00547351601733843"
+        ixy="0.000202568433857257"
+        ixz="0.000799273132675731"
+        iyy="0.0053176293368279"
+        iyz="-0.00114580036452776"
+        izz="0.00103217687096515" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD01_DCH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD01_DCH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="SD01_DCH_CH_joint"
+    type="revolute">
+    <origin
+      xyz="-0.364 -1.4598 0.85354"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="SD01_DCH" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="SD02_DCH">
+    <inertial>
+      <origin
+        xyz="-0.100708620572387 -0.17880788771794 -0.0713964837824563"
+        rpy="0 0 0" />
+      <mass
+        value="0.33501998114193" />
+      <inertia
+        ixx="0.00342642521802974"
+        ixy="-0.000175463505184739"
+        ixz="-8.53632724385784E-05"
+        iyy="0.000560176153147602"
+        iyz="-0.00101420516717583"
+        izz="0.00324706649765384" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD02_DCH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD02_DCH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="SD02_DCH_CH_joint"
+    type="revolute">
+    <origin
+      xyz="-0.1865 -1.6482 0.53091"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="SD02_DCH" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="MGD_DCH">
+    <inertial>
+      <origin
+        xyz="-0.0215058691998961 0.00220187613752731 -0.0514181988629917"
+        rpy="0 0 0" />
+      <mass
+        value="0.32878873728313" />
+      <inertia
+        ixx="0.000807927106157257"
+        ixy="1.5159094149856E-05"
+        ixz="-2.30270459407509E-05"
+        iyy="0.000408973719348148"
+        iyz="-5.49889480653895E-05"
+        izz="0.00057221553445741" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/MGD_DCH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/MGD_DCH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="MGD_DCH_joint"
+    type="revolute">
+    <origin
+      xyz="-0.11478 -0.3967 -0.16813"
+      rpy="0 0 1.5708" />
+    <parent
+      link="SD02_DCH" />
+    <child
+      link="MGD_DCH" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="ED_DCH">
+    <inertial>
+      <origin
+        xyz="2.51975995624321E-10 0.0201916399599397 0.00147256651074923"
+        rpy="0 0 0" />
+      <mass
+        value="28.8641990628489" />
+      <inertia
+        ixx="0.813560092722584"
+        ixy="1.66087358403107E-08"
+        ixz="1.60975139574968E-09"
+        iyy="1.4367760956558"
+        iyz="0.0454506764349233"
+        izz="0.816874748863127" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ED_DCH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ED_DCH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ED_DCH_joint"
+    type="revolute">
+    <origin
+      xyz="-0.12298 -0.0027949 -0.074613"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="MGD_DCH" />
+    <child
+      link="ED_DCH" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="SD03_DCH">
+    <inertial>
+      <origin
+        xyz="-0.0979518480958868 -0.169078003137017 -0.0764949350807603"
+        rpy="0 0 0" />
+      <mass
+        value="0.395241260034587" />
+      <inertia
+        ixx="0.00503011023628039"
+        ixy="0.000168676429613566"
+        ixz="4.78400236722845E-05"
+        iyy="0.00114327113657168"
+        iyz="-0.00177766605705214"
+        izz="0.00461706807688138" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD03_DCH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/SD03_DCH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="SD03_DCH_CH_joint"
+    type="revolute">
+    <origin
+      xyz="-0.151 -1.6306 0.37054"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="SD03_DCH" />
+    <axis
+      xyz="0.99756 0 0.069756" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="ST01_IZQ">
+    <inertial>
+      <origin
+        xyz="0.00849916904570347 0.0657819927229274 -0.159438279696501"
+        rpy="0 0 0" />
+      <mass
+        value="1.68652397926042" />
+      <inertia
+        ixx="0.00633380015599703"
+        ixy="-1.45261475353953E-05"
+        ixz="3.52667266964333E-05"
+        iyy="0.00552508031376821"
+        iyz="0.0019468091581656"
+        izz="0.00160836691478164" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST01_IZQ.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST01_IZQ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ST01_IZQ_CH_joint"
+    type="revolute">
+    <origin
+      xyz="0.3275 0.66468 0.79122"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="ST01_IZQ" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="ST02_IZQ">
+    <inertial>
+      <origin
+        xyz="0.15000000516741 0.174879151139807 -0.0332493411123895"
+        rpy="0 0 0" />
+      <mass
+        value="0.816782909187791" />
+      <inertia
+        ixx="0.00805847541687784"
+        ixy="9.94042643498971E-10"
+        ixz="4.39327268225593E-09"
+        iyy="0.00136969060130576"
+        iyz="0.00150446688083674"
+        izz="0.00869514722257204" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST02_IZQ.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST02_IZQ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ST02_IZQ_CH_joint"
+    type="revolute">
+    <origin
+      xyz="0.19 0.80618 0.45222"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="ST02_IZQ" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="MGT_IZQ">
+    <inertial>
+      <origin
+        xyz="0.0699881063110813 -0.0306022880154644 5.74031709610345E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.451405474193011" />
+      <inertia
+        ixx="0.000884120311608252"
+        ixy="-3.27280002046394E-05"
+        ixz="-4.17903307141819E-06"
+        iyy="0.00152701411958253"
+        iyz="3.77556476076856E-10"
+        izz="0.00126994685390395" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/MGT_IZQ.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/MGT_IZQ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="MGT_IZQ_joint"
+    type="revolute">
+    <origin
+      xyz="0.15 0.35805 -0.078868"
+      rpy="-1.5708 1.5606 1.5708" />
+    <parent
+      link="ST02_IZQ" />
+    <child
+      link="MGT_IZQ" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="ET_IZQ">
+    <inertial>
+      <origin
+        xyz="-0.000706788941648773 -0.00623682627460875 -6.33735726794371E-05"
+        rpy="0 0 0" />
+      <mass
+        value="31.0148936001929" />
+      <inertia
+        ixx="0.862771479469616"
+        ixy="1.41722187293223E-05"
+        ixz="1.98490035900563E-07"
+        iyy="1.39715800883274"
+        iyz="0.00543039631459998"
+        izz="0.86277851734691" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ET_IZQ.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ET_IZQ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ET_IZQ_joint"
+    type="revolute">
+    <origin
+      xyz="0.067 -0.12575 0"
+      rpy="3.1314 1.5708 0" />
+    <parent
+      link="MGT_IZQ" />
+    <child
+      link="ET_IZQ" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="ST03_IZQ">
+    <inertial>
+      <origin
+        xyz="0.149999999999999 0.164533605888154 -0.052514843928228"
+        rpy="0 0 0" />
+      <mass
+        value="0.341061626894356" />
+      <inertia
+        ixx="0.00227935928137916"
+        ixy="9.69569035077001E-18"
+        ixz="-2.27272975841754E-18"
+        iyy="0.000532010440822696"
+        iyz="0.000627611706470002"
+        izz="0.00233995796668448" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST03_IZQ.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST03_IZQ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ST03_IZQ_CH_joint"
+    type="revolute">
+    <origin
+      xyz="0.178 0.80618 0.34222"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="ST03_IZQ" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="ST01_DCH">
+    <inertial>
+      <origin
+        xyz="0.00850083095425092 -0.0657819927228879 -0.159438279696496"
+        rpy="0 0 0" />
+      <mass
+        value="1.68652397926042" />
+      <inertia
+        ixx="0.00633380015599702"
+        ixy="-1.45261475354709E-05"
+        ixz="-3.52667266966163E-05"
+        iyy="0.00552508031376821"
+        iyz="-0.0019468091581656"
+        izz="0.00160836691478164" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST01_DCH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST01_DCH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ST01_DCH_CH_joint"
+    type="revolute">
+    <origin
+      xyz="-0.3275 0.66468 0.79122"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="ST01_DCH" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="ST02_DCH">
+    <inertial>
+      <origin
+        xyz="0.149999994832589 -0.174879151139789 -0.0332493411124751"
+        rpy="0 0 0" />
+      <mass
+        value="0.816782909187794" />
+      <inertia
+        ixx="0.00805847541687786"
+        ixy="9.94042592047479E-10"
+        ixz="-4.39327267299086E-09"
+        iyy="0.00136969060130728"
+        iyz="-0.00150446688084042"
+        izz="0.00869514722257055" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST02_DCH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST02_DCH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ST02_DCH_CH_joint"
+    type="revolute">
+    <origin
+      xyz="-0.19 0.80618 0.45222"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="ST02_DCH" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="MGT_DCH">
+    <inertial>
+      <origin
+        xyz="0.0699879996489881 -0.0306022973969667 8.61290751941191E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.451405474196267" />
+      <inertia
+        ixx="0.000884120347797621"
+        ixy="-3.27280001957708E-05"
+        ixz="-4.18070325172536E-06"
+        iyy="0.00152701411958672"
+        iyz="2.35896829516157E-10"
+        izz="0.00126994681772039" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/MGT_DCH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/MGT_DCH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="MGT_DCH_joint"
+    type="revolute">
+    <origin
+      xyz="0.15 -0.35955 -0.078844"
+      rpy="-1.5708 1.5606 -1.5708" />
+    <parent
+      link="ST02_DCH" />
+    <child
+      link="MGT_DCH" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="ET_DCH">
+    <inertial>
+      <origin
+        xyz="-0.000709880589866541 0.0242195901253508 -0.000246078162161822"
+        rpy="0 0 0" />
+      <mass
+        value="30.8800178412016" />
+      <inertia
+        ixx="0.862699894915397"
+        ixy="-1.41751435116057E-05"
+        ixz="-6.43791893203579E-09"
+        iyy="1.3970498082412"
+        iyz="-0.00543001500592129"
+        izz="0.862707748240568" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ET_DCH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ET_DCH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ET_DCH_joint"
+    type="revolute">
+    <origin
+      xyz="0.067 -0.15 0"
+      rpy="3.1314 -1.5708 0" />
+    <parent
+      link="MGT_DCH" />
+    <child
+      link="ET_DCH" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="ST03_DCH">
+    <inertial>
+      <origin
+        xyz="0.150000000000001 -0.164533605888153 -0.0525148439282281"
+        rpy="0 0 0" />
+      <mass
+        value="0.341061626894354" />
+      <inertia
+        ixx="0.00227935928137915"
+        ixy="3.63563465144519E-18"
+        ixz="2.24370904315262E-18"
+        iyy="0.000532010440822695"
+        iyz="-0.000627611706469999"
+        izz="0.00233995796668448" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST03_DCH.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://description_pkg/meshes/ST03_DCH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ST03_DCH_CH_joint"
+    type="revolute">
+    <origin
+      xyz="-0.178 0.80618 0.34222"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="CH" />
+    <child
+      link="ST03_DCH" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <gazebo>
+    <plugin filename="libignition-gazebo-ackermann-steering-system.so" name="ignition::gazebo::systems::AckermannSteering">
+
+      <left_steering_joint>MGD_IZQ_joint</left_steering_joint>
+      <left_joint>ED_IZQ_joint</left_joint>
+      <right_steering_joint>MGD_DCH_joint</right_steering_joint>
+      <right_joint>ED_DCH_joint</right_joint>
+
+      <left_joint>ET_IZQ_joint</left_joint>
+      <right_joint>ET_DCH_joint</right_joint>  
+
+      <wheel_separation>1.41</wheel_separation> 
+      <wheel_radius>0.343</wheel_radius>
+      <min_velocity>-15.0</min_velocity> 
+      <max_velocity>15.0</max_velocity>
+      <min_acceleration>-0.5</min_acceleration>
+      <max_acceleration>0.5</max_acceleration> 
+
+      <topic>cmd_vel</topic> 
+
+    </plugin>
+  </gazebo>   
+
+</robot>
