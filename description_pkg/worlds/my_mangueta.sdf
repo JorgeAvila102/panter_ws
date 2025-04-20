@@ -1,120 +1,142 @@
+      <?xml version="1.0"?>
 <sdf version='1.9'>
-  <world name='PanterWorld'>
-    <physics name='1ms' type='ignored'>
-      <max_step_size>0.001</max_step_size>
-      <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>1000</real_time_update_rate>
-    </physics>
-    <plugin name='ignition::gazebo::systems::Physics' filename='libignition-gazebo-physics-system.so'/>
-    <plugin name='ignition::gazebo::systems::UserCommands' filename='libignition-gazebo-user-commands-system.so'/>
-    <plugin name='ignition::gazebo::systems::SceneBroadcaster' filename='libignition-gazebo-scene-broadcaster-system.so'/>
-    <gravity>0 0 -9.81</gravity>
-    <plugin name='ignition::gazebo::systems::TriggeredPublisher' filename='libignition-gazebo-triggered-publisher-system.so'>
-      <input type='ignition.msgs.Int32' topic='/keyboard/keypress'>
-        <match field='data'>16777235</match>
-      </input>
-      <output type='ignition.msgs.Twist' topic='/cmd_vel'>linear: {x: 1}, angular: {z: 0.0}</output>
-    </plugin>
-    <plugin name='ignition::gazebo::systems::TriggeredPublisher' filename='libignition-gazebo-triggered-publisher-system.so'>
-      <input type='ignition.msgs.Int32' topic='/keyboard/keypress'>
-        <match field='data'>16777237</match>
-      </input>
-      <output type='ignition.msgs.Twist' topic='/cmd_vel'>linear: {x: -1}, angular: {z: 0.0}</output>
-    </plugin>
-    <plugin name='ignition::gazebo::systems::TriggeredPublisher' filename='libignition-gazebo-triggered-publisher-system.so'>
-      <input type='ignition.msgs.Int32' topic='/keyboard/keypress'>
-        <match field='data'>16777236</match>
-      </input>
-      <output type='ignition.msgs.Twist' topic='/cmd_vel'>linear: {x: 0.0}, angular: {z: -1}</output>
-    </plugin>
-    <plugin name='ignition::gazebo::systems::TriggeredPublisher' filename='libignition-gazebo-triggered-publisher-system.so'>
-      <input type='ignition.msgs.Int32' topic='/keyboard/keypress'>
-        <match field='data'>16777234</match>
-      </input>
-      <output type='ignition.msgs.Twist' topic='/cmd_vel'>linear: {x: 0.0}, angular: {z: 1}</output>
-    </plugin>
-    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
-    <atmosphere type='adiabatic'/>
-    <scene>
-      <ambient>0.4 0.4 0.4 1</ambient>
-      <background>0.7 0.7 0.7 1</background>
-      <shadows>true</shadows>
-    </scene>
-    <model name='ground_plane'>
-      <static>true</static>
-      <link name='link'>
-        <collision name='collision'>
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>1 1</size>
-            </plane>
-          </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-              </ode>
-            </friction>
-            <bounce/>
-            <contact/>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>100 100</size>
-            </plane>
-          </geometry>
-          <material>
-            <ambient>0.8 0.8 0.8 1</ambient>
+      <world name="PanterWorld">
+
+        <plugin
+            filename="libignition-gazebo-physics-system.so"
+            name="ignition::gazebo::systems::Physics">
+        </plugin>
+        <plugin
+            filename="libignition-gazebo-user-commands-system.so"
+            name="ignition::gazebo::systems::UserCommands">
+        </plugin>
+        <plugin
+            filename="libignition-gazebo-scene-broadcaster-system.so"
+            name="ignition::gazebo::systems::SceneBroadcaster">
+        </plugin>
+
+        <physics type="ode">
+            <gravity>0 0 -9.81</gravity>
+            <max_step_size>0.01</max_step_size>
+            <real_time_update_rate>1000.0</real_time_update_rate>
+        </physics>
+
+        <!-- <gravity>0 0 -9.81</gravity> -->
+
+        <light type="directional" name="sun">
+            <cast_shadows>true</cast_shadows>
+            <pose>0 0 10 0 0 0</pose>
             <diffuse>0.8 0.8 0.8 1</diffuse>
-            <specular>0.8 0.8 0.8 1</specular>
-          </material>
-        </visual>
-        <pose>0 0 0 0 -0 0</pose>
-        <inertial>
-          <pose>0 0 0 0 -0 0</pose>
-          <mass>1</mass>
-          <inertia>
-            <ixx>1</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>1</iyy>
-            <iyz>0</iyz>
-            <izz>1</izz>
-          </inertia>
-        </inertial>
-        <enable_wind>false</enable_wind>
-      </link>
-      <pose>0 0 0 0 -0 0</pose>
-      <self_collide>false</self_collide>
-    </model>
-    <include>
-      <uri>file://panterpkg/sdf</uri>
-      <name>panter</name>
-      <pose>0 0 0 0 -0 0</pose>
-    </include>
-    <light name='sun' type='directional'>
-      <pose>0 0 10 0 -0 0</pose>
-      <cast_shadows>true</cast_shadows>
-      <intensity>1</intensity>
-      <direction>-0.5 0.1 -0.9</direction>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
-      <specular>0.2 0.2 0.2 1</specular>
-      <attenuation>
-        <range>1000</range>
-        <linear>0.01</linear>
-        <constant>0.90000000000000002</constant>
-        <quadratic>0.001</quadratic>
-      </attenuation>
-      <spot>
-        <inner_angle>0</inner_angle>
-        <outer_angle>0</outer_angle>
-        <falloff>0</falloff>
-      </spot>
-    </light>
-  </world>
+            <specular>0.2 0.2 0.2 1</specular>
+            <attenuation>
+                <range>1000</range>
+                <constant>0.9</constant>
+                <linear>0.01</linear>
+                <quadratic>0.001</quadratic>
+            </attenuation>
+            <direction>-0.5 0.1 -0.9</direction>
+        </light>
+
+        <model name="ground_plane">
+            <static>true</static>
+            <link name="link">
+                <collision name="collision">
+                <geometry>
+                    <plane>
+                    <normal>0 0 1</normal>
+                    </plane>
+                </geometry>
+                <surface>
+                    <!-- <friction>
+                    <ode>
+                        <mu>1.0</mu>  
+                        <mu2>1.0</mu2> 
+                    </ode>
+                    </friction>-->
+                </surface> 
+                </collision>
+                <visual name="visual">
+                <geometry>
+                    <plane>
+                    <normal>0 0 1</normal>
+                    <size>100 100</size>
+                    </plane>
+                </geometry>
+                <material>
+                    <ambient>0.8 0.8 0.8 1</ambient>
+                    <diffuse>0.8 0.8 0.8 1</diffuse>
+                    <specular>0.8 0.8 0.8 1</specular>
+                </material>
+                </visual>
+            </link>
+        </model>
+
+      <!-- <plugin
+        filename="ignition-gazebo-joint-state-publisher-system"
+        name="ignition::gazebo::systems::JointStatePublisher">
+      </plugin>
+
+      <plugin
+        filename="ignition-gazebo-pose-publisher-system"
+        name="ignition::gazebo::systems::PosePublisher">
+        <publish_link_pose>true</publish_link_pose>
+        <use_pose_vector_msg>true</use_pose_vector_msg>
+        <static_publisher>true</static_publisher>
+        <static_update_frequency>1</static_update_frequency>
+      </plugin>
+
+      <plugin
+        filename="ignition-gazebo-odometry-publisher-system"
+        name="ignition::gazebo::systems::OdometryPublisher">
+        <odom_frame>diff_drive/odom</odom_frame>
+        <robot_base_frame>diff_drive</robot_base_frame>
+      </plugin> -->
+
+              <!-- Moving Forward-->
+        <plugin filename="libignition-gazebo-triggered-publisher-system.so"
+                name="ignition::gazebo::systems::TriggeredPublisher">
+            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
+                <match field="data">16777235</match>
+            </input>
+            <output type="ignition.msgs.Twist" topic="/cmd_vel">
+                linear: {x: 1}, angular: {z: 0.0}
+            </output>
+        </plugin>
+
+        <!-- Moving Backward-->
+        <plugin filename="libignition-gazebo-triggered-publisher-system.so"
+                name="ignition::gazebo::systems::TriggeredPublisher">
+            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
+                <match field="data">16777237</match>
+            </input>
+            <output type="ignition.msgs.Twist" topic="/cmd_vel">
+                linear: {x: -1}, angular: {z: 0.0}
+            </output>
+        </plugin>
+
+        <!-- Rotating right-->
+        <plugin filename="libignition-gazebo-triggered-publisher-system.so"
+                name="ignition::gazebo::systems::TriggeredPublisher">
+            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
+                <match field="data">16777236</match>
+            </input>
+            <output type="ignition.msgs.Twist" topic="/cmd_vel">
+                linear: {x: 0.0}, angular: {z: -1}
+            </output>
+        </plugin>
+
+        <!--Rotating left-->
+        <plugin filename="libignition-gazebo-triggered-publisher-system.so"
+                name="ignition::gazebo::systems::TriggeredPublisher">
+            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
+                <match field="data">16777234</match>
+            </input>
+            <output type="ignition.msgs.Twist" topic="/cmd_vel">
+                linear: {x: 0.0}, angular: {z: 1}
+            </output>
+        </plugin>
+
+      </world>
 </sdf>
+      
+      

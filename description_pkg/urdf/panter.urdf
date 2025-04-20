@@ -339,7 +339,7 @@
       link="ED_IZQ" />
     <axis
       xyz="0 1 0" />
-      <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
+      <limit effort="10.0" velocity="50.0" lower="-9999" upper="9999"/>
   </joint>
 
 <!--        #### EJE DELANTERO DERECHA ####        -->
@@ -640,7 +640,7 @@
       link="ED_DCH" />
     <axis
       xyz="0 1 0" />
-    <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
+    <limit effort="10.0" velocity="50.0" lower="-9999" upper="9999"/>
   </joint>
 
 <!--        #### EJE TRASERO IZQUIERDA ####        -->
@@ -945,7 +945,7 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
-      <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
+      <limit effort="10.0" velocity="50.0" lower="-9999" upper="9999"/>
   </joint>
 
 <!--        #### EJE TRASERO DERECHA ####        -->
@@ -1248,20 +1248,19 @@
       link="MGT_DCH" />
     <child
       link="ET_DCH" />
-    <axis
-      xyz="0 1 0" />
-    <limit effort="1.0" velocity="50.0" lower="-10000000000000000" upper="10000000000000000"/>
-
+    <axis xyz="0 1 0">
+      <dynamics damping="0.1" friction="0.1"/>
+    </axis>
+    <limit effort="10.0" velocity="50.0" lower="-9999" upper="9999"/>
   </joint>
 
-  <!-- Sensor de fuerza y torque en el joint -->
   <gazebo reference="ET_DCH_joint">
     <sensor name="force_torque_sensor" type="force_torque">
-      <update_rate>1000</update_rate> <!-- Frecuencia de actualización en Hz -->
-      <always_on>true</always_on> <!-- Sensor siempre encendido -->
+      <update_rate>500</update_rate> 
+      <always_on>true</always_on> 
       <force_torque>
-        <frame>child</frame> <!-- Marco de referencia para la medición -->
-        <measure_direction>child_to_parent</measure_direction> <!-- Dirección de medición -->
+        <frame>child</frame> 
+        <measure_direction>child_to_parent</measure_direction> 
       </force_torque>
     </sensor>
   </gazebo>

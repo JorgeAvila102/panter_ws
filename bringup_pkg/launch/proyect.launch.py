@@ -6,6 +6,7 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
+
     # Rutas a los paquetes
     description_pkg = get_package_share_directory('description_pkg')
     control_pkg = get_package_share_directory('control_pkg')
@@ -13,7 +14,6 @@ def generate_launch_description():
     # Lanzar Gazebo con el robot en SDF
     gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            #os.path.join(description_pkg, 'launch', 'sim_sdf.launch.py')
             os.path.join(description_pkg, 'launch', 'sim_urdf.launch.py')
         )
     )
@@ -24,9 +24,9 @@ def generate_launch_description():
         executable='parameter_bridge',
         parameters=[{
             'config_file': os.path.join(description_pkg, 'config', 'ros_gz_bridge.yaml')
-            #'qos_overrides./tf_static.publisher.durability': 'transient_local',
         }],
         #arguments=['/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'],
+        # arguments=['/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque@geometry_msgs/msg/Wrench@gz.msgs.Wrench'],
         output='screen'
     )
 

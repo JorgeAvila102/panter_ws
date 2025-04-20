@@ -15,7 +15,9 @@ public:
 
     void manual_drive_panter();
     void ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg);
+    void ED_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg);
     geometry_msgs::msg::Wrench ET_DCH_dato;
+    geometry_msgs::msg::Wrench ED_DCH_dato;
 
 private:
     
@@ -26,4 +28,5 @@ private:
     // SUBSCRIPCIONES
 
     rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ET_DCH;
+    rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ED_DCH;
 };
