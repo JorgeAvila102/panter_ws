@@ -1256,12 +1256,16 @@
 
   <gazebo reference="ET_DCH_joint">
     <sensor name="force_torque_sensor" type="force_torque">
-      <update_rate>500</update_rate> 
-      <always_on>true</always_on> 
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque</topic>
+      <enable_metrics>true</enable_metrics>
+      <pose>0 0 0 0 0 0</pose>
       <force_torque>
-        <frame>child</frame> 
-        <measure_direction>child_to_parent</measure_direction> 
-      </force_torque>
+        <frame>sensor</frame>
+        <measure_direction>child_to_parent</measure_direction>
+      </force_torque> 
     </sensor>
   </gazebo>
 

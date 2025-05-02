@@ -14,6 +14,14 @@
             filename="libignition-gazebo-scene-broadcaster-system.so"
             name="ignition::gazebo::systems::SceneBroadcaster">
         </plugin>
+        <plugin 
+            filename="ignition-gazebo-contact-system" 
+            name="ignition::gazebo::systems::Contact">
+        </plugin>
+        <plugin 
+            filename="ignition-gazebo-forcetorque-system" 
+            name="ignition::gazebo::systems::ForceTorque">
+        </plugin>
 
         <physics type="ode">
             <gravity>0 0 -9.81</gravity>
