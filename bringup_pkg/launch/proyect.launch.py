@@ -11,26 +11,43 @@ def generate_launch_description():
     description_pkg = get_package_share_directory('description_pkg')
     control_pkg = get_package_share_directory('control_pkg')
 
-    # Lanzar Gazebo con el robot en SDF
+    # Rutas a archivos
+    urdf_path = os.path.join(description_pkg, 'urdf', 'panter.urdf')  # Ajusta el nombre real de tu URDF
+    controller_config = os.path.join(control_pkg, 'config', 'effort_controllers.yaml')  # Ajusta si es necesario
+    bridge_config = os.path.join(description_pkg, 'config', 'ros_gz_bridge.yaml')
+
+    # Lanzar Gazebo con el robot
     gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(description_pkg, 'launch', 'sim_urdf.launch.py')
         )
     )
 
-    # Lanzar el puente de comunicación entre ROS 2 y Gazebo (ros_gz_bridge)
+    # Lanzar el puente ros_gz_bridge
     bridge_node = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
-        parameters=[{
-            'config_file': os.path.join(description_pkg, 'config', 'ros_gz_bridge.yaml')
-        }],
-        #arguments=['/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'],
-        # arguments=['/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque@geometry_msgs/msg/Wrench@gz.msgs.Wrench'],
+        parameters=[{'config_file': bridge_config}],
         output='screen'
     )
 
-    # Lanzar el nodo de control en C++
+    # Nodo de ros2_control
+    # ros2_control_node = Node(
+    #     package='controller_manager',
+    #     executable='ros2_control_node',
+    #     parameters=[controller_config],
+    #     output='screen'
+    # )
+
+    # Spawner del controlador
+    controller_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['effort_controller'],
+        output='screen'
+    )
+
+    # Lanzar el nodo de control (C++ con teclado)
     control_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(control_pkg, 'launch', 'ros.launch.py')
@@ -38,8 +55,9 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        
+        gazebo_launch,
         bridge_node,
-        control_launch,
-        gazebo_launch
+        # ros2_control_node,
+        controller_spawner,
+        control_launch
     ])

@@ -1154,7 +1154,7 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -1162,7 +1162,7 @@
         <mesh
           filename="package://description_pkg/meshes/MGT_DCH.STL" />
       </geometry>
-    </collision> -->
+    </collision>
   </link>
 
   <joint name="MGT_DCH_joint" type="revolute">
@@ -1264,6 +1264,100 @@
       </force_torque>
     </sensor>
   </gazebo>
+
+<!-- ROS2 CONTROL -->
+
+  <ros2_control name="GazeboSimSystem" type="system">
+
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+
+    <joint name="ED_DCH_joint">
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="ED_IZQ_joint">
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="ET_DCH_joint">
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="ET_IZQ_joint">
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+
+  </ros2_control>
+
+  <gazebo>
+    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <robot_param>robot_description</robot_param>
+      <robot_param_node>robot_state_publisher</robot_param_node>
+      <parameters>/home/jorge/panter_ws/src/control_pkg/config/control_config.yaml</parameters>
+      <!-- <parameters>package://control_pkg/config/control_config.yaml</parameters> -->
+      <!-- <parameters>$(find control_pkg)/config/control_config.yaml</parameters> -->
+    </plugin>
+  </gazebo>
+
+  <!-- <gazebo>
+    <plugin name="gz_ros2_control" filename="libgz_ros2_control_system.so">
+      <ros>
+        <namespace>/</namespace>
+      </ros>
+      <update_rate>100</update_rate>
+    </plugin>
+  </gazebo> -->
+
+  <transmission name="front_right_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ED_DCH_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="front_right_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+    <transmission name="front_left_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ED_IZQ_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="front_left_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="back_right_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ET_DCH_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="back_right_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+    <transmission name="back_left_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ET_IZQ_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="back_left_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
 <!-- PLUGIN ACKERMANN -->
 

@@ -1,0 +1,81 @@
+.
+├── bringup_pkg
+│   ├── CMakeLists.txt
+│   ├── include
+│   │   └── bringup_pkg
+│   ├── launch
+│   │   └── proyect.launch.py
+│   ├── package.xml
+│   └── src
+├── control_pkg
+│   ├── CMakeLists.txt
+│   ├── config
+│   ├── include
+│   │   ├── controller.hpp
+│   │   ├── control_pkg
+│   │   ├── keyboardcontrol.hpp
+│   │   └── keyboardcontrolTorque.hpp
+│   ├── launch
+│   │   └── ros.launch.py
+│   ├── package.xml
+│   └── src
+│       ├── controller.cpp
+│       ├── keyboardcontrol.cpp
+│       ├── keyboardcontrolTorque.cpp
+│       └── testingROS.cpp
+├── description_pkg
+│   ├── CMakeLists.txt
+│   ├── config
+│   │   ├── control_config.yaml
+│   │   └── ros_gz_bridge.yaml
+│   ├── include
+│   │   └── description_pkg
+│   ├── launch
+│   │   ├── sim_sdf.launch.py
+│   │   ├── sim_urdf.launch.py
+│   │   └── sim_xacro.launch.py
+│   ├── meshes
+│   │   ├── CH.STL
+│   │   ├── ED_DCH.STL
+│   │   ├── ED_IZQ.STL
+│   │   ├── ET_DCH.STL
+│   │   ├── ET_IZQ.STL
+│   │   ├── MGD_DCH.STL
+│   │   ├── MGD_IZQ.STL
+│   │   ├── MGT_DCH.STL
+│   │   ├── MGT_IZQ.STL
+│   │   ├── old
+│   │   ├── SD01_DCH.STL
+│   │   ├── SD01_IZQ.STL
+│   │   ├── SD02_DCH.STL
+│   │   ├── SD02_IZQ.STL
+│   │   ├── SD03_DCH.STL
+│   │   ├── SD03_IZQ.STL
+│   │   ├── ST01_DCH.STL
+│   │   ├── ST01_IZQ.STL
+│   │   ├── ST02_DCH.STL
+│   │   ├── ST02_IZQ.STL
+│   │   ├── ST03_DCH.STL
+│   │   └── ST03_IZQ.STL
+│   ├── package.xml
+│   ├── rviz
+│   │   └── panter.rviz
+│   ├── sdf
+│   │   ├── panter_old.sdf
+│   │   └── panter.sdf
+│   ├── src
+│   ├── urdf
+│   │   ├── panter_old.urdf
+│   │   ├── panter_sw.urdf
+│   │   └── panter.urdf
+│   └── worlds
+│       ├── my_mangueta.sdf
+│       ├── my_world.sdf
+│       ├── terrain1.dae
+│       └── terrain1.sdf
+├── doc
+│   └── git.md
+├── estructura.txt
+└── README.md
+
+26 directories, 83 files

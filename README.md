@@ -15,6 +15,22 @@ sudo apt install gedit
 
 sudo apt install terminator
 
+
+https://control.ros.org/humble/doc/gz_ros2_control/doc/index.html
+sudo apt update
+sudo apt install ros-humble-gz-ros2-control ros-humble-gz-ros2-control-demos
+https://control.ros.org/humble/doc/ros2_controllers/effort_controllers/doc/userdoc.html
+
+
+# Controladores adicionales (opcional pero útil)
+sudo apt install ros-humble-effort-controllers ros-humble-joint-state-broadcaster ros-humble-controller-manager
+
+
+sudo apt install tree
+cd ~/panter_ws/src
+tree -L 3 > estructura.txt
+
+
 ```
 
 # Creación estrucutra del proyecto
