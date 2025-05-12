@@ -31,19 +31,18 @@ def generate_launch_description():
         output='screen'
     )
 
-    # Nodo de ros2_control
-    # ros2_control_node = Node(
-    #     package='controller_manager',
-    #     executable='ros2_control_node',
-    #     parameters=[controller_config],
-    #     output='screen'
-    # )
-
-    # Spawner del controlador
+    # Spawner del controlador de effort y de posicioon
     controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['effort_controller'],
+        arguments=["effort_controller"],
+        output='screen'
+    )
+
+    steering_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['steering_controller'],
         output='screen'
     )
 
@@ -57,7 +56,7 @@ def generate_launch_description():
     return LaunchDescription([
         gazebo_launch,
         bridge_node,
-        # ros2_control_node,
         controller_spawner,
+        steering_spawner,
         control_launch
     ])

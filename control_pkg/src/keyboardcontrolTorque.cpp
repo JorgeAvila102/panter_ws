@@ -14,15 +14,48 @@ KeyboardcontrolTorque::KeyboardcontrolTorque(): Node ("keyboardcontrolTorque")
     pub_torque = this->create_publisher<std_msgs::msg::Float64MultiArray>(
         "/effort_controller/commands", 10);
 
-    sub_ET_DCH = this->create_subscription<geometry_msgs::msg::Wrench>(
-         "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
-        //  "/model/ET_DCH/force_torque", 10,
-                            std::bind(&KeyboardcontrolTorque::ET_DCH_callback, this, _1));
+    pub_giro = this->create_publisher<std_msgs::msg::Float64MultiArray>(
+        "/steering_controller/commands", 10);
+
+    sub_ED_IZQ = this->create_subscription<geometry_msgs::msg::Wrench>(
+        "/model/panter/ED_IZQ_joint/sensor/force_torque_sensor/force_torque", 10,
+                            std::bind(&KeyboardcontrolTorque::ED_IZQ_callback, this, _1));
 
     sub_ED_DCH = this->create_subscription<geometry_msgs::msg::Wrench>(
         "/model/panter/ED_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
-        //  "/model/ED_DCH/force_torque", 10,
                             std::bind(&KeyboardcontrolTorque::ED_DCH_callback, this, _1));
+
+    sub_ET_IZQ = this->create_subscription<geometry_msgs::msg::Wrench>(
+         "/model/panter/ET_IZQ_joint/sensor/force_torque_sensor/force_torque", 10,
+                            std::bind(&KeyboardcontrolTorque::ET_IZQ_callback, this, _1));
+
+    sub_ET_DCH = this->create_subscription<geometry_msgs::msg::Wrench>(
+        "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
+                            std::bind(&KeyboardcontrolTorque::ET_DCH_callback, this, _1));
+
+    sensor_timer_ = this->create_wall_timer(
+        std::chrono::seconds(3),
+        [this]() {
+            RCLCPP_INFO(this->get_logger(),
+            "\n--- Force/Torque Reading ---\n"
+            "\n ED_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
+            "\n ED_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
+            "\n ET_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
+            "\n ET_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n",
+
+            ED_IZQ_dato.force.x, ED_IZQ_dato.force.y, ED_IZQ_dato.force.z,
+            ED_IZQ_dato.torque.x, ED_IZQ_dato.torque.y, ED_IZQ_dato.torque.z,
+
+            ED_DCH_dato.force.x, ED_DCH_dato.force.y, ED_DCH_dato.force.z,
+            ED_DCH_dato.torque.x, ED_DCH_dato.torque.y, ED_DCH_dato.torque.z,
+
+            ET_IZQ_dato.force.x, ET_IZQ_dato.force.y, ET_IZQ_dato.force.z,
+            ET_IZQ_dato.torque.x, ET_IZQ_dato.torque.y, ET_IZQ_dato.torque.z,
+
+            ET_DCH_dato.force.x, ET_DCH_dato.force.y, ET_DCH_dato.force.z,
+            ET_DCH_dato.torque.x, ET_DCH_dato.torque.y, ET_DCH_dato.torque.z);
+        }
+    );
 }
 
 KeyboardcontrolTorque::~KeyboardcontrolTorque()
@@ -30,23 +63,15 @@ KeyboardcontrolTorque::~KeyboardcontrolTorque()
     printf("Leaving gently\n");
 }
 
-void KeyboardcontrolTorque::ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
+void KeyboardcontrolTorque::ED_IZQ_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
 {
-    ET_DCH_dato.force.x = msg->force.x;
-    ET_DCH_dato.force.y = msg->force.y;
-    ET_DCH_dato.force.z = msg->force.z;
+    ED_IZQ_dato.force.x = msg->force.x;
+    ED_IZQ_dato.force.y = msg->force.y;
+    ED_IZQ_dato.force.z = msg->force.z;
 
-    ET_DCH_dato.torque.x = msg->torque.x;
-    ET_DCH_dato.torque.y = msg->torque.y;
-    ET_DCH_dato.torque.z = msg->torque.z;
-    
-    printf("ET_DCH force: %f.\r\n", ET_DCH_dato.force.x );
-
-    RCLCPP_INFO(this->get_logger(), 
-        "ET_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]",
-        ET_DCH_dato.force.x, ET_DCH_dato.force.y, ET_DCH_dato.force.z,
-        ET_DCH_dato.torque.x, ET_DCH_dato.torque.y, ET_DCH_dato.torque.z);
-
+    ED_IZQ_dato.torque.x = msg->torque.x;
+    ED_IZQ_dato.torque.y = msg->torque.y;
+    ED_IZQ_dato.torque.z = msg->torque.z;
 }
 
 void KeyboardcontrolTorque::ED_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
@@ -58,115 +83,145 @@ void KeyboardcontrolTorque::ED_DCH_callback(const geometry_msgs::msg::Wrench::Sh
     ED_DCH_dato.torque.x = msg->torque.x;
     ED_DCH_dato.torque.y = msg->torque.y;
     ED_DCH_dato.torque.z = msg->torque.z;
-    
-    printf("ED_DCH force: %f.\r\n", ED_DCH_dato.force.x );
-
-    RCLCPP_INFO(this->get_logger(), 
-        "ED_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]",
-        ED_DCH_dato.force.x, ED_DCH_dato.force.y, ED_DCH_dato.force.z,
-        ED_DCH_dato.torque.x, ED_DCH_dato.torque.y, ED_DCH_dato.torque.z);
 }
 
+void KeyboardcontrolTorque::ET_IZQ_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
+{
+    ET_IZQ_dato.force.x = msg->force.x;
+    ET_IZQ_dato.force.y = msg->force.y;
+    ET_IZQ_dato.force.z = msg->force.z;
 
-void KeyboardcontrolTorque:: manual_drive_panter()
+    ET_IZQ_dato.torque.x = msg->torque.x;
+    ET_IZQ_dato.torque.y = msg->torque.y;
+    ET_IZQ_dato.torque.z = msg->torque.z;
+}
+
+void KeyboardcontrolTorque::ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
+{
+    ET_DCH_dato.force.x = msg->force.x;
+    ET_DCH_dato.force.y = msg->force.y;
+    ET_DCH_dato.force.z = msg->force.z;
+
+    ET_DCH_dato.torque.x = msg->torque.x;
+    ET_DCH_dato.torque.y = msg->torque.y;
+    ET_DCH_dato.torque.z = msg->torque.z;
+}
+
+void KeyboardcontrolTorque::keyboard_loop()
 {
     std_msgs::msg::Float64MultiArray torque_msg;
-    auto msg = geometry_msgs::msg::Twist();
+    std_msgs::msg::Float64MultiArray giro_msg;
 
 // Set console raw mode. To avoid pressing enter after each character
     system("stty raw");
-    // Read 1 char
-    char input = getchar();
-    
-    switch (input)
-    {
 
-// AVANZA HACIA ADELANTE
-    case 'w':
-    RCLCPP_INFO(this->get_logger(), "FORDWARDS \r\n");
+    while (rclcpp::ok()) {
 
-    msg.angular.z = 0; // Velocidad en rad/s
-    torque_msg.data = {100.0, 100.0, 100.0, 100.0};
-    pub_torque->publish(torque_msg);
-    pub_cmd_vel -> publish(msg);
-    
-    break;
-// AVANZA HACIA ATRÁS
-    
-    case 's':
-    RCLCPP_INFO(this->get_logger(), "BACKWARD \r\n");
+        char input = getchar();
 
-    msg.angular.z = 0; // Velocidad en rad/s
-    torque_msg.data = {-100.0, -100.0, -100.0, -100.0};
-    pub_torque->publish(torque_msg);
-    pub_cmd_vel -> publish(msg);
+        switch (input)
+        {
 
-    break;
 
-// GIRA DERECHA
-    case 'd':
-    RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
+    // AVANZA HACIA ADELANTE
 
-    msg.angular.z = -0.5; // Velocidad en rad/s
-    torque_msg.data = {10.0, 50.0, 10.0, 50.0};
-    pub_torque->publish(torque_msg);
-    pub_cmd_vel -> publish(msg);
+        case 'w':   RCLCPP_INFO(this->get_logger(), "FORDWARDS \r\n");
 
-    break;
+        torque_msg.data = {T_cmd, T_cmd, T_cmd, T_cmd};   
+        giro_msg.data = {0, 0};
+           
+        break;
 
-// GIRA IZQUIERDA
-    case 'a':
-    RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
+    // AVANZA HACIA ATRÁS
+        
+        case 's':
+        RCLCPP_INFO(this->get_logger(), "BACKWARD \r\n");
 
-    msg.angular.z = 0.5; // Velocidad en rad/s
-    torque_msg.data = {50.0, 10.0, 50.0, 10.0};
-    pub_torque->publish(torque_msg);
-    pub_cmd_vel -> publish(msg);
+        torque_msg.data = {-T_cmd, -T_cmd, -T_cmd, -T_cmd}; 
+        giro_msg.data = {0, 0}; 
 
-    break;
+        break;
 
-// PARAR
-    case 'p':
-    RCLCPP_INFO(this->get_logger(), "STOP \r\n");
+    // GIRA DERECHA AVANZANDO
 
-    msg.angular.z = 0; // Velocidad en rad/s
-    torque_msg.data = {0.0, 0.0, 0.0, 0.0};
-    pub_torque->publish(torque_msg);
-    pub_cmd_vel -> publish(msg);
+        case 'd':
+        RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
 
-    break;
+        torque_msg.data = {T_cmd, T_cmd, T_cmd, T_cmd}; 
+        giro_msg.data = {-alpha, -alpha}; 
 
-// SALIR DE MODO RAW
-    case 0x20:
-    RCLCPP_INFO(this->get_logger(), "Detected SPACE = Exit");
-    
-    //restore the console
-    system("stty cooked");
-    break;
+        break;
 
-    default:
-    // ignoramos caracteres no deseados
-    RCLCPP_INFO(this->get_logger(), "Non valid KEY\r\n");
-    break;
-    
+    // GIRA IZQUIERDA AVANZANDO
+
+        case 'a':
+        RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
+
+        torque_msg.data = {T_cmd, T_cmd, T_cmd, T_cmd};  
+        giro_msg.data = {alpha, alpha};
+
+        break;
+
+    // GIRA DERECHA RETROCEDIENDO
+
+        case 'c':
+        RCLCPP_INFO(this->get_logger(), "RIGHT BACK \r\n");
+
+        torque_msg.data = {-T_cmd, -T_cmd, -T_cmd, -T_cmd};
+        giro_msg.data = {-alpha, -alpha};
+
+        break;
+
+    // GIRA IZQUIERDA RETROCEDIENDO
+
+        case 'z':
+        RCLCPP_INFO(this->get_logger(), "LEFT BACK \r\n");
+
+        torque_msg.data = {-T_cmd, -T_cmd, -T_cmd, -T_cmd};
+        giro_msg.data = {alpha, alpha};
+
+        break;
+
+    // PARAR
+
+        case 'x':
+        RCLCPP_INFO(this->get_logger(), "STOP \r\n");
+
+        torque_msg.data = {-ED_IZQ_dato.torque.y, -ED_DCH_dato.torque.y, -ET_IZQ_dato.torque.y, -ET_DCH_dato.torque.y};
+        giro_msg.data = {0, 0};
+        
+        break;
+
+    // SALIR DE MODO RAW
+        case 0x20:
+        RCLCPP_INFO(this->get_logger(), "Detected SPACE = Exit");
+        
+        //restore the console
+        system("stty cooked");
+        break;
+
+        default:
+        // ignoramos caracteres no deseados
+        RCLCPP_INFO(this->get_logger(), "Non valid KEY\r\n");
+        break;
+        
+        }
+
+        pub_torque->publish(torque_msg);
+        pub_giro  ->publish(giro_msg);
     }
 }
 
-int main ( int argc, char * argv[] )
+int main(int argc, char **argv)
 {
-    rclcpp::init (argc, argv);
+    rclcpp::init(argc, argv);
     auto node = std::make_shared<KeyboardcontrolTorque>();
-    rclcpp::Rate loop_rate(5);
 
-    geometry_msgs::msg::Wrench dato;
-  
-    while (rclcpp::ok())
-    {
-        rclcpp::spin_some(node);
+    std::thread keyboard_thread(&KeyboardcontrolTorque::keyboard_loop, node);
 
-        node->manual_drive_panter();
-        loop_rate.sleep();
-    }
-    
+    rclcpp::spin(node);
+    keyboard_thread.join();
+
+    rclcpp::shutdown();
     return 0;
 }

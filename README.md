@@ -24,12 +24,16 @@ https://control.ros.org/humble/doc/ros2_controllers/effort_controllers/doc/userd
 
 # Controladores adicionales (opcional pero útil)
 sudo apt install ros-humble-effort-controllers ros-humble-joint-state-broadcaster ros-humble-controller-manager
+sudo apt install ros-humble-position-controllers
+
 
 
 sudo apt install tree
 cd ~/panter_ws/src
 tree -L 3 > estructura.txt
 
+sudo apt update
+sudo apt install ros-humble-rqt-plot
 
 ```
 

@@ -61,17 +61,11 @@ def generate_launch_description():
     )
 
 # Robot Panter spawner in Gazebo
-    # spawn_panter = Node(
-    #     package='ros_gz_sim',
-    #     executable='create',
-    #     output='screen',
-    #     arguments=["-file", urdf_file, "-z", "0.08"]
-    # )
     spawn_panter = Node(
         package='ros_gz_sim',
         executable='create',
         output='screen',
-        arguments=["-topic", "robot_description", "-z", "0.08"]
+        arguments=["-topic", "robot_description", "-y", "2.0","-z", "0.08"]
     )
 
     node_rviz = Node(
@@ -86,7 +80,7 @@ def generate_launch_description():
     return LaunchDescription([
          
         node_robot_state_publisher,
-        node_joint_state_publisher_gui, # Hace que tenemos la posibilidad de modificar las posiciones de los joints a mano
+        node_joint_state_publisher_gui, 
         node_joint_state_publisher,
         node_rviz,
         launch_gazebo,

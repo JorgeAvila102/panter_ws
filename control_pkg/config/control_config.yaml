@@ -1,28 +1,4 @@
 
-# controller_manager:
-#   ros__parameters:
-#     update_rate: 50
-
-#     joint_effort_controller:
-#       type: effort_controllers/JointGroupEffortController
-#       joints:
-#         - ED_DCH_joint
-#         - ED_IZQ_joint
-#         - ET_DCH_joint
-#         - ET_IZQ_joint
-
-# /**/position_trajectory_controller:
-#   ros__parameters:
-#     type: joint_trajectory_controller/JointTrajectoryController
-#     joints:
-#       - ED_DCH_joint
-#       - ED_IZQ_joint
-#       - ET_DCH_joint
-#       - ET_IZQ_joint
-
-#     command_interfaces:
-#       - position
-
 controller_manager:
   ros__parameters:
     update_rate: 100  # Hz
@@ -30,10 +6,20 @@ controller_manager:
     effort_controller:
       type: effort_controllers/JointGroupEffortController
 
+    steering_controller:
+      type: position_controllers/JointGroupPositionController
+
 effort_controller:
   ros__parameters:
     joints:
-      - ED_DCH_joint
       - ED_IZQ_joint
-      - ET_DCH_joint
+      - ED_DCH_joint
       - ET_IZQ_joint
+      - ET_DCH_joint
+
+steering_controller:
+  ros__parameters:
+    joints:
+      - MGD_DCH_joint
+      - MGD_IZQ_joint
+

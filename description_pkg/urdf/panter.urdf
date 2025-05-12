@@ -268,7 +268,7 @@
       link="MGD_IZQ" />
     <axis
       xyz="0 0 1" />
-    <limit effort="50.0" velocity="1.0" lower="-0.52" upper="0.52"/>
+    <limit effort="50.0" velocity="1.0" lower="-0.5236" upper="0.5236"/>
   </joint>
 
 <!-- RUEDA DELANTERA IZQUIERDA -->
@@ -312,8 +312,8 @@
       <surface>
         <friction>
           <ode>
-            <mu>1.0</mu>
-            <mu2>1.0</mu2>
+            <mu>5.0</mu>
+            <mu2>5.0</mu2>
           </ode>
         </friction>
       </surface>
@@ -339,8 +339,39 @@
       link="ED_IZQ" />
     <axis
       xyz="0 1 0" />
-      <limit effort="10.0" velocity="50.0" lower="-9999" upper="9999"/>
+    <limit effort="500.0" velocity="15.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <dynamics damping="2.5" friction="1.5"/> <!-- retardo y frenado natural -->
   </joint>
+
+  <gazebo reference="ED_IZQ">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <surface>
+      <friction>
+        <ode>
+          <mu>1.5</mu>
+          <mu2>1.5</mu2>
+          <slip1>0.1</slip1>
+          <slip2>0.1</slip2>
+        </ode>
+      </friction>
+    </surface>
+  </gazebo>
+
+  <gazebo reference="ED_IZQ_joint">
+    <sensor name="force_torque_sensor" type="force_torque">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>/model/panter/ED_IZQ_joint/sensor/force_torque_sensor/force_torque</topic>
+      <enable_metrics>true</enable_metrics>
+      <pose>0 0 0 0 0 0</pose>
+      <force_torque>
+        <frame>sensor</frame>
+        <measure_direction>child_to_parent</measure_direction>
+      </force_torque> 
+    </sensor>
+  </gazebo>
 
 <!--        #### EJE DELANTERO DERECHA ####        -->
 
@@ -569,7 +600,7 @@
       link="MGD_DCH" />
     <axis
       xyz="0 0 1" />
-      <limit effort="50" velocity="1.0" lower="-0.52" upper="0.52"/>
+      <limit effort="50" velocity="1.0" lower="-0.5236" upper="0.5236"/>
   </joint>
 
 <!-- RUEDA DELANTERA DERECHA -->
@@ -613,8 +644,8 @@
         <surface>
         <friction>
           <ode>
-            <mu>1.0</mu>
-            <mu2>1.0</mu2>
+            <mu>5.0</mu>
+            <mu2>5.0</mu2>
           </ode>
         </friction>
       </surface>
@@ -640,8 +671,39 @@
       link="ED_DCH" />
     <axis
       xyz="0 1 0" />
-    <limit effort="10.0" velocity="50.0" lower="-9999" upper="9999"/>
+    <limit effort="500.0" velocity="15.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <dynamics damping="2.5" friction="1.5"/> <!-- retardo y frenado natural -->
   </joint>
+
+  <gazebo reference="ED_DCH_joint">
+    <sensor name="force_torque_sensor" type="force_torque">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>/model/panter/ED_DCH_joint/sensor/force_torque_sensor/force_torque</topic>
+      <enable_metrics>true</enable_metrics>
+      <pose>0 0 0 0 0 0</pose>
+      <force_torque>
+        <frame>sensor</frame>
+        <measure_direction>child_to_parent</measure_direction>
+      </force_torque> 
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="ED_DCH">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <surface>
+      <friction>
+        <ode>
+          <mu>1.5</mu>
+          <mu2>1.5</mu2>
+          <slip1>0.1</slip1>
+          <slip2>0.1</slip2>
+        </ode>
+      </friction>
+    </surface>
+  </gazebo>
 
 <!--        #### EJE TRASERO IZQUIERDA ####        -->
 
@@ -918,8 +980,8 @@
       <surface>
         <friction>
           <ode>
-            <mu>1.0</mu>
-            <mu2>1.0</mu2>
+            <mu>5.0</mu>
+            <mu2>5.0</mu2>
           </ode>
         </friction>
       </surface>
@@ -945,8 +1007,39 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
-      <limit effort="10.0" velocity="50.0" lower="-9999" upper="9999"/>
+    <limit effort="500.0" velocity="15.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <dynamics damping="2.5" friction="1.5"/> <!-- retardo y frenado natural -->
   </joint>
+
+  <gazebo reference="ET_IZQ_joint">
+    <sensor name="force_torque_sensor" type="force_torque">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>/model/panter/ET_IZQ_joint/sensor/force_torque_sensor/force_torque</topic>
+      <enable_metrics>true</enable_metrics>
+      <pose>0 0 0 0 0 0</pose>
+      <force_torque>
+        <frame>sensor</frame>
+        <measure_direction>child_to_parent</measure_direction>
+      </force_torque> 
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="ET_IZQ">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <surface>
+      <friction>
+        <ode>
+          <mu>1.5</mu>
+          <mu2>1.5</mu2>
+          <slip1>0.1</slip1>
+          <slip2>0.1</slip2>
+        </ode>
+      </friction>
+    </surface>
+  </gazebo>
 
 <!--        #### EJE TRASERO DERECHA ####        -->
 
@@ -1223,8 +1316,8 @@
       <surface>
         <friction>
           <ode>
-            <mu>1.0</mu>
-            <mu2>1.0</mu2>
+            <mu>5.0</mu>
+            <mu2>5.0</mu2>
           </ode>
         </friction>
       </surface>
@@ -1243,7 +1336,8 @@
   <joint name="ET_DCH_joint" type="revolute">
     <origin
       xyz="0.067 -0.15 0"
-      rpy="3.1314 -1.5708 0" />
+      rpy="0 -1.5708 0" />
+      <!-- rpy="3.1314 -1.5708 0" /> -->
     <parent
       link="MGT_DCH" />
     <child
@@ -1251,8 +1345,24 @@
     <axis xyz="0 1 0">
       <dynamics damping="0.1" friction="0.1"/>
     </axis>
-    <limit effort="10.0" velocity="50.0" lower="-9999" upper="9999"/>
+    <limit effort="500.0" velocity="15.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <dynamics damping="2.5" friction="1.5"/> <!-- retardo y frenado natural -->
   </joint>
+
+  <gazebo reference="ET_DCH">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <surface>
+      <friction>
+        <ode>
+          <mu>1.5</mu>
+          <mu2>1.5</mu2>
+          <slip1>0.1</slip1>
+          <slip2>0.1</slip2>
+        </ode>
+      </friction>
+    </surface>
+  </gazebo>
 
   <gazebo reference="ET_DCH_joint">
     <sensor name="force_torque_sensor" type="force_torque">
@@ -1275,6 +1385,7 @@
 
     <hardware>
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+      <!-- <plugin>gz_ros2_control/GazeboSystem</plugin> -->
     </hardware>
 
     <joint name="ED_DCH_joint">
@@ -1301,6 +1412,17 @@
       <state_interface name="velocity"/>
     </joint>
 
+    <joint name="MGD_IZQ_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="MGD_DCH_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
 
   </ros2_control>
 
@@ -1309,19 +1431,8 @@
       <robot_param>robot_description</robot_param>
       <robot_param_node>robot_state_publisher</robot_param_node>
       <parameters>/home/jorge/panter_ws/src/control_pkg/config/control_config.yaml</parameters>
-      <!-- <parameters>package://control_pkg/config/control_config.yaml</parameters> -->
-      <!-- <parameters>$(find control_pkg)/config/control_config.yaml</parameters> -->
     </plugin>
   </gazebo>
-
-  <!-- <gazebo>
-    <plugin name="gz_ros2_control" filename="libgz_ros2_control_system.so">
-      <ros>
-        <namespace>/</namespace>
-      </ros>
-      <update_rate>100</update_rate>
-    </plugin>
-  </gazebo> -->
 
   <transmission name="front_right_wheel_trans">
     <type>transmission_interface/SimpleTransmission</type>
@@ -1329,7 +1440,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="front_right_wheel_motor">
-      <mechanicalReduction>1</mechanicalReduction>
+      <mechanicalReduction>10</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -1339,7 +1450,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="front_left_wheel_motor">
-      <mechanicalReduction>1</mechanicalReduction>
+      <mechanicalReduction>10</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -1349,7 +1460,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="back_right_wheel_motor">
-      <mechanicalReduction>1</mechanicalReduction>
+      <mechanicalReduction>10</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -1359,13 +1470,13 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="back_left_wheel_motor">
-      <mechanicalReduction>1</mechanicalReduction>
+      <mechanicalReduction>10</mechanicalReduction>
     </actuator>
   </transmission>
 
 <!-- PLUGIN ACKERMANN -->
 
-  <gazebo>
+  <!-- <gazebo>
     <plugin filename="libignition-gazebo-ackermann-steering-system.so" name="ignition::gazebo::systems::AckermannSteering">
 
       <left_steering_joint>MGD_IZQ_joint</left_steering_joint>
@@ -1386,6 +1497,6 @@
       <topic>cmd_vel</topic> 
 
     </plugin>
-  </gazebo>   
+  </gazebo>    -->
 
 </robot>

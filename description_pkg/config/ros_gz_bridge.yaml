@@ -5,6 +5,24 @@
   gz_type_name: "ignition.msgs.Twist"
   direction: ROS_TO_GZ
 
+- ros_topic_name: "/model/panter/ED_IZQ_joint/sensor/force_torque_sensor/force_torque"
+  gz_topic_name: "/model/panter/ED_IZQ_joint/sensor/force_torque_sensor/force_torque"
+  ros_type_name: "geometry_msgs/msg/Wrench"
+  gz_type_name: "ignition.msgs.Wrench"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/model/panter/ED_DCH_joint/sensor/force_torque_sensor/force_torque"
+  gz_topic_name: "/model/panter/ED_DCH_joint/sensor/force_torque_sensor/force_torque"
+  ros_type_name: "geometry_msgs/msg/Wrench"
+  gz_type_name: "ignition.msgs.Wrench"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/model/panter/ET_IZQ_joint/sensor/force_torque_sensor/force_torque"
+  gz_topic_name: "/model/panter/ET_IZQ_joint/sensor/force_torque_sensor/force_torque"
+  ros_type_name: "geometry_msgs/msg/Wrench"
+  gz_type_name: "ignition.msgs.Wrench"
+  direction: GZ_TO_ROS
+
 - ros_topic_name: "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque"
   gz_topic_name: "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque"
   ros_type_name: "geometry_msgs/msg/Wrench"

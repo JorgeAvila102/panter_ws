@@ -30,17 +30,5 @@ def generate_launch_description():
 
     return LaunchDescription([
         ros_control,
-        # TimerAction(
-        #     period=3.0,  # espera 3 segundos
-        #     actions=[
-        #         Node(
-        #             package='controller_manager',
-        #             executable='ros2_control_node',
-        #             parameters=[control_config],
-        #             output='screen'
-        #         )
-        #     ]
-        # )
-
         control_node
     ])

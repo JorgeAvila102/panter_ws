@@ -46,6 +46,7 @@
         <model name="ground_plane">
             <static>true</static>
             <link name="link">
+                <pose>0 0 0 -0.2618 0 0</pose> <!-- inclinación en roll -->
                 <collision name="collision">
                 <geometry>
                     <plane>
@@ -53,12 +54,12 @@
                     </plane>
                 </geometry>
                 <surface>
-                    <!-- <friction>
+                    <friction>
                     <ode>
-                        <mu>1.0</mu>  
-                        <mu2>1.0</mu2> 
+                        <mu>1.5</mu>  
+                        <mu2>1.5</mu2> 
                     </ode>
-                    </friction>-->
+                    </friction>
                 </surface> 
                 </collision>
                 <visual name="visual">
