@@ -44,7 +44,6 @@
 │   │   ├── MGD_IZQ.STL
 │   │   ├── MGT_DCH.STL
 │   │   ├── MGT_IZQ.STL
-│   │   ├── old
 │   │   ├── SD01_DCH.STL
 │   │   ├── SD01_IZQ.STL
 │   │   ├── SD02_DCH.STL

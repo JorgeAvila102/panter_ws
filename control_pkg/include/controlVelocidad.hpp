@@ -5,13 +5,13 @@
 #include "std_msgs/msg/string.hpp"
 #include "std_msgs/msg/float32.hpp"
 
-class Keyboardcontrol : public rclcpp::Node
+class ControlVelocidad : public rclcpp::Node
 {
 
 public:
 
-    Keyboardcontrol();          // CONSTRUCTOR
-    ~Keyboardcontrol();         // DESTRUCTOR
+    ControlVelocidad();          // CONSTRUCTOR
+    ~ControlVelocidad();         // DESTRUCTOR
 
     void manual_drive_panter();
     void ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg);

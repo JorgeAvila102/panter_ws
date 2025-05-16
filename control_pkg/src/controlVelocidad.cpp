@@ -3,31 +3,29 @@
 #include "geometry_msgs/msg/twist.hpp"
 #include "geometry_msgs/msg/wrench.hpp"
 
-#include "keyboardcontrol.hpp"
+#include "controlVelocidad.hpp"
 
 using std::placeholders::_1;
 
-Keyboardcontrol::Keyboardcontrol(): Node ("keyboardcontrol")
+ControlVelocidad::ControlVelocidad(): Node ("controlVelocidad")
 {
     pub_cmd_vel = this->create_publisher<geometry_msgs::msg::Twist> ("/cmd_vel", 10);
     
     sub_ET_DCH = this->create_subscription<geometry_msgs::msg::Wrench>(
          "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
-        //  "/model/ET_DCH/force_torque", 10,
-                            std::bind(&Keyboardcontrol::ET_DCH_callback, this, _1));
+                            std::bind(&ControlVelocidad::ET_DCH_callback, this, _1));
 
     sub_ED_DCH = this->create_subscription<geometry_msgs::msg::Wrench>(
         "/model/panter/ED_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
-        //  "/model/ED_DCH/force_torque", 10,
-                            std::bind(&Keyboardcontrol::ED_DCH_callback, this, _1));
+                            std::bind(&ControlVelocidad::ED_DCH_callback, this, _1));
 }
 
-Keyboardcontrol::~Keyboardcontrol()
+ControlVelocidad::~ControlVelocidad()
 {
     printf("Leaving gently\n");
 }
 
-void Keyboardcontrol::ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
+void ControlVelocidad::ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
 {
     ET_DCH_dato.force.x = msg->force.x;
     ET_DCH_dato.force.y = msg->force.y;
@@ -46,7 +44,7 @@ void Keyboardcontrol::ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedPt
 
 }
 
-void Keyboardcontrol::ED_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
+void ControlVelocidad::ED_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
 {
     ED_DCH_dato.force.x = msg->force.x;
     ED_DCH_dato.force.y = msg->force.y;
@@ -65,7 +63,7 @@ void Keyboardcontrol::ED_DCH_callback(const geometry_msgs::msg::Wrench::SharedPt
 }
 
 
-void Keyboardcontrol:: manual_drive_panter()
+void ControlVelocidad:: manual_drive_panter()
 {
 
     auto msg = geometry_msgs::msg::Twist();
@@ -169,7 +167,7 @@ void Keyboardcontrol:: manual_drive_panter()
 int main ( int argc, char * argv[] )
 {
     rclcpp::init (argc, argv);
-    auto node = std::make_shared<Keyboardcontrol>();
+    auto node = std::make_shared<ControlVelocidad>();
     rclcpp::Rate loop_rate(5);
 
     geometry_msgs::msg::Wrench dato;

@@ -1381,11 +1381,9 @@
 
 <!-- ROS2 CONTROL -->
 
-  <ros2_control name="GazeboSimSystem" type="system">
-
+<ros2_control name="GazeboSimSystem" type="system">
     <hardware>
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>
-      <!-- <plugin>gz_ros2_control/GazeboSystem</plugin> -->
     </hardware>
 
     <joint name="ED_DCH_joint">
@@ -1431,6 +1429,9 @@
       <robot_param>robot_description</robot_param>
       <robot_param_node>robot_state_publisher</robot_param_node>
       <parameters>/home/jorge/panter_ws/src/control_pkg/config/control_config.yaml</parameters>
+      <!-- <parameters>$(find control_pkg)/config/control_config.yaml</parameters> -->
+      
+
     </plugin>
   </gazebo>
 
@@ -1471,6 +1472,26 @@
     </joint>
     <actuator name="back_left_wheel_motor">
       <mechanicalReduction>10</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="steer_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="MGD_IZQ_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="steer_left_actuator">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="steer_right_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="MGD_DCH_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="steer_right_actuator">
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 

@@ -10,6 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(control_pkg)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -25,7 +26,7 @@ endif()
 
 add_executable(testingROS src/testingROS.cpp)
 add_executable(controller src/controller.cpp)
-add_executable(keyboardcontrol src/keyboardcontrol.cpp)
+add_executable(controlVelocidad src/controlVelocidad.cpp)
 add_executable(keyboardcontrolTorque src/keyboardcontrolTorque.cpp)
 
 include_directories(
@@ -35,7 +36,7 @@ include_directories(
 install(TARGETS
   testingROS
   controller
-  keyboardcontrol
+  controlVelocidad
   keyboardcontrolTorque
   DESTINATION lib/${PROJECT_NAME}
 )
@@ -46,7 +47,7 @@ install(
 )
 
 ament_target_dependencies(controller rclcpp std_msgs geometry_msgs)
-ament_target_dependencies(keyboardcontrol rclcpp std_msgs geometry_msgs)
+ament_target_dependencies(controlVelocidad rclcpp std_msgs geometry_msgs)
 ament_target_dependencies(keyboardcontrolTorque rclcpp std_msgs geometry_msgs)
 
 ament_package()
