@@ -2,6 +2,14 @@
 
 <robot name="panter">
 
+  <!-- <gazebo>
+    <plugin
+      filename="gz-sim-joint-state-publisher-system"
+      name="gz::sim::systems::JointStatePublisher">
+    </plugin>
+  </gazebo> -->
+  
+
 <!-- <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panter"> -->
 
 <!-- CHASIS -->
@@ -12,7 +20,7 @@
         xyz="0 -0.44 0.675"
         rpy="0 0 0" />
       <mass
-        value="343" />
+        value="700.85" />
       <inertia
         ixx="210.9428"
         ixy="0"
@@ -53,7 +61,7 @@
     <inertial>
       <origin
         xyz="0.023095387698854 0.0466016681758654 -0.187519014527032"
-        rpy="0 0 0" />
+        rpy="-1.3265 -0.1571 0" />
       <mass
         value="3.75" />
       <inertia
@@ -112,7 +120,7 @@
     <inertial>
       <origin
         xyz="-0.109382785064343 0.00538487709498259 -0.0166938186536861"
-        rpy="0 0 0" />
+        rpy="0 0.3142 1.6930" />
       <mass
         value="2.75" />
       <inertia
@@ -167,7 +175,7 @@
     <inertial>
       <origin
         xyz="-0.0973675515390373 0.158067753699 -0.0696606835141533"
-        rpy="0 0 0" />
+        rpy="0 0.4363 1.6930" />
       <mass
         value="2.55" />
       <inertia
@@ -381,7 +389,7 @@
     <inertial>
       <origin
         xyz="0.0230960940307681 -0.0466016638376696 -0.18751886137021"
-        rpy="0 0 0" />
+        rpy="1.3265 -0.1571 0" />
       <mass
         value="3.75" />
       <inertia
@@ -440,7 +448,7 @@
     <inertial>
       <origin
         xyz="-0.100708620572387 -0.17880788771794 -0.0713964837824563"
-        rpy="0 0 0" />
+        rpy="0 -0.3142 1.6930" />
       <mass
         value="2.75" />
       <inertia
@@ -495,7 +503,7 @@
     <inertial>
       <origin
         xyz="-0.0979518480958868 -0.169078003137017 -0.0764949350807603"
-        rpy="0 0 0" />
+        rpy="0 -0.4363 1.6930" />
       <mass
         value="2.55" />
       <inertia
@@ -713,7 +721,7 @@
     <inertial>
       <origin
         xyz="0.00849916904570347 0.0657819927229274 -0.159438279696501"
-        rpy="0 0 0" />
+        rpy="-1.1868 0 0" />
       <mass
         value="5.35" />
       <inertia
@@ -1049,7 +1057,7 @@
     <inertial>
       <origin
         xyz="0.00850083095425092 -0.0657819927228879 -0.159438279696496"
-        rpy="0 0 0" />
+        rpy="1.1868 0 0" />
       <mass
         value="5.35" />
       <inertia
@@ -1403,6 +1411,7 @@
       <topic>cmd_vel</topic> 
 
     </plugin>
+
   </gazebo>   
 
 </robot>

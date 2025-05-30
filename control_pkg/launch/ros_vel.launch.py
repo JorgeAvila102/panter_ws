@@ -8,6 +8,7 @@ def generate_launch_description():
 
     control_pkg = get_package_share_directory('control_pkg')
     robot_controllers = os.path.join(control_pkg, 'config', 'control_config.yaml')
+    urdf_file = os.path.join(get_package_share_directory('description_pkg'),'urdf', 'panter.urdf')
 
     control_node = Node(
         package="controller_manager",
@@ -27,6 +28,15 @@ def generate_launch_description():
         prefix='xterm -e',
         arguments=['--ros-args', '--log-level', 'info']
     )
+
+    node_joint_state_publisher = Node(
+
+        package= 'joint_state_publisher',
+        executable= 'joint_state_publisher',
+        name= 'joint_state_publisher',
+        parameters=["/robot_description"],
+        arguments=[urdf_file]
+    )   
 
     return LaunchDescription([
         ros_control,

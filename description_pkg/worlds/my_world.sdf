@@ -46,7 +46,7 @@
         <model name="ground_plane">
             <static>true</static>
             <link name="link">
-                <pose>0 0 0 -0.0 0 0</pose> <!-- inclinación en roll -->
+                <pose>0 0 0 -0.0 0 0</pose> <!-- inclinación en roll  052-->
                 <collision name="collision">
                 <geometry>
                     <plane>

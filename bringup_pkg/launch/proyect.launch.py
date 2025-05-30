@@ -1,5 +1,5 @@
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, TimerAction
+from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 import os
@@ -12,11 +12,11 @@ def generate_launch_description():
     control_pkg = get_package_share_directory('control_pkg')
 
     # Rutas a archivos
-    urdf_path = os.path.join(description_pkg, 'urdf', 'panter.urdf')  # Ajusta el nombre real de tu URDF
-    controller_config = os.path.join(control_pkg, 'config', 'effort_controllers.yaml')  # Ajusta si es necesario
+    # urdf_path = os.path.join(description_pkg, 'urdf', 'panter.urdf')  # Ajusta el nombre real de tu URDF
+    # controller_config = os.path.join(control_pkg, 'config', 'effort_controllers.yaml')  # Ajusta si es necesario
     bridge_config = os.path.join(description_pkg, 'config', 'ros_gz_bridge.yaml')
     rviz_config = os.path.join(description_pkg, 'rviz', 'panter.rviz')
-    control_yaml = os.path.join(control_pkg, 'config', 'control_config.yaml')
+    # control_yaml = os.path.join(control_pkg, 'config', 'control_config.yaml')
 
 
     # Lanzar Gazebo con el robot
@@ -33,7 +33,6 @@ def generate_launch_description():
         )
     )
 
-    
     # Lanzar el puente ros_gz_bridge
     bridge_node = Node(
         package='ros_gz_bridge',
@@ -58,7 +57,6 @@ def generate_launch_description():
         bridge_node,
         rviz_node
     ])
-
 
     # # Spawner del controlador de effort y de posición
     # controller_spawner = Node(

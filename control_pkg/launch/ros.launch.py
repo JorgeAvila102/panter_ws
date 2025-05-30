@@ -47,7 +47,7 @@ def generate_launch_description():
     # )
 
     # Spawner del controlador de effort
-    controller_spawner = TimerAction(
+    effort_spawner = TimerAction(
         period=4.0,
         actions=[ Node(
             package='controller_manager',
@@ -82,7 +82,7 @@ def generate_launch_description():
         ros_control,
         node_joint_state_publisher,
         # joint_state_broadcaster,
-        controller_spawner,
+        effort_spawner,
         steering_spawner,
         control_node
     ])

@@ -11,18 +11,72 @@ ControlVelocidad::ControlVelocidad(): Node ("controlVelocidad")
 {
     pub_cmd_vel = this->create_publisher<geometry_msgs::msg::Twist> ("/cmd_vel", 10);
     
-    sub_ET_DCH = this->create_subscription<geometry_msgs::msg::Wrench>(
-         "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
-                            std::bind(&ControlVelocidad::ET_DCH_callback, this, _1));
+    sub_ED_IZQ = this->create_subscription<geometry_msgs::msg::Wrench>(
+        "/model/panter/ED_IZQ_joint/sensor/force_torque_sensor/force_torque", 10,
+                            std::bind(&ControlVelocidad::ED_IZQ_callback, this, _1));
 
     sub_ED_DCH = this->create_subscription<geometry_msgs::msg::Wrench>(
         "/model/panter/ED_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
                             std::bind(&ControlVelocidad::ED_DCH_callback, this, _1));
+
+    sub_ET_IZQ = this->create_subscription<geometry_msgs::msg::Wrench>(
+         "/model/panter/ET_IZQ_joint/sensor/force_torque_sensor/force_torque", 10,
+                            std::bind(&ControlVelocidad::ET_IZQ_callback, this, _1));
+
+    sub_ET_DCH = this->create_subscription<geometry_msgs::msg::Wrench>(
+        "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
+                            std::bind(&ControlVelocidad::ET_DCH_callback, this, _1));
+
+    sensor_timer_ = this->create_wall_timer(
+        std::chrono::seconds(3),
+        [this]() {
+            RCLCPP_INFO(this->get_logger(),
+            "\n--- Force/Torque Reading ---\n"
+            "\n ED_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
+            "\n ED_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
+            "\n ET_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
+            "\n ET_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n",
+
+            ED_IZQ_dato.force.x, ED_IZQ_dato.force.y, ED_IZQ_dato.force.z,
+            ED_IZQ_dato.torque.x, ED_IZQ_dato.torque.y, ED_IZQ_dato.torque.z,
+
+            ED_DCH_dato.force.x, ED_DCH_dato.force.y, ED_DCH_dato.force.z,
+            ED_DCH_dato.torque.x, ED_DCH_dato.torque.y, ED_DCH_dato.torque.z,
+
+            ET_IZQ_dato.force.x, ET_IZQ_dato.force.y, ET_IZQ_dato.force.z,
+            ET_IZQ_dato.torque.x, ET_IZQ_dato.torque.y, ET_IZQ_dato.torque.z,
+
+            ET_DCH_dato.force.x, ET_DCH_dato.force.y, ET_DCH_dato.force.z,
+            ET_DCH_dato.torque.x, ET_DCH_dato.torque.y, ET_DCH_dato.torque.z);
+        }
+    );
 }
 
 ControlVelocidad::~ControlVelocidad()
 {
     printf("Leaving gently\n");
+}
+
+void ControlVelocidad::ED_IZQ_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
+{
+    ED_IZQ_dato.force.x = msg->force.x;
+    ED_IZQ_dato.force.y = msg->force.y;
+    ED_IZQ_dato.force.z = msg->force.z;
+
+    ED_IZQ_dato.torque.x = msg->torque.x;
+    ED_IZQ_dato.torque.y = msg->torque.y;
+    ED_IZQ_dato.torque.z = msg->torque.z;
+}
+
+void ControlVelocidad::ET_IZQ_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
+{
+    ET_IZQ_dato.force.x = msg->force.x;
+    ET_IZQ_dato.force.y = msg->force.y;
+    ET_IZQ_dato.force.z = msg->force.z;
+
+    ET_IZQ_dato.torque.x = msg->torque.x;
+    ET_IZQ_dato.torque.y = msg->torque.y;
+    ET_IZQ_dato.torque.z = msg->torque.z;
 }
 
 void ControlVelocidad::ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
@@ -34,14 +88,6 @@ void ControlVelocidad::ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedP
     ET_DCH_dato.torque.x = msg->torque.x;
     ET_DCH_dato.torque.y = msg->torque.y;
     ET_DCH_dato.torque.z = msg->torque.z;
-    
-    printf("ET_DCH force: %f.\r\n", ET_DCH_dato.force.x );
-
-    RCLCPP_INFO(this->get_logger(), 
-        "ET_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]",
-        ET_DCH_dato.force.x, ET_DCH_dato.force.y, ET_DCH_dato.force.z,
-        ET_DCH_dato.torque.x, ET_DCH_dato.torque.y, ET_DCH_dato.torque.z);
-
 }
 
 void ControlVelocidad::ED_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
@@ -53,15 +99,8 @@ void ControlVelocidad::ED_DCH_callback(const geometry_msgs::msg::Wrench::SharedP
     ED_DCH_dato.torque.x = msg->torque.x;
     ED_DCH_dato.torque.y = msg->torque.y;
     ED_DCH_dato.torque.z = msg->torque.z;
-    
-    printf("ED_DCH force: %f.\r\n", ED_DCH_dato.force.x );
 
-    RCLCPP_INFO(this->get_logger(), 
-        "ED_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]",
-        ED_DCH_dato.force.x, ED_DCH_dato.force.y, ED_DCH_dato.force.z,
-        ED_DCH_dato.torque.x, ED_DCH_dato.torque.y, ED_DCH_dato.torque.z);
 }
-
 
 void ControlVelocidad:: manual_drive_panter()
 {
@@ -86,9 +125,6 @@ void ControlVelocidad:: manual_drive_panter()
     msg.angular.z = 0; // Velocidad en rad/s
 
     pub_cmd_vel -> publish(msg);
-    
-    // mensaje.data = "FORDWARDS";
-    // pub_move -> publish(mensaje);
 
     break;
 // AVANZA HACIA ATRÁS
@@ -100,9 +136,6 @@ void ControlVelocidad:: manual_drive_panter()
     msg.angular.z = 0; // Velocidad en rad/s
 
     pub_cmd_vel -> publish(msg);
-    
-    // mensaje.data = "BACKWARD";
-    // pub_move -> publish(mensaje);
 
     break;
 
@@ -115,9 +148,6 @@ void ControlVelocidad:: manual_drive_panter()
 
     pub_cmd_vel -> publish(msg);
     
-    // mensaje.data = "RIGHT";
-    // pub_move -> publish(mensaje);
-
     break;
 
 // GIRA IZQUIERDA
@@ -128,9 +158,6 @@ void ControlVelocidad:: manual_drive_panter()
     msg.angular.z = 0.5; // Velocidad en rad/s
 
     pub_cmd_vel -> publish(msg);
-    
-    // mensaje.data = "LEFT";
-    // pub_move -> publish(mensaje);
 
     break;
 
@@ -142,9 +169,6 @@ void ControlVelocidad:: manual_drive_panter()
     msg.angular.z = 0; // Velocidad en rad/s
 
     pub_cmd_vel -> publish(msg);
-    
-    // mensaje.data = "STOP";
-    // pub_move -> publish(mensaje);
 
     break;
 
@@ -164,21 +188,16 @@ void ControlVelocidad:: manual_drive_panter()
     }
 }
 
-int main ( int argc, char * argv[] )
+int main(int argc, char **argv)
 {
-    rclcpp::init (argc, argv);
+    rclcpp::init(argc, argv);
     auto node = std::make_shared<ControlVelocidad>();
-    rclcpp::Rate loop_rate(5);
 
-    geometry_msgs::msg::Wrench dato;
-  
-    while (rclcpp::ok())
-    {
-        rclcpp::spin_some(node);
+    std::thread keyboard_thread(&ControlVelocidad::manual_drive_panter, node);
 
-        node->manual_drive_panter();
-        loop_rate.sleep();
-    }
-    
+    rclcpp::spin(node);
+    keyboard_thread.join();
+
+    rclcpp::shutdown();
     return 0;
 }
