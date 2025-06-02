@@ -8,18 +8,21 @@
 
   <link name="CH">
     <inertial>
-      <origin
+      <!-- <origin
         xyz="0 -0.44 0.675"
+        rpy="0 0 0" /> -->
+      <origin
+        xyz="0.039 -0.49763 0.675"
         rpy="0 0 0" />
       <mass
         value="700.85" />
       <inertia
-        ixx="210.9428"
+        ixx="431.0183"
         ixy="0"
         ixz="0"
-        iyy="79.0479"
+        iyy="161.5181"
         iyz="0"
-        izz="260.5199" />
+        izz="532.3189" />
     </inertial>
     <visual>
       <origin
