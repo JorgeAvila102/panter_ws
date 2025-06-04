@@ -111,11 +111,13 @@ void ControlVelocidad:: manual_drive_panter()
 
 // Set console raw mode. To avoid pressing enter after each character
     system("stty raw");
-    // Read 1 char
-    char input = getchar();
-    
-    switch (input)
-    {
+
+    while (rclcpp::ok()) {
+
+        char input = getchar();
+
+        switch (input)
+        {
 
 // AVANZA HACIA ADELANTE
     case 'w':
@@ -123,8 +125,6 @@ void ControlVelocidad:: manual_drive_panter()
 
     msg.linear.x = 2.0; // Velocidad en m/s
     msg.angular.z = 0; // Velocidad en rad/s
-
-    pub_cmd_vel -> publish(msg);
 
     break;
 // AVANZA HACIA ATRÁS
@@ -135,40 +135,52 @@ void ControlVelocidad:: manual_drive_panter()
     msg.linear.x = -2.0; // Velocidad en m/s
     msg.angular.z = 0; // Velocidad en rad/s
 
-    pub_cmd_vel -> publish(msg);
-
     break;
 
-// GIRA DERECHA
+// GIRA DERECHA AVANZANDO
     case 'd':
     RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
 
     msg.linear.x = 1; // Velocidad en m/s
     msg.angular.z = -0.5; // Velocidad en rad/s
 
-    pub_cmd_vel -> publish(msg);
-    
     break;
 
-// GIRA IZQUIERDA
+// GIRA IZQUIERDA AVANZANDO
     case 'a':
     RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
 
     msg.linear.x = 1; // Velocidad en m/s
     msg.angular.z = 0.5; // Velocidad en rad/s
 
-    pub_cmd_vel -> publish(msg);
+    break;
+
+    // GIRA DERECHA RETROCEDIENDO
+
+    case 'c':
+    RCLCPP_INFO(this->get_logger(), "RIGHT BACK \r\n");
+
+    msg.linear.x = -1; // Velocidad en m/s
+    msg.angular.z = -0.5; // Velocidad en rad/s
+
+    break;
+
+    // GIRA DERECHA RETROCEDIENDO
+
+    case 'z':
+    RCLCPP_INFO(this->get_logger(), "LEFT BACK \r\n");
+
+    msg.linear.x = -1; // Velocidad en m/s
+    msg.angular.z = 0.5; // Velocidad en rad/s
 
     break;
 
 // PARAR
-    case 'p':
+    case 'x':
     RCLCPP_INFO(this->get_logger(), "STOP \r\n");
 
     msg.linear.x = 0; // Velocidad en m/s
     msg.angular.z = 0; // Velocidad en rad/s
-
-    pub_cmd_vel -> publish(msg);
 
     break;
 
@@ -185,6 +197,9 @@ void ControlVelocidad:: manual_drive_panter()
     RCLCPP_INFO(this->get_logger(), "Non valid KEY\r\n");
     break;
     
+        }
+
+        pub_cmd_vel -> publish(msg);
     }
 }
 

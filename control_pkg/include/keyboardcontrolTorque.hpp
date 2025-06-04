@@ -35,7 +35,6 @@ private:
 
     rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr pub_torque;
     rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr pub_giro;
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_cmd_vel;
 
     // SUBSCRIPCIONES
 
