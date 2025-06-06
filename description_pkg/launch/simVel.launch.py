@@ -15,7 +15,6 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     urdf_file = os.path.join(get_package_share_directory('description_pkg'),'urdf', 'panter_vel.urdf')
-    # world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'terrain1.sdf')
     # world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'my_world.sdf')
     world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'tierra_world.sdf')
     rviz_file = os.path.join(get_package_share_directory('description_pkg'),'rviz', 'panter.rviz')
@@ -67,7 +66,7 @@ def generate_launch_description():
         package='ros_gz_sim',
         executable='create',
         output='screen',
-        arguments=["-topic", "robot_description", "-y", "2.0","-z", "0.08"]
+        arguments=["-topic", "robot_description", "-y", "28.0","-z", "0.08"]
     )
 
     node_rviz = Node(

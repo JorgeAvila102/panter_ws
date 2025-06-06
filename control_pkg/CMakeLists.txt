@@ -24,8 +24,6 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-add_executable(testingROS src/testingROS.cpp)
-add_executable(controller src/controller.cpp)
 add_executable(controlVelocidad src/controlVelocidad.cpp)
 add_executable(keyboardcontrolTorque src/keyboardcontrolTorque.cpp)
 
@@ -34,8 +32,6 @@ include_directories(
 )
 
 install(TARGETS
-  testingROS
-  controller
   controlVelocidad
   keyboardcontrolTorque
   DESTINATION lib/${PROJECT_NAME}
@@ -46,7 +42,6 @@ install(
 	DESTINATION share/${PROJECT_NAME}
 )
 
-ament_target_dependencies(controller rclcpp std_msgs geometry_msgs)
 ament_target_dependencies(controlVelocidad rclcpp std_msgs geometry_msgs)
 ament_target_dependencies(keyboardcontrolTorque rclcpp std_msgs geometry_msgs)
 

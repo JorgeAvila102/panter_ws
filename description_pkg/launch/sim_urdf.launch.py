@@ -12,7 +12,8 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     urdf_file = os.path.join(get_package_share_directory('description_pkg'),'urdf', 'panter.urdf')
-    world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'my_world.sdf')
+    # world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'my_world.sdf')
+    world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'tierra_world.sdf')
     
     with open (urdf_file, 'r') as infp:
          robot_desc = infp.read()
@@ -48,7 +49,7 @@ def generate_launch_description():
         package='ros_gz_sim',
         executable='create',
         output='screen',
-        arguments=["-topic", "robot_description", "-y", "2.0","-z", "0.08"]
+        arguments=["-topic", "robot_description", "-y", "28.0","-z", "0.08"]
     )
 
     return LaunchDescription([
