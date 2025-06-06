@@ -15,7 +15,9 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     urdf_file = os.path.join(get_package_share_directory('description_pkg'),'urdf', 'panter_vel.urdf')
-    world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'my_world.sdf')
+    # world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'terrain1.sdf')
+    # world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'my_world.sdf')
+    world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'tierra_world.sdf')
     rviz_file = os.path.join(get_package_share_directory('description_pkg'),'rviz', 'panter.rviz')
 
     

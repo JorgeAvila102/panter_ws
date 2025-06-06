@@ -1477,29 +1477,4 @@
     </actuator>
   </transmission>
 
-<!-- PLUGIN ACKERMANN -->
-
-  <!-- <gazebo>
-    <plugin filename="libignition-gazebo-ackermann-steering-system.so" name="ignition::gazebo::systems::AckermannSteering">
-
-      <left_steering_joint>MGD_IZQ_joint</left_steering_joint>
-      <left_joint>ED_IZQ_joint</left_joint>
-      <right_steering_joint>MGD_DCH_joint</right_steering_joint>
-      <right_joint>ED_DCH_joint</right_joint>
-
-      <left_joint>ET_IZQ_joint</left_joint>
-      <right_joint>ET_DCH_joint</right_joint>  
-
-      <wheel_separation>1.41</wheel_separation> 
-      <wheel_radius>0.343</wheel_radius>
-      <min_velocity>-15.0</min_velocity> 
-      <max_velocity>15.0</max_velocity>
-      <min_acceleration>-0.5</min_acceleration>
-      <max_acceleration>10</max_acceleration> 
-
-      <topic>cmd_vel</topic> 
-
-    </plugin>
-  </gazebo>    -->
-
 </robot>
