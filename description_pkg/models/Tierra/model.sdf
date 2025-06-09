@@ -7,9 +7,8 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <!-- Si tu DAE está a escala 1:1, deja 1 1 1; o ajústalo si necesitas enlarge -->
-            <scale>100 100 100</scale>
-            <uri>model://Tierra/meshes/tierra.dae</uri> 
+            <scale>70 70 70</scale>
+            <uri>model://Tierra/meshes/tierrasuelo.dae</uri> 
           </mesh>
         </geometry>
         <material>
@@ -17,16 +16,16 @@
           <!-- <ambient>0.588235 0.294118 0.000000 1.000000</ambient>
           <diffuse>0.588235 0.294118 0.000000 1.000000</diffuse> -->
 
-          <ambient>0.5 0.5 0.5 1.0</ambient>
-          <diffuse>0.5 0.5 0.5 1.0</diffuse>
+          <ambient>0.765 0.594 0.453,1.0</ambient>
+          <diffuse>0.765 0.594 0.453 1.0</diffuse>
         </material>
       </visual>
       <collision name="collision">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>100 100 100</scale>
-            <uri>model://Tierra/meshes/tierra.dae</uri>
+            <scale>70 70 70</scale>
+            <uri>model://Tierra/meshes/tierrasuelo.dae</uri>
           </mesh>
         </geometry>
       </collision>
