@@ -4,36 +4,34 @@
 │   ├── include
 │   │   └── bringup_pkg
 │   ├── launch
-│   │   └── proyect.launch.py
+│   │   ├── proyect.launch.py
+│   │   └── proyect_vel.launch.py
 │   ├── package.xml
 │   └── src
 ├── control_pkg
 │   ├── CMakeLists.txt
 │   ├── config
+│   │   └── control_config.yaml
 │   ├── include
-│   │   ├── controller.hpp
 │   │   ├── control_pkg
-│   │   ├── keyboardcontrol.hpp
+│   │   ├── controlVelocidad.hpp
 │   │   └── keyboardcontrolTorque.hpp
 │   ├── launch
-│   │   └── ros.launch.py
+│   │   ├── ros.launch.py
+│   │   └── ros_vel.launch.py
 │   ├── package.xml
 │   └── src
-│       ├── controller.cpp
-│       ├── keyboardcontrol.cpp
-│       ├── keyboardcontrolTorque.cpp
-│       └── testingROS.cpp
+│       ├── controlVelocidad.cpp
+│       └── keyboardcontrolTorque.cpp
 ├── description_pkg
 │   ├── CMakeLists.txt
 │   ├── config
-│   │   ├── control_config.yaml
 │   │   └── ros_gz_bridge.yaml
 │   ├── include
 │   │   └── description_pkg
 │   ├── launch
-│   │   ├── sim_sdf.launch.py
 │   │   ├── sim_urdf.launch.py
-│   │   └── sim_xacro.launch.py
+│   │   └── simVel.launch.py
 │   ├── meshes
 │   │   ├── CH.STL
 │   │   ├── ED_DCH.STL
@@ -56,25 +54,21 @@
 │   │   ├── ST02_IZQ.STL
 │   │   ├── ST03_DCH.STL
 │   │   └── ST03_IZQ.STL
+│   ├── models
+│   │   └── Tierra
 │   ├── package.xml
 │   ├── rviz
 │   │   └── panter.rviz
-│   ├── sdf
-│   │   ├── panter_old.sdf
-│   │   └── panter.sdf
 │   ├── src
 │   ├── urdf
-│   │   ├── panter_old.urdf
-│   │   ├── panter_sw.urdf
-│   │   └── panter.urdf
+│   │   ├── panter.urdf
+│   │   └── panter_vel.urdf
 │   └── worlds
-│       ├── my_mangueta.sdf
 │       ├── my_world.sdf
-│       ├── terrain1.dae
-│       └── terrain1.sdf
+│       └── tierra_world.sdf
 ├── doc
 │   └── git.md
 ├── estructura.txt
 └── README.md
 
-26 directories, 83 files
+24 directories, 47 files

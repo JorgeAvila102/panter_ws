@@ -40,5 +40,6 @@ def generate_launch_description():
 
     return LaunchDescription([
         ros_control,
-        control_node
+        control_node,
+        node_joint_state_publisher
     ])
