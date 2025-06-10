@@ -31,29 +31,29 @@ KeyboardcontrolTorque::KeyboardcontrolTorque(): Node ("keyboardcontrolTorque")
         "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
                             std::bind(&KeyboardcontrolTorque::ET_DCH_callback, this, _1));
 
-    sensor_timer_ = this->create_wall_timer(
-        std::chrono::seconds(3),
-        [this]() {
-            RCLCPP_INFO(this->get_logger(),
-            "\n--- Force/Torque Reading ---\n"
-            "\n ED_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
-            "\n ED_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
-            "\n ET_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
-            "\n ET_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n",
+    // sensor_timer_ = this->create_wall_timer(
+    //     std::chrono::seconds(3),
+    //     [this]() {
+    //         RCLCPP_INFO(this->get_logger(),
+    //         "\n--- Force/Torque Reading ---\n"
+    //         "\n ED_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
+    //         "\n ED_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
+    //         "\n ET_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
+    //         "\n ET_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n",
 
-            ED_IZQ_dato.force.x, ED_IZQ_dato.force.y, ED_IZQ_dato.force.z,
-            ED_IZQ_dato.torque.x, ED_IZQ_dato.torque.y, ED_IZQ_dato.torque.z,
+    //         ED_IZQ_dato.force.x, ED_IZQ_dato.force.y, ED_IZQ_dato.force.z,
+    //         ED_IZQ_dato.torque.x, ED_IZQ_dato.torque.y, ED_IZQ_dato.torque.z,
 
-            ED_DCH_dato.force.x, ED_DCH_dato.force.y, ED_DCH_dato.force.z,
-            ED_DCH_dato.torque.x, ED_DCH_dato.torque.y, ED_DCH_dato.torque.z,
+    //         ED_DCH_dato.force.x, ED_DCH_dato.force.y, ED_DCH_dato.force.z,
+    //         ED_DCH_dato.torque.x, ED_DCH_dato.torque.y, ED_DCH_dato.torque.z,
 
-            ET_IZQ_dato.force.x, ET_IZQ_dato.force.y, ET_IZQ_dato.force.z,
-            ET_IZQ_dato.torque.x, ET_IZQ_dato.torque.y, ET_IZQ_dato.torque.z,
+    //         ET_IZQ_dato.force.x, ET_IZQ_dato.force.y, ET_IZQ_dato.force.z,
+    //         ET_IZQ_dato.torque.x, ET_IZQ_dato.torque.y, ET_IZQ_dato.torque.z,
 
-            ET_DCH_dato.force.x, ET_DCH_dato.force.y, ET_DCH_dato.force.z,
-            ET_DCH_dato.torque.x, ET_DCH_dato.torque.y, ET_DCH_dato.torque.z);
-        }
-    );
+    //         ET_DCH_dato.force.x, ET_DCH_dato.force.y, ET_DCH_dato.force.z,
+    //         ET_DCH_dato.torque.x, ET_DCH_dato.torque.y, ET_DCH_dato.torque.z);
+    //     }
+    // );
 }
 
 KeyboardcontrolTorque::~KeyboardcontrolTorque()

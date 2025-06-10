@@ -41,7 +41,7 @@
   </library_effects>
   <library_images>
     <image id="sueloTierra_png" name="sueloTierra_png">
-      <init_from>sueloTierra.png</init_from>
+      <init_from>tierra.jpg</init_from>
     </image>
   </library_images>
   <library_materials>

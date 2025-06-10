@@ -32,7 +32,6 @@ def generate_launch_description():
         arguments=[urdf_file]
     )
 
-
     launch_gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
@@ -49,7 +48,7 @@ def generate_launch_description():
         package='ros_gz_sim',
         executable='create',
         output='screen',
-        arguments=["-topic", "robot_description", "-y", "0.0","-z", "0.08"]
+        arguments=["-topic", "robot_description", "-y", "0.0","-z", "0.38"]
     )
 
     return LaunchDescription([
@@ -59,60 +58,3 @@ def generate_launch_description():
         spawn_panter
     ])
 
-
-
-
-    # params = {'robot_description' : robot_desc}
-
-    # Se aplica cuando no utilizamos ros2_control
-    # node_joint_state_publisher = Node(
-
-    #     package= 'joint_state_publisher',
-    #     executable= 'joint_state_publisher',
-    #     name= 'joint_state_publisher',
-    #     parameters=[params],
-    #     arguments=[urdf_file]
-    # )   
-
-    # node_joint_state_publisher_gui = Node(
-
-    #     package= 'joint_state_publisher_gui',
-    #     executable= 'joint_state_publisher_gui',
-    #     name= 'joint_state_publisher_gui',
-    #     arguments=[urdf_file]
-    #     # condition= IfCondition(LaunchConfiguration('gui'))
-    # )   
-
-# Gazebo launcher
-    # launch_gazebo = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource([get_package_share_directory('ros_gz_sim'), 
-    #                                    '/launch', '/gz_sim.launch.py']),
-    #     # launch_arguments={
-    #     # 'ign_args' : world_file}.items(),
-    #     launch_arguments=[
-    #         ('ign_args', world_file),
-    #     ],
-    # )
-
-
-# # 2) Spawner del joint_state_broadcaster
-#     node_joint_state_broadcaster = Node(
-#         package='controller_manager',
-#         executable='spawner',
-#         arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
-#         output='screen'
-#     )
-
-#     node_rviz = Node(
-
-#         package= 'rviz2',
-#         executable= 'rviz2',
-#         name= 'rviz2',
-#         output= 'screen',
-#         arguments=['-d', rviz_file]
-#     ) 
-
-        # node_joint_state_publisher_gui, 
-        # node_joint_state_publisher,
-        # node_joint_state_broadcaster,
-        # node_rviz,

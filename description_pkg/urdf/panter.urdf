@@ -272,6 +272,7 @@
     <axis
       xyz="0 0 1" />
     <limit effort="50.0" velocity="1.0" lower="-0.5236" upper="0.5236"/>
+    <dynamics damping="100.0" friction="50.0"/>
   </joint>
 
 <!-- RUEDA DELANTERA IZQUIERDA -->
@@ -604,6 +605,7 @@
     <axis
       xyz="0 0 1" />
       <limit effort="50" velocity="1.0" lower="-0.5236" upper="0.5236"/>
+      <dynamics damping="100.0" friction="50.0"/>
   </joint>
 
 <!-- RUEDA DELANTERA DERECHA -->

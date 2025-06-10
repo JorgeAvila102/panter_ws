@@ -4,7 +4,7 @@
     <static>true</static>
     <link name="link">
       <visual name="visual">
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0.3 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>70 70 70</scale>
@@ -21,13 +21,32 @@
         </material>
       </visual>
       <collision name="collision">
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0.3 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>70 70 70</scale>
             <uri>model://Tierra/meshes/tierrasuelo.dae</uri>
           </mesh>
         </geometry>
+         <surface>
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>50</mu2>
+            </ode>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0.0</restitution_coefficient>
+            <threshold>1e3</threshold>
+          </bounce>
+          <contact>
+            <ode>
+              <soft_cfm>0.0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+            </ode>
+          </contact>
+        </surface>
+
       </collision>
     </link>
   </model>
