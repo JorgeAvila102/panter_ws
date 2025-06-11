@@ -63,6 +63,6 @@ private:
 
     // Limitar al par continuo; si se pide más, usar máximo continuo
     // static constexpr double T_cmd = std::min(T_por_rueda, T_continuo);
-    static constexpr double T_cmd = T_por_rueda;
+    static constexpr double T_cmd = 34.0; //= T_por_rueda;
     
 };

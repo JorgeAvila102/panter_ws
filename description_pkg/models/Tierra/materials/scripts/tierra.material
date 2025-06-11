@@ -6,7 +6,7 @@ material Tierra/tierraTexture
     {
       texture_unit
       {
-        # Aquí va la ruta relativa desde la raíz del modelo
+        # Ruta relativa desde la raíz del modelo
         # texture Tierra/materials/textures/sueloTierra.png
       }
     }
