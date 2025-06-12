@@ -37,4 +37,3 @@ steering_controller:
     joints:
       - MGD_DCH_joint
       - MGD_IZQ_joint
-

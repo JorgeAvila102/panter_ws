@@ -126,7 +126,7 @@ void ControlVelocidad:: manual_drive_panter()
     case 'w':
     RCLCPP_INFO(this->get_logger(), "FORDWARDS \r\n");
 
-    msg.linear.x = 2.0; // Velocidad en m/s
+    msg.linear.x = lineal + 0.5; // Velocidad en m/s
     msg.angular.z = 0; // Velocidad en rad/s
 
     break;
@@ -135,7 +135,7 @@ void ControlVelocidad:: manual_drive_panter()
     case 's':
     RCLCPP_INFO(this->get_logger(), "BACKWARD \r\n");
 
-    msg.linear.x = -2.0; // Velocidad en m/s
+    msg.linear.x = -lineal - 0.5; // Velocidad en m/s
     msg.angular.z = 0; // Velocidad en rad/s
 
     break;
@@ -144,8 +144,8 @@ void ControlVelocidad:: manual_drive_panter()
     case 'd':
     RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
 
-    msg.linear.x = 1; // Velocidad en m/s
-    msg.angular.z = -0.5; // Velocidad en rad/s
+    msg.linear.x = lineal; // Velocidad en m/s
+    msg.angular.z = -angular; // Velocidad en rad/s
 
     break;
 
@@ -153,8 +153,8 @@ void ControlVelocidad:: manual_drive_panter()
     case 'a':
     RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
 
-    msg.linear.x = 1; // Velocidad en m/s
-    msg.angular.z = 0.5; // Velocidad en rad/s
+    msg.linear.x = lineal; // Velocidad en m/s
+    msg.angular.z = angular; // Velocidad en rad/s
 
     break;
 
@@ -163,8 +163,8 @@ void ControlVelocidad:: manual_drive_panter()
     case 'c':
     RCLCPP_INFO(this->get_logger(), "RIGHT BACK \r\n");
 
-    msg.linear.x = -1; // Velocidad en m/s
-    msg.angular.z = -0.5; // Velocidad en rad/s
+    msg.linear.x = -lineal; // Velocidad en m/s
+    msg.angular.z = angular; // Velocidad en rad/s
 
     break;
 
@@ -173,8 +173,8 @@ void ControlVelocidad:: manual_drive_panter()
     case 'z':
     RCLCPP_INFO(this->get_logger(), "LEFT BACK \r\n");
 
-    msg.linear.x = -1; // Velocidad en m/s
-    msg.angular.z = 0.5; // Velocidad en rad/s
+    msg.linear.x = -lineal; // Velocidad en m/s
+    msg.angular.z = -angular; // Velocidad en rad/s
 
     break;
 

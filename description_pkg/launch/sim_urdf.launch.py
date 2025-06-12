@@ -57,4 +57,3 @@ def generate_launch_description():
         launch_gazebo,
         spawn_panter
     ])
-
