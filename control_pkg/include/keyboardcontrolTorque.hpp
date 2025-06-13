@@ -43,26 +43,23 @@ private:
     rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ET_IZQ;
     rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ET_DCH;
 
-    static constexpr double T_continuo = 32.0;  // N·m
-    static constexpr double alpha = 0.5236;     // Radianes
-    static constexpr double pendiente_grad = 15;
-    
-    static constexpr double pendiente = pendiente_grad * M_PI / 180.0;
-    static constexpr double g = 9.81;
-    static constexpr double masa = 343;     // Kg
-    static constexpr double R_rueda = 0.343;     // Kg
+    //static constexpr double REDUCCION = 15.0;
+    static constexpr double T_continuo = 34.0; // * REDUCCION; // 510 Nm
+    static constexpr double T_pico     = 120.0; // * REDUCCION; // 1800 Nm
 
-    // Fuerza total necesaria para subir la pendiente: F = m·g·sin(α)
-    static constexpr double F_total = masa * g * std::sin(pendiente);
+    static constexpr double alpha     = 0.50; // Ángulo de giro de unos ~30 grados.
 
-    // Torque total en el eje de ruedas: T = F·R
-    static constexpr double T_total = F_total * R_rueda;
-
-    // Repartir entre las 4 ruedas
-    static constexpr double T_por_rueda = T_total / 4.0;
-
-    // Limitar al par continuo; si se pide más, usar máximo continuo
-    // static constexpr double T_cmd = std::min(T_por_rueda, T_continuo);
-    static constexpr double T_cmd = 120.0; //= T_por_rueda;
+    double limitarTorque(double par_calculado) {
+        if (par_calculado > T_pico)
+            return T_pico;
+        else if (par_calculado > T_continuo)
+            return T_continuo;
+        else if (par_calculado < -T_pico)
+            return -T_pico;
+        else if (par_calculado < -T_continuo)
+            return -T_continuo;
+        else
+            return par_calculado;
+    }
     
 };

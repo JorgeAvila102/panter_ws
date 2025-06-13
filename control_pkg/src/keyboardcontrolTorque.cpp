@@ -31,29 +31,22 @@ KeyboardcontrolTorque::KeyboardcontrolTorque(): Node ("keyboardcontrolTorque")
         "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
                             std::bind(&KeyboardcontrolTorque::ET_DCH_callback, this, _1));
 
-    // sensor_timer_ = this->create_wall_timer(
-    //     std::chrono::seconds(3),
-    //     [this]() {
-    //         RCLCPP_INFO(this->get_logger(),
-    //         "\n--- Force/Torque Reading ---\n"
-    //         "\n ED_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
-    //         "\n ED_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
-    //         "\n ET_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
-    //         "\n ET_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n",
-
-    //         ED_IZQ_dato.force.x, ED_IZQ_dato.force.y, ED_IZQ_dato.force.z,
-    //         ED_IZQ_dato.torque.x, ED_IZQ_dato.torque.y, ED_IZQ_dato.torque.z,
-
-    //         ED_DCH_dato.force.x, ED_DCH_dato.force.y, ED_DCH_dato.force.z,
-    //         ED_DCH_dato.torque.x, ED_DCH_dato.torque.y, ED_DCH_dato.torque.z,
-
-    //         ET_IZQ_dato.force.x, ET_IZQ_dato.force.y, ET_IZQ_dato.force.z,
-    //         ET_IZQ_dato.torque.x, ET_IZQ_dato.torque.y, ET_IZQ_dato.torque.z,
-
-    //         ET_DCH_dato.force.x, ET_DCH_dato.force.y, ET_DCH_dato.force.z,
-    //         ET_DCH_dato.torque.x, ET_DCH_dato.torque.y, ET_DCH_dato.torque.z);
-    //     }
-    // );
+    sensor_timer_ = this->create_wall_timer(
+        std::chrono::seconds(5),
+        [this]() {
+            RCLCPP_INFO(this->get_logger(),
+            "\n--- Torque Y (tracción) de cada rueda [Nm] ---\n"
+            "  ED_IZQ: %.2f\n"
+            "  ED_DCH: %.2f\n"
+            "  ET_IZQ: %.2f\n"
+            "  ET_DCH: %.2f\n",
+            ED_IZQ_dato.torque.y,
+            ED_DCH_dato.torque.y,
+            ET_IZQ_dato.torque.y,
+            ET_DCH_dato.torque.y
+            );
+        }
+    );
 }
 
 KeyboardcontrolTorque::~KeyboardcontrolTorque()
@@ -125,7 +118,7 @@ void KeyboardcontrolTorque::keyboard_loop()
 
         case 'w':   RCLCPP_INFO(this->get_logger(), "FORDWARDS \r\n");
 
-        torque_msg.data = {T_cmd, T_cmd, T_cmd, T_cmd};   
+        torque_msg.data = {T_continuo, T_continuo, T_continuo, T_continuo};   
         giro_msg.data = {0, 0};
            
         break;
@@ -135,7 +128,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 's':
         RCLCPP_INFO(this->get_logger(), "BACKWARD \r\n");
 
-        torque_msg.data = {-T_cmd, -T_cmd, -T_cmd, -T_cmd}; 
+        torque_msg.data = {-T_continuo, -T_continuo, -T_continuo, -T_continuo}; 
         giro_msg.data = {0, 0}; 
 
         break;
@@ -145,7 +138,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 'd':
         RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
 
-        torque_msg.data = {T_cmd, T_cmd, T_cmd, T_cmd}; 
+        torque_msg.data = {T_continuo, T_continuo, T_continuo, T_continuo}; 
         giro_msg.data = {-alpha, -alpha}; 
 
         break;
@@ -155,7 +148,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 'a':
         RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
 
-        torque_msg.data = {T_cmd, T_cmd, T_cmd, T_cmd};  
+        torque_msg.data = {T_continuo, T_continuo, T_continuo, T_continuo};  
         giro_msg.data = {alpha, alpha};
 
         break;
@@ -165,7 +158,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 'c':
         RCLCPP_INFO(this->get_logger(), "RIGHT BACK \r\n");
 
-        torque_msg.data = {-T_cmd, -T_cmd, -T_cmd, -T_cmd};
+        torque_msg.data = {-T_continuo, -T_continuo, -T_continuo, -T_continuo};
         giro_msg.data = {-alpha, -alpha};
 
         break;
@@ -175,7 +168,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 'z':
         RCLCPP_INFO(this->get_logger(), "LEFT BACK \r\n");
 
-        torque_msg.data = {-T_cmd, -T_cmd, -T_cmd, -T_cmd};
+        torque_msg.data = {-T_continuo, -T_continuo, -T_continuo, -T_continuo};
         giro_msg.data = {alpha, alpha};
 
         break;

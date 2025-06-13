@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sdf version="1.6"> 
+<sdf version="1.9"> 
   <model name="Tierra">
     <static>true</static>
     <link name="link">
@@ -7,15 +7,11 @@
         <pose>0 0 0.3 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>70 70 70</scale>
-            <uri>model://Tierra/meshes/tierrasuelo.dae</uri> 
+            <scale>1 1 1</scale>
+            <uri>model://Tierra/meshes/tierra_triangular.stl</uri> 
           </mesh>
         </geometry>
         <material>
-
-          <!-- <ambient>0.588235 0.294118 0.000000 1.000000</ambient>
-          <diffuse>0.588235 0.294118 0.000000 1.000000</diffuse> -->
-
           <ambient>0.765 0.594 0.453,1.0</ambient>
           <diffuse>0.765 0.594 0.453 1.0</diffuse>
         </material>
@@ -24,29 +20,10 @@
         <pose>0 0 0.3 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>70 70 70</scale>
-            <uri>model://Tierra/meshes/tierrasuelo.dae</uri>
+            <scale>1 1 1</scale>
+            <uri>model://Tierra/meshes/tierra_triangular.stl</uri>
           </mesh>
         </geometry>
-         <surface>
-          <friction>
-            <ode>
-              <mu>100</mu>
-              <mu2>50</mu2>
-            </ode>
-          </friction>
-          <bounce>
-            <restitution_coefficient>0.0</restitution_coefficient>
-            <threshold>1e3</threshold>
-          </bounce>
-          <contact>
-            <ode>
-              <soft_cfm>0.0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-            </ode>
-          </contact>
-        </surface>
-
       </collision>
     </link>
   </model>
