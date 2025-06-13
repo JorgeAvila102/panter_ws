@@ -1403,7 +1403,6 @@
 
     <hardware>
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>
-      <!-- <plugin>gz_ros2_control/GazeboSystem</plugin> -->
     </hardware>
 
     <joint name="ED_DCH_joint">
@@ -1458,7 +1457,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="front_right_wheel_motor">
-      <mechanicalReduction>15</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -1468,7 +1467,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="front_left_wheel_motor">
-      <mechanicalReduction>15</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -1478,7 +1477,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="back_right_wheel_motor">
-      <mechanicalReduction>15</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -1488,7 +1487,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="back_left_wheel_motor">
-      <mechanicalReduction>15</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 

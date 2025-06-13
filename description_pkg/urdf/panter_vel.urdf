@@ -1404,8 +1404,6 @@
     </sensor>
   </gazebo>
 
-
-
 <!-- PLUGIN ACKERMANN -->
 
   <gazebo>
