@@ -4,11 +4,12 @@
     <static>true</static>
     <link name="link">
       <visual name="visual">
-        <pose>0 0 0.3 0 0 0</pose>
+        <pose>0 0 0.3 0 0 1.5708</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://Tierra/meshes/tierra_triangular.stl</uri> 
+            <uri>model://Tierra/meshes/pendientes25_60.dae</uri>
+            <!-- <uri>model://Tierra/meshes/pendientes6575.dae</uri>  -->
           </mesh>
         </geometry>
         <material>
@@ -17,11 +18,12 @@
         </material>
       </visual>
       <collision name="collision">
-        <pose>0 0 0.3 0 0 0</pose>
+        <pose>0 0 0.3 0 0 1.5708</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://Tierra/meshes/tierra_triangular.stl</uri>
+            <uri>model://Tierra/meshes/pendientes25_60.dae</uri>
+            <!-- <uri>model://Tierra/meshes/pendientes6575.dae</uri> -->
           </mesh>
         </geometry>
       </collision>
