@@ -34,15 +34,6 @@ def generate_launch_description():
         arguments=[urdf_file]
     )   
 
-    joint_state_publisher_node = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher',
-        output='screen',
-        parameters=[{'use_sim_time': True}],
-        arguments=[urdf_file]
-    )
-
     # Spawner del controlador de effort
     effort_spawner = TimerAction(
         period=4.0,
@@ -78,7 +69,6 @@ def generate_launch_description():
     return LaunchDescription([
         ros_control,
         node_joint_state_publisher,
-        joint_state_publisher_node,
         effort_spawner,
         steering_spawner,
         control_node
