@@ -28,9 +28,3 @@
   ros_type_name: "geometry_msgs/msg/Wrench"
   gz_type_name: "ignition.msgs.Wrench"
   direction: GZ_TO_ROS
-
-# - ros_topic_name:    "/joint_states"  
-#   gz_topic_name:     "/world/demo/model/panter/joint_state"  
-#   ros_type_name:     "sensor_msgs/msg/JointState"  
-#   gz_type_name:      "gz.msgs.Model"  
-#   direction:         BIDIRECTIONAL

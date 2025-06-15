@@ -1,6 +1,6 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.actions import TimerAction  # <-- Import necesario
+from launch.actions import TimerAction 
 import os
 from ament_index_python.packages import get_package_share_directory
 
@@ -34,17 +34,14 @@ def generate_launch_description():
         arguments=[urdf_file]
     )   
 
-    # joint_state_broadcaster = TimerAction(
-    #     period=2.0,
-    #     actions=[ Node(
-    #         package='controller_manager',
-    #         executable='spawner',
-    #         arguments=['joint_state_broadcaster'],
-    #         output='screen',
-    #         parameters=["/robot_description"],
-    #         arguments=[urdf_file]
-    #     ) ]
-    # )
+    joint_state_publisher_node = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher',
+        output='screen',
+        parameters=[{'use_sim_time': True}],
+        arguments=[urdf_file]
+    )
 
     # Spawner del controlador de effort
     effort_spawner = TimerAction(
@@ -81,43 +78,8 @@ def generate_launch_description():
     return LaunchDescription([
         ros_control,
         node_joint_state_publisher,
-        # joint_state_broadcaster,
+        joint_state_publisher_node,
         effort_spawner,
         steering_spawner,
         control_node
     ])
-
-
-
-
-
-
-
-
-
-    # node_robot_state_publisher = Node(
-
-    #     package= 'robot_state_publisher',
-    #     executable= 'robot_state_publisher',
-    #     output= 'screen',
-    #     parameters=[params],
-    #     arguments=[urdf_file]
-    # )
-
-    # node_joint_state_publisher = Node(
-
-    #     package= 'joint_state_publisher',
-    #     executable= 'joint_state_publisher',
-    #     name= 'joint_state_publisher',
-    #     parameters=[params],
-    #     arguments=[urdf_file]
-    # )   
-
-    # node_joint_state_publisher_gui = Node(
-
-    #     package= 'joint_state_publisher_gui',
-    #     executable= 'joint_state_publisher_gui',
-    #     name= 'joint_state_publisher_gui',
-    #     arguments=[urdf_file]
-    #     # condition= IfCondition(LaunchConfiguration('gui'))
-    # )   

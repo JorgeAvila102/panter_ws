@@ -27,29 +27,6 @@ ControlVelocidad::ControlVelocidad(): Node ("controlVelocidad")
         "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
                             std::bind(&ControlVelocidad::ET_DCH_callback, this, _1));
 
-    // sensor_timer_ = this->create_wall_timer(
-    //     std::chrono::seconds(3),
-    //     [this]() {
-    //         RCLCPP_INFO(this->get_logger(),
-    //         "\n--- Force/Torque Reading ---\n"
-    //         "\n ED_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
-    //         "\n ED_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
-    //         "\n ET_IZQ force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n"
-    //         "\n ET_DCH force: [%.2f, %.2f, %.2f], torque: [%.2f, %.2f, %.2f]\n",
-
-    //         ED_IZQ_dato.force.x, ED_IZQ_dato.force.y, ED_IZQ_dato.force.z,
-    //         ED_IZQ_dato.torque.x, ED_IZQ_dato.torque.y, ED_IZQ_dato.torque.z,
-
-    //         ED_DCH_dato.force.x, ED_DCH_dato.force.y, ED_DCH_dato.force.z,
-    //         ED_DCH_dato.torque.x, ED_DCH_dato.torque.y, ED_DCH_dato.torque.z,
-
-    //         ET_IZQ_dato.force.x, ET_IZQ_dato.force.y, ET_IZQ_dato.force.z,
-    //         ET_IZQ_dato.torque.x, ET_IZQ_dato.torque.y, ET_IZQ_dato.torque.z,
-
-    //         ET_DCH_dato.force.x, ET_DCH_dato.force.y, ET_DCH_dato.force.z,
-    //         ET_DCH_dato.torque.x, ET_DCH_dato.torque.y, ET_DCH_dato.torque.z);
-    //     }
-    // );
 }
 
 ControlVelocidad::~ControlVelocidad()
@@ -102,17 +79,15 @@ void ControlVelocidad::ED_DCH_callback(const geometry_msgs::msg::Wrench::SharedP
 
 }
 
-void ControlVelocidad:: manual_drive_panter()
+void ControlVelocidad:: vel_drive_panter()
 {
 
     auto msg = geometry_msgs::msg::Twist();
 
-    // std_msgs::msg::String mensaje;
-
     msg.linear.x = 0.0; // Velocidad en m/s
     msg.angular.z = 0;
 
-// Set console raw mode. To avoid pressing enter after each character
+// Set console raw mode
     system("stty raw");
 
     while (rclcpp::ok()) {
@@ -130,6 +105,7 @@ void ControlVelocidad:: manual_drive_panter()
     msg.angular.z = 0; // Velocidad en rad/s
 
     break;
+
 // AVANZA HACIA ATRÁS
     
     case 's':
@@ -213,7 +189,7 @@ int main(int argc, char **argv)
     rclcpp::init(argc, argv);
     auto node = std::make_shared<ControlVelocidad>();
 
-    std::thread keyboard_thread(&ControlVelocidad::manual_drive_panter, node);
+    std::thread keyboard_thread(&ControlVelocidad::vel_drive_panter, node);
 
     rclcpp::spin(node);
     keyboard_thread.join();

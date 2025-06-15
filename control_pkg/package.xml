@@ -3,7 +3,7 @@
 <package format="3">
   <name>control_pkg</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>COntrol_pkg se encarga de la programación en ROS</description>
   <maintainer email="j.avilaorero@gmail.com">Jorge Avila</maintainer>
   <license>TODO: License declaration</license>
 

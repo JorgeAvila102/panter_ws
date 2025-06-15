@@ -17,7 +17,6 @@ def generate_launch_description():
     urdf_file = os.path.join(get_package_share_directory('description_pkg'),'urdf', 'panter_vel.urdf')
     # world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'my_world.sdf')
     world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'tierra_world.sdf')
-    rviz_file = os.path.join(get_package_share_directory('description_pkg'),'rviz', 'panter.rviz')
 
     
     with open (urdf_file, 'r') as infp:
@@ -69,21 +68,13 @@ def generate_launch_description():
         arguments=["-topic", "robot_description", "-y", "0.0","-z", "0.38"]
     )
 
-    node_rviz = Node(
 
-        package= 'rviz2',
-        executable= 'rviz2',
-        name= 'rviz2',
-        output= 'screen',
-        arguments=['-d', rviz_file]
-    ) 
 
     return LaunchDescription([
          
         node_robot_state_publisher,
         node_joint_state_publisher_gui, 
         node_joint_state_publisher,
-        node_rviz,
         launch_gazebo,
         spawn_panter
     ])

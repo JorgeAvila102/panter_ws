@@ -31,29 +31,6 @@ KeyboardcontrolTorque::KeyboardcontrolTorque(): Node ("keyboardcontrolTorque")
         "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
                             std::bind(&KeyboardcontrolTorque::ET_DCH_callback, this, _1));
 
-    // sensor_timer_ = this->create_wall_timer(
-    //     std::chrono::seconds(5),
-    //     [this]() {
-    //         // RCLCPP_INFO(this->get_logger(),
-    //         // "\n--- Torque Y (tracción) de cada rueda [Nm] ---\n"
-    //         // "  ED_IZQ: %.2f\n"
-    //         // "  ED_DCH: %.2f\n"
-    //         // "  ET_IZQ: %.2f\n"
-    //         // "  ET_DCH: %.2f\n",
-    //         // ED_IZQ_dato.torque.y,
-    //         // ED_DCH_dato.torque.y,
-    //         // ET_IZQ_dato.torque.y,
-    //         // ET_DCH_dato.torque.y
-    //         // );
-    //         RCLCPP_INFO(this->get_logger(),
-    //             "ED_IZQ: %.2f | ED_DCH: %.2f | ET_IZQ: %.2f | ET_DCH: %.2f [Nm]",
-    //             ED_IZQ_dato.torque.y,
-    //             ED_DCH_dato.torque.y,
-    //             ET_IZQ_dato.torque.y,
-    //             ET_DCH_dato.torque.y
-    //         );
-    //     }
-    // );
     // PANEL EN TIEMPO REAL DE TORQUE
     sensor_timer_ = this->create_wall_timer(
         std::chrono::milliseconds(100), // 10Hz
@@ -121,7 +98,7 @@ void KeyboardcontrolTorque::keyboard_loop()
     std_msgs::msg::Float64MultiArray torque_msg;
     std_msgs::msg::Float64MultiArray giro_msg;
 
-// Set console raw mode. To avoid pressing enter after each character
+// Set console raw mode
     system("stty raw");
 
     while (rclcpp::ok()) {

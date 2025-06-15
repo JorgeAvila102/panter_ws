@@ -224,7 +224,7 @@
   <link name="MGD_IZQ">
     <inertial>
       <origin
-        xyz="-0.0855932268768944 0.00173893668665892 -0.0563643457848181"
+        xyz="0.0555932268768944 0.00173893668665892 -0.0563643457848181"
         rpy="0 0 0" />
       <mass
         value="0.657785044151253" />
@@ -250,7 +250,7 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -258,7 +258,7 @@
         <mesh
           filename="package://description_pkg/meshes/MGD_IZQ.STL" />
       </geometry>
-    </collision> -->
+    </collision>
   </link>
 
   <joint name="MGD_IZQ_joint" type="revolute">
@@ -319,14 +319,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.23"/>
       </geometry>
-      <surface>
+      <!-- <surface>
         <friction>
           <ode>
             <mu>5.0</mu>
             <mu2>5.0</mu2>
           </ode>
         </friction>
-      </surface>
+      </surface> -->
     </collision>
     <!-- <collision>
       <origin
@@ -589,7 +589,7 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -597,7 +597,7 @@
         <mesh
           filename="package://description_pkg/meshes/MGD_DCH.STL" />
       </geometry>
-    </collision> -->
+    </collision>
   </link>
 
   <joint name="MGD_DCH_joint" type="revolute">
@@ -659,14 +659,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.23"/>
       </geometry>
-        <surface>
+        <!-- <surface>
         <friction>
           <ode>
             <mu>5.0</mu>
             <mu2>5.0</mu2>
           </ode>
         </friction>
-      </surface>
+      </surface> -->
     </collision>
     <!-- <collision>
       <origin
@@ -929,7 +929,7 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -937,7 +937,7 @@
         <mesh
           filename="package://description_pkg/meshes/MGT_IZQ.STL" />
       </geometry>
-    </collision> -->
+    </collision>
   </link>
 
   <joint name="MGT_IZQ_joint" type="revolute">
@@ -995,14 +995,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.285"/>
       </geometry>
-      <surface>
+      <!-- <surface>
         <friction>
           <ode>
             <mu>5.0</mu>
             <mu2>5.0</mu2>
           </ode>
         </friction>
-      </surface>
+      </surface> -->
     </collision>
     <!-- <collision>
       <origin
@@ -1326,19 +1326,19 @@
     </visual>
     <collision>
       <origin
-        xyz="0 -0.025 0"
+        xyz="0 0.015 0"
         rpy="0 1.5707 1.5707" />
       <geometry>
         <cylinder radius="0.343" length="0.285"/>
       </geometry>
-      <surface>
+      <!-- <surface>
         <friction>
           <ode>
             <mu>5.0</mu>
             <mu2>5.0</mu2>
           </ode>
         </friction>
-      </surface>
+      </surface> -->
     </collision>
     <!-- <collision>
       <origin

@@ -54,21 +54,6 @@ def generate_launch_description():
     return LaunchDescription([
         gazebo_launch,
         control_launch,
-        bridge_node
-        #rviz_node
+        bridge_node,
+        rviz_node
     ])
-
-    # # Spawner del controlador de effort y de posición
-    # controller_spawner = Node(
-    #     package='controller_manager',
-    #     executable='spawner',
-    #     arguments=["effort_controller"],
-    #     output='screen'
-    # )
-
-    # steering_spawner = Node(
-    #     package='controller_manager',
-    #     executable='spawner',
-    #     arguments=['steering_controller'],
-    #     output='screen'
-    # )

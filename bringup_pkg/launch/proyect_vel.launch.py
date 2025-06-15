@@ -10,6 +10,7 @@ def generate_launch_description():
     # Rutas a los paquetes
     description_pkg = get_package_share_directory('description_pkg')
     control_pkg = get_package_share_directory('control_pkg')
+    rviz_file = os.path.join(get_package_share_directory('description_pkg'),'rviz', 'panter.rviz')
 
     # Rutas a archivos
     urdf_path = os.path.join(description_pkg, 'urdf', 'panter_vel.urdf')
@@ -36,9 +37,18 @@ def generate_launch_description():
             os.path.join(control_pkg, 'launch', 'ros_vel.launch.py')
         )
     )
+    node_rviz = Node(
+
+        package= 'rviz2',
+        executable= 'rviz2',
+        name= 'rviz2',
+        output= 'screen',
+        arguments=['-d', rviz_file]
+    ) 
 
     return LaunchDescription([
         gazebo_launch,
+        control_launch,
         bridge_node,
-        control_launch
+        node_rviz
     ])

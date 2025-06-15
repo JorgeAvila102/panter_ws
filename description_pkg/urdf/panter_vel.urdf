@@ -276,8 +276,14 @@
     <axis
       xyz="0 0 1" />
     <limit effort="500.0" velocity="1.0" lower="-0.5236" upper="0.5236"/>
-    <!-- <dynamics damping="100.0" friction="50.0"/> -->
   </joint>
+
+  <gazebo reference="MGD_IZQ_joint">
+    <dynamics>
+      <damping>20</damping>
+      <friction>10</friction>
+    </dynamics>
+  </gazebo>
 
 
 <!-- RUEDA DELANTERA IZQUIERDA -->
@@ -318,14 +324,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.23"/>
       </geometry>
-      <surface>
+      <!-- <surface>
         <friction>
           <ode>
             <mu>5.0</mu>
             <mu2>5.0</mu2>
           </ode>
         </friction>
-      </surface>
+      </surface> -->
     </collision>
     <!-- <collision>
       <origin
@@ -610,18 +616,9 @@
     <axis
       xyz="0 0 1" />
       <limit effort="500" velocity="1.0" lower="-0.5236" upper="0.5236"/>
-      <!-- <mimic joint="MGD_IZQ_joint" multiplier="1.0" offset="0.0"/> -->
-      <!-- <dynamics damping="100.0" friction="50.0"/> -->
   </joint>
 
   <gazebo reference="MGD_DCH_joint">
-    <dynamics>
-      <damping>20</damping>
-      <friction>10</friction>
-    </dynamics>
-  </gazebo>
-
-  <gazebo reference="MGD_IZQ_joint">
     <dynamics>
       <damping>20</damping>
       <friction>10</friction>
@@ -666,14 +663,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.23"/>
       </geometry>
-        <surface>
+        <!-- <surface>
         <friction>
           <ode>
             <mu>5.0</mu>
             <mu2>5.0</mu2>
           </ode>
         </friction>
-      </surface>
+      </surface> -->
     </collision>
     <!-- <collision>
       <origin
@@ -1002,14 +999,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.285"/>
       </geometry>
-      <surface>
+      <!-- <surface>
         <friction>
           <ode>
             <mu>5.0</mu>
             <mu2>5.0</mu2>
           </ode>
         </friction>
-      </surface>
+      </surface> -->
     </collision>
     <!-- <collision>
       <origin
@@ -1338,14 +1335,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.285"/>
       </geometry>
-      <surface>
+      <!-- <surface>
         <friction>
           <ode>
             <mu>5.0</mu>
             <mu2>5.0</mu2>
           </ode>
         </friction>
-      </surface>
+      </surface> -->
     </collision>
     <!-- <collision>
       <origin

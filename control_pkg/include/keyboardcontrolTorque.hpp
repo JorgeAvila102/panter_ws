@@ -49,17 +49,4 @@ private:
 
     static constexpr double alpha     = 0.50; // Ángulo de giro de unos ~30 grados.
 
-    double limitarTorque(double par_calculado) {
-        if (par_calculado > T_pico)
-            return T_pico;
-        else if (par_calculado > T_continuo)
-            return T_continuo;
-        else if (par_calculado < -T_pico)
-            return -T_pico;
-        else if (par_calculado < -T_continuo)
-            return -T_continuo;
-        else
-            return par_calculado;
-    }
-    
 };

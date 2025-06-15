@@ -13,7 +13,7 @@ public:
     ControlVelocidad();          // CONSTRUCTOR
     ~ControlVelocidad();         // DESTRUCTOR
 
-    void manual_drive_panter();
+    void vel_drive_panter();
     void ED_IZQ_callback(const geometry_msgs::msg::Wrench::SharedPtr msg);
     void ED_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg);
     void ET_IZQ_callback(const geometry_msgs::msg::Wrench::SharedPtr msg);
@@ -39,6 +39,6 @@ private:
     rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ET_IZQ;
     rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ET_DCH;
 
-    double lineal = 1.0;
-    double angular = 0.5;
+    double lineal = 2.0;
+    double angular = 0.75;
 };
