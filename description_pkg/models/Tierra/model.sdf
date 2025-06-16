@@ -8,7 +8,11 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
+            <!-- ESCENARIO 1 -->
+            <!-- <uri>model://Tierra/meshes/tierra_escalado.dae</uri> -->
+            <!-- ESCENARIO 2 -->
             <uri>model://Tierra/meshes/pendientes25_60.dae</uri>
+            <!-- ESCENARIO 3 -->
             <!-- <uri>model://Tierra/meshes/pendientes6575.dae</uri>  -->
           </mesh>
         </geometry>
@@ -22,7 +26,11 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://Tierra/meshes/pendientes25_60.dae</uri>
+            <!-- ESCENARIO 1 -->
+            <!-- <uri>model://Tierra/meshes/tierra_escalado.dae</uri> -->
+            <!-- ESCENARIO 2 -->
+            <uri>model://Tierra/meshes/pendientes25_60.dae</uri> 
+            <!-- ESCENARIO 3 -->
             <!-- <uri>model://Tierra/meshes/pendientes6575.dae</uri> -->
           </mesh>
         </geometry>

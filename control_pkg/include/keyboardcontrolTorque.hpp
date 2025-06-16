@@ -29,8 +29,8 @@ public:
 
     rclcpp::TimerBase::SharedPtr sensor_timer_;
 
-    double inc = 10;
     double par_actual = 50;
+    double giro_actual = 0.10;
 
 
 private:
@@ -52,7 +52,8 @@ private:
     static constexpr double reduc = 15.0;
     static constexpr double par_max = 32.0 * reduc; // 480 Nm
     static constexpr double par_pico = 120.0 * reduc; // 1800 Nm
-
-    static constexpr double alpha = 0.50; // Ángulo de giro de unos ~30 grados.
-
+    static constexpr double giro_max = 0.50; // Ángulo de giro de unos ~30 grados.
+    const double inc_giro = 0.10;
+    const double inc = 10;
+    const double PI = 3.14159;
 };

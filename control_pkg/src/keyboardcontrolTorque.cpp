@@ -31,7 +31,6 @@ KeyboardcontrolTorque::KeyboardcontrolTorque(): Node ("keyboardcontrolTorque")
         "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
                             std::bind(&KeyboardcontrolTorque::ET_DCH_callback, this, _1));
 
-    // PANEL EN TIEMPO REAL DE TORQUE
     sensor_timer_ = this->create_wall_timer(
         std::chrono::milliseconds(4000),
         [this]() {
@@ -106,6 +105,8 @@ void KeyboardcontrolTorque::keyboard_loop()
 
         break;
 
+    // DISMINUYE PAR
+
         case '-':   RCLCPP_INFO(this->get_logger(), "Disminuye PAR \r\n");
 
             if(par_actual > 0){
@@ -120,7 +121,37 @@ void KeyboardcontrolTorque::keyboard_loop()
            
         break;
 
+        // AUMENTA GIRO
+
+        case '1':   RCLCPP_INFO(this->get_logger(), "Aumenta Giro \r\n");
+
+            if(giro_actual < giro_max){
+
+                giro_actual = giro_actual + inc_giro;
+
+                RCLCPP_INFO(this->get_logger(), "Giro actual: %.2f grad", (giro_actual*180)/PI);
+            }else
+            {
+                RCLCPP_INFO(this->get_logger(), "Giro actual: %.2f grad", (giro_actual*180)/PI);
+            }  
+
+        break;
+
     // DISMINUYE PAR
+
+        case '0':   RCLCPP_INFO(this->get_logger(), "Disminuye Giro \r\n");
+
+            if(giro_actual > 0){
+
+                giro_actual = giro_actual - inc_giro;
+
+                RCLCPP_INFO(this->get_logger(), "Giro actual: %.2f grad", (giro_actual*180)/PI);
+            }else
+            {
+                RCLCPP_INFO(this->get_logger(), "Giro actual: %.2f grad", (giro_actual*180)/PI);
+            } 
+           
+        break;
 
     // AVANZA HACIA ADELANTE
 
@@ -147,7 +178,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
 
         torque_msg.data = {par_actual, par_actual, par_actual, par_actual}; 
-        giro_msg.data = {-alpha, -alpha}; 
+        giro_msg.data = {-giro_actual, -giro_actual}; 
 
         break;
 
@@ -157,7 +188,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
 
         torque_msg.data = {par_actual, par_actual, par_actual, par_actual};  
-        giro_msg.data = {alpha, alpha};
+        giro_msg.data = {giro_actual, giro_actual};
 
         break;
 
@@ -167,7 +198,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         RCLCPP_INFO(this->get_logger(), "RIGHT BACK \r\n");
 
         torque_msg.data = {-par_actual, -par_actual, -par_actual, -par_actual};
-        giro_msg.data = {-alpha, -alpha};
+        giro_msg.data = {-giro_actual, -giro_actual};
 
         break;
 
@@ -177,7 +208,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         RCLCPP_INFO(this->get_logger(), "LEFT BACK \r\n");
 
         torque_msg.data = {-par_actual, -par_actual, -par_actual, -par_actual};
-        giro_msg.data = {alpha, alpha};
+        giro_msg.data = {giro_actual, giro_actual};
 
         break;
 
@@ -186,7 +217,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 'x':
         RCLCPP_INFO(this->get_logger(), "STOP \r\n");
 
-        torque_msg.data = {-ED_IZQ_dato.torque.y, -ED_DCH_dato.torque.y, -ET_IZQ_dato.torque.y, -ET_DCH_dato.torque.y};
+        torque_msg.data = {0, 0, 0, 0};
         giro_msg.data = {0, 0};
         
         break;

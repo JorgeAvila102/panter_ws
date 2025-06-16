@@ -27,6 +27,18 @@ ControlVelocidad::ControlVelocidad(): Node ("controlVelocidad")
         "/model/panter/ET_DCH_joint/sensor/force_torque_sensor/force_torque", 10,
                             std::bind(&ControlVelocidad::ET_DCH_callback, this, _1));
 
+    sensor_timer_ = this->create_wall_timer(
+        std::chrono::milliseconds(4000),
+        [this]() {
+
+            std::cout << "\rED_IZQ: " << ED_IZQ_dato.torque.y
+                    << " | ED_DCH: " << ED_DCH_dato.torque.y
+                    << " | ET_IZQ: " << ET_IZQ_dato.torque.y
+                    << " | ET_DCH: " << ET_DCH_dato.torque.y
+                    << " [Nm]   " << std::flush;
+        }
+    );
+
 }
 
 ControlVelocidad::~ControlVelocidad()
@@ -97,91 +109,155 @@ void ControlVelocidad:: vel_drive_panter()
         switch (input)
         {
 
-// AVANZA HACIA ADELANTE
-    case 'w':
-    RCLCPP_INFO(this->get_logger(), "FORDWARDS \r\n");
+            // AUMENTA PAR
 
-    msg.linear.x = lineal + 0.5; // Velocidad en m/s
-    msg.angular.z = 0; // Velocidad en rad/s
+        case '+':   RCLCPP_INFO(this->get_logger(), "Aumenta Velocidad \r\n");
 
-    break;
+            if(vel_actual < vel_max){
 
-// AVANZA HACIA ATRÁS
-    
-    case 's':
-    RCLCPP_INFO(this->get_logger(), "BACKWARD \r\n");
+                vel_actual = vel_actual + inc;
 
-    msg.linear.x = -lineal - 0.5; // Velocidad en m/s
-    msg.angular.z = 0; // Velocidad en rad/s
+                RCLCPP_INFO(this->get_logger(), "Velocidad actual: %.2f m/s", vel_actual);
+            }else
+            {
+                RCLCPP_INFO(this->get_logger(), "Velocidad actual: %.2f m/s", vel_actual);
+            }  
 
-    break;
+        break;
 
-// GIRA DERECHA AVANZANDO
-    case 'd':
-    RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
+    // DISMINUYE PAR
 
-    msg.linear.x = lineal; // Velocidad en m/s
-    msg.angular.z = -angular; // Velocidad en rad/s
+        case '-':   RCLCPP_INFO(this->get_logger(), "Disminuye Velocidad \r\n");
 
-    break;
+            if(vel_actual > 0){
 
-// GIRA IZQUIERDA AVANZANDO
-    case 'a':
-    RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
+                vel_actual = vel_actual - inc;
 
-    msg.linear.x = lineal; // Velocidad en m/s
-    msg.angular.z = angular; // Velocidad en rad/s
+                RCLCPP_INFO(this->get_logger(), "Velocidad actual: %.2f m/s", vel_actual);
+            }else
+            {
+                RCLCPP_INFO(this->get_logger(), "Velocidad actual: %.2f m/s", vel_actual);
+            } 
+           
+        break;
 
-    break;
+        // AUMENTA PAR
 
-    // GIRA DERECHA RETROCEDIENDO
+        case '1':   RCLCPP_INFO(this->get_logger(), "Aumenta Giro \r\n");
 
-    case 'c':
-    RCLCPP_INFO(this->get_logger(), "RIGHT BACK \r\n");
+            if(giro_actual < vel_max){
 
-    msg.linear.x = -lineal; // Velocidad en m/s
-    msg.angular.z = angular; // Velocidad en rad/s
+                giro_actual = giro_actual + inc;
 
-    break;
+                RCLCPP_INFO(this->get_logger(), "Giro actual: %.2f rad/s", giro_actual);
+            }else
+            {
+                RCLCPP_INFO(this->get_logger(), "Giro actual: %.2f rad/s", giro_actual);
+            }  
 
-    // GIRA DERECHA RETROCEDIENDO
+        break;
 
-    case 'z':
-    RCLCPP_INFO(this->get_logger(), "LEFT BACK \r\n");
+    // DISMINUYE PAR
 
-    msg.linear.x = -lineal; // Velocidad en m/s
-    msg.angular.z = -angular; // Velocidad en rad/s
+        case '0':   RCLCPP_INFO(this->get_logger(), "Disminuye Giro \r\n");
 
-    break;
+            if(giro_actual > 0){
 
-// PARAR
-    case 'x':
-    RCLCPP_INFO(this->get_logger(), "STOP \r\n");
+                giro_actual = giro_actual - inc;
 
-    msg.linear.x = 0; // Velocidad en m/s
-    msg.angular.z = 0; // Velocidad en rad/s
+                RCLCPP_INFO(this->get_logger(), "Giro actual: %.2f rad/s", giro_actual);
+            }else
+            {
+                RCLCPP_INFO(this->get_logger(), "Giro actual: %.2f rad/s", giro_actual);
+            } 
+           
+        break;
 
-    break;
+    // AVANZA HACIA ADELANTE
+        case 'w':
+        RCLCPP_INFO(this->get_logger(), "FORDWARDS \r\n");
 
-// SALIR DE MODO RAW
-    case 0x20:
-    RCLCPP_INFO(this->get_logger(), "Detected SPACE = Exit");
-    
-    //restore the console
-    system("stty cooked");
-    break;
+        msg.linear.x = vel_actual; // Velocidad en m/s
+        msg.angular.z = 0; // Velocidad en rad/s
 
-    default:
-    // ignoramos caracteres no deseados
-    RCLCPP_INFO(this->get_logger(), "Non valid KEY\r\n");
-    break;
-    
+        break;
+
+    // AVANZA HACIA ATRÁS
+        
+        case 's':
+        RCLCPP_INFO(this->get_logger(), "BACKWARD \r\n");
+
+        msg.linear.x = -vel_actual; // Velocidad en m/s
+        msg.angular.z = 0; // Velocidad en rad/s
+
+        break;
+
+    // GIRA DERECHA AVANZANDO
+        case 'd':
+        RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
+
+        msg.linear.x = vel_actual; // Velocidad en m/s
+        msg.angular.z = -giro_actual; // Velocidad en rad/s
+
+        break;
+
+    // GIRA IZQUIERDA AVANZANDO
+        case 'a':
+        RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
+
+        msg.linear.x = vel_actual; // Velocidad en m/s
+        msg.angular.z = giro_actual; // Velocidad en rad/s
+
+        break;
+
+        // GIRA DERECHA RETROCEDIENDO
+
+        case 'c':
+        RCLCPP_INFO(this->get_logger(), "RIGHT BACK \r\n");
+
+        msg.linear.x = -vel_actual; // Velocidad en m/s
+        msg.angular.z = giro_actual; // Velocidad en rad/s
+
+        break;
+
+        // GIRA DERECHA RETROCEDIENDO
+
+        case 'z':
+        RCLCPP_INFO(this->get_logger(), "LEFT BACK \r\n");
+
+        msg.linear.x = -vel_actual; // Velocidad en m/s
+        msg.angular.z = -giro_actual; // Velocidad en rad/s
+
+        break;
+
+    // PARAR
+        case 'x':
+        RCLCPP_INFO(this->get_logger(), "STOP \r\n");
+
+        msg.linear.x = 0; // Velocidad en m/s
+        msg.angular.z = 0; // Velocidad en rad/s
+
+        break;
+
+    // SALIR DE MODO RAW
+        case 0x20:
+        RCLCPP_INFO(this->get_logger(), "Detected SPACE = Exit");
+        
+        //restore the console
+        system("stty cooked");
+        break;
+
+        default:
+        // ignoramos caracteres no deseados
+        RCLCPP_INFO(this->get_logger(), "Non valid KEY\r\n");
+        break;
+        
+            }
+
+            pub_cmd_vel -> publish(msg);
         }
 
         pub_cmd_vel -> publish(msg);
-    }
-
-    pub_cmd_vel -> publish(msg);
 }
 
 int main(int argc, char **argv)
