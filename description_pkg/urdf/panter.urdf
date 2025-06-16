@@ -2,8 +2,6 @@
 
 <robot name="panter">
 
-<!-- <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panter"> -->
-
 <!-- CHASIS -->
 
   <link name="CH">
@@ -349,8 +347,8 @@
       link="ED_IZQ" />
     <axis
       xyz="0 1 0" />
-    <limit effort="500.0" velocity="15.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
-    <dynamics damping="2.5" friction="1.5"/> <!-- retardo y frenado natural -->
+    <limit effort="10000.0" velocity="50.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <dynamics damping="2.5" friction="0"/> <!-- retardo y frenado natural -->
   </joint>
 
   <gazebo reference="ED_IZQ">
@@ -689,8 +687,8 @@
       link="ED_DCH" />
     <axis
       xyz="0 1 0" />
-    <limit effort="500.0" velocity="15.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
-    <dynamics damping="2.5" friction="1.5"/> <!-- retardo y frenado natural -->
+    <limit effort="10000.0" velocity="50.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <dynamics damping="2.5" friction="0"/> <!-- retardo y frenado natural -->
   </joint>
 
   <gazebo reference="ED_DCH_joint">
@@ -1025,8 +1023,8 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
-    <limit effort="500.0" velocity="15.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
-    <dynamics damping="2.5" friction="1.5"/> <!-- retardo y frenado natural -->
+    <limit effort="10000.0" velocity="50.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <dynamics damping="2.5" friction="0"/> <!-- retardo y frenado natural -->
   </joint>
 
   <gazebo reference="ET_IZQ_joint">
@@ -1363,8 +1361,8 @@
     <axis xyz="0 1 0">
       <dynamics damping="0.1" friction="0.1"/>
     </axis>
-    <limit effort="500.0" velocity="15.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
-    <dynamics damping="2.5" friction="1.5"/> <!-- retardo y frenado natural -->
+    <limit effort="10000.0" velocity="50.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <dynamics damping="2.5" friction="0"/> <!-- retardo y frenado natural -->
   </joint>
 
   <gazebo reference="ET_DCH">
@@ -1399,20 +1397,31 @@
 
 <!-- ROS2 CONTROL -->
 
-  <ros2_control name="GazeboSimSystem" type="system">
+  <gazebo>
+    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
 
+      <robot_param>robot_description</robot_param>
+      <robot_param_node>robot_state_publisher</robot_param_node>
+      <parameters>/home/jorge/panter_ws/src/control_pkg/config/control_config.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+  <ros2_control name="GazeboSimSystem" type="system">
+  
     <hardware>
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>
     </hardware>
 
     <joint name="ED_DCH_joint">
-      <command_interface name="effort"/>
+      <command_interface name="effort"/>  
+
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
 
     <joint name="ED_IZQ_joint">
       <command_interface name="effort"/>
+
       <state_interface name="position"/>
       <state_interface name="velocity"/>
     </joint>
@@ -1443,52 +1452,44 @@
 
   </ros2_control>
 
-  <gazebo>
-    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-      <robot_param>robot_description</robot_param>
-      <robot_param_node>robot_state_publisher</robot_param_node>
-      <parameters>/home/jorge/panter_ws/src/control_pkg/config/control_config.yaml</parameters>
-    </plugin>
-  </gazebo>
-
-  <transmission name="front_right_wheel_trans">
+  <!-- <transmission name="trans_ED_DCH">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="ED_DCH_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="front_right_wheel_motor">
-      <mechanicalReduction>1</mechanicalReduction>
+    <actuator name="motor_ED_DCH">
+      <mechanicalReduction>15</mechanicalReduction>
     </actuator>
   </transmission>
 
-  <transmission name="front_left_wheel_trans">
+  <transmission name="trans_ED_IZQ">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="ED_IZQ_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="front_left_wheel_motor">
-      <mechanicalReduction>1</mechanicalReduction>
+    <actuator name="motor_ED_IZQ">
+      <mechanicalReduction>15</mechanicalReduction>
     </actuator>
   </transmission>
 
-  <transmission name="back_right_wheel_trans">
+  <transmission name="trans_ET_DCH">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="ET_DCH_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="back_right_wheel_motor">
-      <mechanicalReduction>1</mechanicalReduction>
+    <actuator name="motor_ET_DCH">
+      <mechanicalReduction>15</mechanicalReduction>
     </actuator>
   </transmission>
 
-  <transmission name="back_left_wheel_trans">
+  <transmission name="trans_ET_IZQ">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="ET_IZQ_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="back_left_wheel_motor">
-      <mechanicalReduction>1</mechanicalReduction>
+    <actuator name="motor_ET_IZQ">
+      <mechanicalReduction>15</mechanicalReduction>
     </actuator>
-  </transmission>
+  </transmission> -->
 
 </robot>

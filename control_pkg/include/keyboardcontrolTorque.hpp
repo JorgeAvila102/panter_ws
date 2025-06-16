@@ -29,6 +29,10 @@ public:
 
     rclcpp::TimerBase::SharedPtr sensor_timer_;
 
+    double inc = 10;
+    double par_actual = 50;
+
+
 private:
     
     // PUBLICADORES
@@ -43,10 +47,12 @@ private:
     rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ET_IZQ;
     rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ET_DCH;
 
-    static constexpr double REDUCCION = 15.0;
-    static constexpr double T_continuo = 34.0 * REDUCCION; // 510 Nm
-    static constexpr double T_pico     = 120.0 * REDUCCION; // 1800 Nm
+    // rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr joint_sub_;
 
-    static constexpr double alpha     = 0.50; // Ángulo de giro de unos ~30 grados.
+    static constexpr double reduc = 15.0;
+    static constexpr double par_max = 32.0 * reduc; // 480 Nm
+    static constexpr double par_pico = 120.0 * reduc; // 1800 Nm
+
+    static constexpr double alpha = 0.50; // Ángulo de giro de unos ~30 grados.
 
 };

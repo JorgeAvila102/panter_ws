@@ -33,13 +33,14 @@ KeyboardcontrolTorque::KeyboardcontrolTorque(): Node ("keyboardcontrolTorque")
 
     // PANEL EN TIEMPO REAL DE TORQUE
     sensor_timer_ = this->create_wall_timer(
-        std::chrono::milliseconds(100), // 10Hz
+        std::chrono::milliseconds(4000),
         [this]() {
+
             std::cout << "\rED_IZQ: " << ED_IZQ_dato.torque.y
-                      << " | ED_DCH: " << ED_DCH_dato.torque.y
-                      << " | ET_IZQ: " << ET_IZQ_dato.torque.y
-                      << " | ET_DCH: " << ET_DCH_dato.torque.y
-                      << " [Nm]   " << std::flush;
+                    << " | ED_DCH: " << ED_DCH_dato.torque.y
+                    << " | ET_IZQ: " << ET_IZQ_dato.torque.y
+                    << " | ET_DCH: " << ET_DCH_dato.torque.y
+                    << " [Nm]   " << std::flush;
         }
     );
 }
@@ -52,46 +53,27 @@ KeyboardcontrolTorque::~KeyboardcontrolTorque()
 void KeyboardcontrolTorque::ED_IZQ_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
 {
     ED_IZQ_dato.force.x = msg->force.x;
-    ED_IZQ_dato.force.y = msg->force.y;
-    ED_IZQ_dato.force.z = msg->force.z;
-
-    ED_IZQ_dato.torque.x = msg->torque.x;
     ED_IZQ_dato.torque.y = msg->torque.y;
-    ED_IZQ_dato.torque.z = msg->torque.z;
 }
 
 void KeyboardcontrolTorque::ED_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
 {
     ED_DCH_dato.force.x = msg->force.x;
-    ED_DCH_dato.force.y = msg->force.y;
-    ED_DCH_dato.force.z = msg->force.z;
-
-    ED_DCH_dato.torque.x = msg->torque.x;
     ED_DCH_dato.torque.y = msg->torque.y;
-    ED_DCH_dato.torque.z = msg->torque.z;
 }
 
 void KeyboardcontrolTorque::ET_IZQ_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
 {
     ET_IZQ_dato.force.x = msg->force.x;
-    ET_IZQ_dato.force.y = msg->force.y;
-    ET_IZQ_dato.force.z = msg->force.z;
-
-    ET_IZQ_dato.torque.x = msg->torque.x;
     ET_IZQ_dato.torque.y = msg->torque.y;
-    ET_IZQ_dato.torque.z = msg->torque.z;
 }
 
 void KeyboardcontrolTorque::ET_DCH_callback(const geometry_msgs::msg::Wrench::SharedPtr msg)
 {
     ET_DCH_dato.force.x = msg->force.x;
-    ET_DCH_dato.force.y = msg->force.y;
-    ET_DCH_dato.force.z = msg->force.z;
-
-    ET_DCH_dato.torque.x = msg->torque.x;
     ET_DCH_dato.torque.y = msg->torque.y;
-    ET_DCH_dato.torque.z = msg->torque.z;
 }
+
 
 void KeyboardcontrolTorque::keyboard_loop()
 {
@@ -108,12 +90,43 @@ void KeyboardcontrolTorque::keyboard_loop()
         switch (input)
         {
 
+    // AUMENTA PAR
+
+        case '+':   RCLCPP_INFO(this->get_logger(), "Aumenta PAR \r\n");
+
+            if(par_actual < par_max){
+
+                par_actual = par_actual + inc;
+
+                RCLCPP_INFO(this->get_logger(), "Par actual: %.2f Nm", par_actual);
+            }else
+            {
+                RCLCPP_INFO(this->get_logger(), "Par actual: %.2f Nm", par_actual);
+            }  
+
+        break;
+
+        case '-':   RCLCPP_INFO(this->get_logger(), "Disminuye PAR \r\n");
+
+            if(par_actual > 0){
+
+                par_actual = par_actual - inc;
+
+                RCLCPP_INFO(this->get_logger(), "Par actual: %.2f Nm", par_actual);
+            }else
+            {
+                RCLCPP_INFO(this->get_logger(), "Par actual: %.2f Nm", par_actual);
+            } 
+           
+        break;
+
+    // DISMINUYE PAR
 
     // AVANZA HACIA ADELANTE
 
         case 'w':   RCLCPP_INFO(this->get_logger(), "FORDWARDS \r\n");
 
-        torque_msg.data = {T_continuo, T_continuo, T_continuo, T_continuo};   
+        torque_msg.data = {par_actual, par_actual, par_actual, par_actual};   
         giro_msg.data = {0, 0};
            
         break;
@@ -123,7 +136,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 's':
         RCLCPP_INFO(this->get_logger(), "BACKWARD \r\n");
 
-        torque_msg.data = {-T_continuo, -T_continuo, -T_continuo, -T_continuo}; 
+        torque_msg.data = {-par_actual, -par_actual, -par_actual, -par_actual}; 
         giro_msg.data = {0, 0}; 
 
         break;
@@ -133,7 +146,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 'd':
         RCLCPP_INFO(this->get_logger(), "RIGHT \r\n");
 
-        torque_msg.data = {T_continuo, T_continuo, T_continuo, T_continuo}; 
+        torque_msg.data = {par_actual, par_actual, par_actual, par_actual}; 
         giro_msg.data = {-alpha, -alpha}; 
 
         break;
@@ -143,7 +156,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 'a':
         RCLCPP_INFO(this->get_logger(), "LEFT \r\n");
 
-        torque_msg.data = {T_continuo, T_continuo, T_continuo, T_continuo};  
+        torque_msg.data = {par_actual, par_actual, par_actual, par_actual};  
         giro_msg.data = {alpha, alpha};
 
         break;
@@ -153,7 +166,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 'c':
         RCLCPP_INFO(this->get_logger(), "RIGHT BACK \r\n");
 
-        torque_msg.data = {-T_continuo, -T_continuo, -T_continuo, -T_continuo};
+        torque_msg.data = {-par_actual, -par_actual, -par_actual, -par_actual};
         giro_msg.data = {-alpha, -alpha};
 
         break;
@@ -163,7 +176,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 'z':
         RCLCPP_INFO(this->get_logger(), "LEFT BACK \r\n");
 
-        torque_msg.data = {-T_continuo, -T_continuo, -T_continuo, -T_continuo};
+        torque_msg.data = {-par_actual, -par_actual, -par_actual, -par_actual};
         giro_msg.data = {alpha, alpha};
 
         break;
@@ -190,9 +203,10 @@ void KeyboardcontrolTorque::keyboard_loop()
         // ignoramos caracteres no deseados
         RCLCPP_INFO(this->get_logger(), "Non valid KEY\r\n");
         break;
-        
-        }
 
+
+
+        }
         pub_torque->publish(torque_msg);
         pub_giro  ->publish(giro_msg);
     }
