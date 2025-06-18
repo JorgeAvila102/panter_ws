@@ -217,7 +217,7 @@ void KeyboardcontrolTorque::keyboard_loop()
         case 'x':
         RCLCPP_INFO(this->get_logger(), "STOP \r\n");
 
-        torque_msg.data = {0, 0, 0, 0};
+        torque_msg.data = {-ED_IZQ_dato.torque.y, -ED_DCH_dato.torque.y, -ET_IZQ_dato.torque.y, -ET_DCH_dato.torque.y};
         giro_msg.data = {0, 0};
         
         break;
