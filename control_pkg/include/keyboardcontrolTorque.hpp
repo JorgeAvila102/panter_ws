@@ -29,8 +29,8 @@ public:
 
     rclcpp::TimerBase::SharedPtr sensor_timer_;
 
-    double par_actual = 50;
-    double giro_actual = 0.10;
+    double par_actual = 40;
+    double giro_actual = 0.1927; // 11.04 grados
 
 
 private:

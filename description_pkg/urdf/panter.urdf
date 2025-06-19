@@ -269,15 +269,15 @@
       link="MGD_IZQ" />
     <axis
       xyz="0 0 1" />
-    <limit effort="500.0" velocity="1.0" lower="-0.5236" upper="0.5236"/>
+    <limit effort="500.0" velocity="1.0" lower="-0.3927" upper="0.3927"/>
   </joint>
 
-  <gazebo reference="MGD_IZQ_joint">
+  <!-- <gazebo reference="MGD_IZQ_joint">
     <dynamics>
       <damping>20</damping>
       <friction>10</friction>
     </dynamics>
-  </gazebo>
+  </gazebo> -->
 
 <!-- RUEDA DELANTERA IZQUIERDA -->
 
@@ -317,14 +317,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.23"/>
       </geometry>
-      <!-- <surface>
+      <surface>
         <friction>
           <ode>
-            <mu>5.0</mu>
-            <mu2>5.0</mu2>
+            <mu>0.9</mu>
+            <mu2>0.8</mu2>
           </ode>
         </friction>
-      </surface> -->
+      </surface>
     </collision>
     <!-- <collision>
       <origin
@@ -347,24 +347,8 @@
       link="ED_IZQ" />
     <axis
       xyz="0 1 0" />
-    <limit effort="10000.0" velocity="50.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
-    <dynamics damping="2.5" friction="0"/> <!-- retardo y frenado natural -->
+    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular límites-->
   </joint>
-
-  <gazebo reference="ED_IZQ">
-    <mu1>1.5</mu1>
-    <mu2>1.5</mu2>
-    <surface>
-      <friction>
-        <ode>
-          <mu>1.5</mu>
-          <mu2>1.5</mu2>
-          <slip1>0.1</slip1>
-          <slip2>0.1</slip2>
-        </ode>
-      </friction>
-    </surface>
-  </gazebo>
 
   <gazebo reference="ED_IZQ_joint">
     <sensor name="force_torque_sensor" type="force_torque">
@@ -608,16 +592,8 @@
       link="MGD_DCH" />
     <axis
       xyz="0 0 1" />
-      <limit effort="500" velocity="1.0" lower="-0.5236" upper="0.5236"/>
-      <!-- <dynamics damping="100.0" friction="50.0"/> -->
+      <limit effort="500" velocity="1.0" lower="-0.3927" upper="0.3927"/>
   </joint>
-
-  <gazebo reference="MGD_DCH_joint">
-    <dynamics>
-      <damping>20</damping>
-      <friction>10</friction>
-    </dynamics>
-  </gazebo>
 
 <!-- RUEDA DELANTERA DERECHA -->
 
@@ -657,14 +633,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.23"/>
       </geometry>
-        <!-- <surface>
+        <surface>
         <friction>
           <ode>
-            <mu>5.0</mu>
-            <mu2>5.0</mu2>
+            <mu>0.9</mu>
+            <mu2>0.8</mu2>
           </ode>
         </friction>
-      </surface> -->
+      </surface>
     </collision>
     <!-- <collision>
       <origin
@@ -687,8 +663,7 @@
       link="ED_DCH" />
     <axis
       xyz="0 1 0" />
-    <limit effort="10000.0" velocity="50.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
-    <dynamics damping="2.5" friction="0"/> <!-- retardo y frenado natural -->
+    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
   </joint>
 
   <gazebo reference="ED_DCH_joint">
@@ -704,21 +679,6 @@
         <measure_direction>child_to_parent</measure_direction>
       </force_torque> 
     </sensor>
-  </gazebo>
-
-  <gazebo reference="ED_DCH">
-    <mu1>1.5</mu1>
-    <mu2>1.5</mu2>
-    <surface>
-      <friction>
-        <ode>
-          <mu>1.5</mu>
-          <mu2>1.5</mu2>
-          <slip1>0.1</slip1>
-          <slip2>0.1</slip2>
-        </ode>
-      </friction>
-    </surface>
   </gazebo>
 
 <!--        #### EJE TRASERO IZQUIERDA ####        -->
@@ -993,14 +953,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.285"/>
       </geometry>
-      <!-- <surface>
+      <surface>
         <friction>
           <ode>
-            <mu>5.0</mu>
-            <mu2>5.0</mu2>
+            <mu>0.9</mu>
+            <mu2>0.8</mu2>
           </ode>
         </friction>
-      </surface> -->
+      </surface>
     </collision>
     <!-- <collision>
       <origin
@@ -1023,8 +983,7 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
-    <limit effort="10000.0" velocity="50.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
-    <dynamics damping="2.5" friction="0"/> <!-- retardo y frenado natural -->
+    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
   </joint>
 
   <gazebo reference="ET_IZQ_joint">
@@ -1042,20 +1001,6 @@
     </sensor>
   </gazebo>
 
-  <gazebo reference="ET_IZQ">
-    <mu1>1.5</mu1>
-    <mu2>1.5</mu2>
-    <surface>
-      <friction>
-        <ode>
-          <mu>1.5</mu>
-          <mu2>1.5</mu2>
-          <slip1>0.1</slip1>
-          <slip2>0.1</slip2>
-        </ode>
-      </friction>
-    </surface>
-  </gazebo>
 
 <!--        #### EJE TRASERO DERECHA ####        -->
 
@@ -1329,14 +1274,14 @@
       <geometry>
         <cylinder radius="0.343" length="0.285"/>
       </geometry>
-      <!-- <surface>
+      <surface>
         <friction>
           <ode>
-            <mu>5.0</mu>
-            <mu2>5.0</mu2>
+            <mu>0.9</mu>
+            <mu2>0.8</mu2>
           </ode>
         </friction>
-      </surface> -->
+      </surface>
     </collision>
     <!-- <collision>
       <origin
@@ -1359,13 +1304,11 @@
     <child
       link="ET_DCH" />
     <axis xyz="0 1 0">
-      <dynamics damping="0.1" friction="0.1"/>
     </axis>
-    <limit effort="10000.0" velocity="50.0" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
-    <dynamics damping="2.5" friction="0"/> <!-- retardo y frenado natural -->
+    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
   </joint>
 
-  <gazebo reference="ET_DCH">
+  <!-- <gazebo reference="ET_DCH">
     <mu1>1.5</mu1>
     <mu2>1.5</mu2>
     <surface>
@@ -1378,7 +1321,7 @@
         </ode>
       </friction>
     </surface>
-  </gazebo>
+  </gazebo> -->
 
   <gazebo reference="ET_DCH_joint">
     <sensor name="force_torque_sensor" type="force_torque">

@@ -161,7 +161,7 @@ void ControlVelocidad:: vel_drive_panter()
 
         case '0':   RCLCPP_INFO(this->get_logger(), "Disminuye Giro \r\n");
 
-            if(giro_actual > 0){
+            if(giro_actual > 10){
 
                 giro_actual = giro_actual - inc;
 

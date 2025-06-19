@@ -27,8 +27,9 @@ public:
     rclcpp::TimerBase::SharedPtr sensor_timer_;
 
     double vel_actual = 1.0;
-    double giro_actual = 0.5;
+    double giro_actual = 0.1927;
     double inc = 0.5;
+    double inc_giro = 10;
 
 private:
     
@@ -44,5 +45,5 @@ private:
     rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ET_DCH;
 
     const double vel_max = 10.0; // 36 Km/h
-    const double giro_max = 5.0; // 36 Km/h
+    const double giro_max = 5.0; 
 };
