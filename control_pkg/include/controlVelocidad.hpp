@@ -44,6 +44,6 @@ private:
     rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ET_IZQ;
     rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr sub_ET_DCH;
 
-    const double vel_max = 10.0; // 36 Km/h
+    const double vel_max = 15.28; // 55 Km/h
     const double giro_max = 5.0; 
 };

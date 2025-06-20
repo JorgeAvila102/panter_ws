@@ -272,13 +272,6 @@
     <limit effort="500.0" velocity="1.0" lower="-0.3927" upper="0.3927"/>
   </joint>
 
-  <!-- <gazebo reference="MGD_IZQ_joint">
-    <dynamics>
-      <damping>20</damping>
-      <friction>10</friction>
-    </dynamics>
-  </gazebo> -->
-
 <!-- RUEDA DELANTERA IZQUIERDA -->
 
   <link name="ED_IZQ">
@@ -320,8 +313,8 @@
       <surface>
         <friction>
           <ode>
-            <mu>0.9</mu>
-            <mu2>0.8</mu2>
+            <mu>0.68</mu>
+            <mu2>0.65</mu2>
           </ode>
         </friction>
       </surface>
@@ -347,7 +340,7 @@
       link="ED_IZQ" />
     <axis
       xyz="0 1 0" />
-    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular límites-->
+    <limit effort="480.0" velocity="15.28" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular límites-->
   </joint>
 
   <gazebo reference="ED_IZQ_joint">
@@ -636,8 +629,8 @@
         <surface>
         <friction>
           <ode>
-            <mu>0.9</mu>
-            <mu2>0.8</mu2>
+            <mu>0.68</mu>
+            <mu2>0.65</mu2>
           </ode>
         </friction>
       </surface>
@@ -663,7 +656,7 @@
       link="ED_DCH" />
     <axis
       xyz="0 1 0" />
-    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <limit effort="480.0" velocity="15.28" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
   </joint>
 
   <gazebo reference="ED_DCH_joint">
@@ -956,8 +949,8 @@
       <surface>
         <friction>
           <ode>
-            <mu>0.9</mu>
-            <mu2>0.8</mu2>
+            <mu>0.68</mu>
+            <mu2>0.65</mu2>
           </ode>
         </friction>
       </surface>
@@ -983,7 +976,7 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
-    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <limit effort="480.0" velocity="15.28" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
   </joint>
 
   <gazebo reference="ET_IZQ_joint">
@@ -1277,8 +1270,8 @@
       <surface>
         <friction>
           <ode>
-            <mu>0.9</mu>
-            <mu2>0.8</mu2>
+            <mu>0.68</mu>
+            <mu2>0.65</mu2>
           </ode>
         </friction>
       </surface>
@@ -1305,23 +1298,8 @@
       link="ET_DCH" />
     <axis xyz="0 1 0">
     </axis>
-    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <limit effort="480.0" velocity="15.28" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
   </joint>
-
-  <!-- <gazebo reference="ET_DCH">
-    <mu1>1.5</mu1>
-    <mu2>1.5</mu2>
-    <surface>
-      <friction>
-        <ode>
-          <mu>1.5</mu>
-          <mu2>1.5</mu2>
-          <slip1>0.1</slip1>
-          <slip2>0.1</slip2>
-        </ode>
-      </friction>
-    </surface>
-  </gazebo> -->
 
   <gazebo reference="ET_DCH_joint">
     <sensor name="force_torque_sensor" type="force_torque">

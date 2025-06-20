@@ -337,7 +337,7 @@
       link="ED_IZQ" />
     <axis
       xyz="0 1 0" />
-    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <limit effort="480.0" velocity="15.28" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
   </joint>
 
   <gazebo reference="ED_IZQ_joint">
@@ -626,8 +626,8 @@
         <surface>
         <friction>
           <ode>
-            <mu>0.9</mu>
-            <mu2>0.8</mu2>
+            <mu>0.68</mu>
+            <mu2>0.65</mu2>
           </ode>
         </friction>
       </surface>
@@ -653,7 +653,7 @@
       link="ED_DCH" />
     <axis
       xyz="0 1 0" />
-    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <limit effort="480.0" velocity="15.28" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
   </joint>
 
   <gazebo reference="ED_DCH_joint">
@@ -946,8 +946,8 @@
       <surface>
         <friction>
           <ode>
-            <mu>0.9</mu>
-            <mu2>0.8</mu2>
+            <mu>0.68</mu>
+            <mu2>0.65</mu2>
           </ode>
         </friction>
       </surface>
@@ -973,7 +973,7 @@
       link="ET_IZQ" />
     <axis
       xyz="0 1 0" />
-    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <limit effort="480.0" velocity="15.28" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
   </joint>
 
   <gazebo reference="ET_IZQ_joint">
@@ -1266,8 +1266,8 @@
       <surface>
         <friction>
           <ode>
-            <mu>0.9</mu>
-            <mu2>0.8</mu2>
+            <mu>0.68</mu>
+            <mu2>0.65</mu2>
           </ode>
         </friction>
       </surface>
@@ -1294,7 +1294,7 @@
       link="ET_DCH" />
     <axis xyz="0 1 0">
     </axis>
-    <limit effort="500.0" velocity="15.56" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
+    <limit effort="480.0" velocity="15.28" lower="-9999" upper="9999"/> <!-- esfuerzo máximo y velocidad angular -->
   </joint>
 
   <gazebo reference="ET_DCH_joint">
@@ -1327,8 +1327,8 @@
 
       <wheel_separation>1.36</wheel_separation> 
       <wheel_radius>0.343</wheel_radius>
-      <min_velocity>-15.56</min_velocity> 
-      <max_velocity>15.56</max_velocity>
+      <min_velocity>-15.28</min_velocity> 
+      <max_velocity>15.28</max_velocity>
       <min_acceleration>-7.26</min_acceleration>
       <max_acceleration>7.26</max_acceleration> 
 
