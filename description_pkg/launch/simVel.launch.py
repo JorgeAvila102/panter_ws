@@ -17,7 +17,6 @@ def generate_launch_description():
     urdf_file = os.path.join(get_package_share_directory('description_pkg'),'urdf', 'panter_vel.urdf')
     # world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'my_world.sdf')
     world_file = os.path.join(get_package_share_directory('description_pkg'),'worlds', 'tierra_world.sdf')
-
     
     with open (urdf_file, 'r') as infp:
          robot_desc = infp.read()

@@ -211,7 +211,7 @@
       link="SD03_IZQ" />
     <axis
       xyz="0.99756 0 0.069756" />
-    <limit effort="1.0" velocity="5.0" lower="-0" upper="0"/>
+    <limit effort="1.0" velocity="5.0" lower="-0.0" upper="0.0"/>
   </joint>
 
 <!-- MANGUETA DELANTERA IZQUIERDA -->
@@ -266,7 +266,7 @@
       link="MGD_IZQ" />
     <axis
       xyz="0 0 1" />
-    <limit effort="500.0" velocity="1.0" lower="-0.3927" upper="0.3927"/>
+    <limit effort="500.0" velocity="11.78" lower="-0.3927" upper="0.3927"/>
   </joint>
 
 <!-- RUEDA DELANTERA IZQUIERDA -->
@@ -524,8 +524,8 @@
     <axis
       xyz="0.99756 0 0.069756" />
     <limit
-      lower="0"
-      upper="0"
+      lower="-0.0"
+      upper="0.0"
       effort="0"
       velocity="0" />
   </joint>
@@ -582,7 +582,7 @@
       link="MGD_DCH" />
     <axis
       xyz="0 0 1" />
-      <limit effort="500" velocity="1.0" lower="-0.3927" upper="0.3927"/>
+      <limit effort="500" velocity="11.78" lower="-0.3927" upper="0.3927"/>
   </joint>
 
 <!-- RUEDA DELANTERA DERECHA -->
@@ -840,8 +840,8 @@
     <axis
       xyz="1 0 0" />
     <limit
-      lower="0"
-      upper="0"
+      lower="-0.0"
+      upper="0.0"
       effort="0"
       velocity="0" />
   </joint>
@@ -1160,8 +1160,8 @@
     <axis
       xyz="1 0 0" />
     <limit
-      lower="0"
-      upper="0"
+      lower="-0.0"
+      upper="0.0"
       effort="0"
       velocity="0" />
   </joint>

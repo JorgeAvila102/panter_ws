@@ -269,7 +269,7 @@
       link="MGD_IZQ" />
     <axis
       xyz="0 0 1" />
-    <limit effort="500.0" velocity="1.0" lower="-0.3927" upper="0.3927"/>
+    <limit effort="500.0" velocity="11.78" lower="-0.3927" upper="0.3927"/>
   </joint>
 
 <!-- RUEDA DELANTERA IZQUIERDA -->
@@ -585,7 +585,7 @@
       link="MGD_DCH" />
     <axis
       xyz="0 0 1" />
-      <limit effort="500" velocity="1.0" lower="-0.3927" upper="0.3927"/>
+      <limit effort="500" velocity="11.78" lower="-0.3927" upper="0.3927"/>
   </joint>
 
 <!-- RUEDA DELANTERA DERECHA -->
@@ -1372,45 +1372,5 @@
     </joint>
 
   </ros2_control>
-
-  <!-- <transmission name="trans_ED_DCH">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="ED_DCH_joint">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_ED_DCH">
-      <mechanicalReduction>15</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="trans_ED_IZQ">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="ED_IZQ_joint">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_ED_IZQ">
-      <mechanicalReduction>15</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="trans_ET_DCH">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="ET_DCH_joint">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_ET_DCH">
-      <mechanicalReduction>15</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="trans_ET_IZQ">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="ET_IZQ_joint">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_ET_IZQ">
-      <mechanicalReduction>15</mechanicalReduction>
-    </actuator>
-  </transmission> -->
 
 </robot>

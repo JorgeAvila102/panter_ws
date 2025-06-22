@@ -6,7 +6,6 @@
 #include "std_msgs/msg/float64.hpp"
 #include "std_msgs/msg/float64_multi_array.hpp"
 
-
 class KeyboardcontrolTorque : public rclcpp::Node
 {
 
@@ -31,7 +30,6 @@ public:
 
     double par_actual = 40;
     double giro_actual = 0.1927; // 11.04 grados
-
 
 private:
     

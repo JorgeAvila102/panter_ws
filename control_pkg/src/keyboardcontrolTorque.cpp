@@ -235,8 +235,6 @@ void KeyboardcontrolTorque::keyboard_loop()
         RCLCPP_INFO(this->get_logger(), "Non valid KEY\r\n");
         break;
 
-
-
         }
         pub_torque->publish(torque_msg);
         pub_giro  ->publish(giro_msg);
