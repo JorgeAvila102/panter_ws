@@ -5,6 +5,7 @@ controller_manager:
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
+      state: active        
 
     effort_controller:
       type: effort_controllers/JointGroupEffortController

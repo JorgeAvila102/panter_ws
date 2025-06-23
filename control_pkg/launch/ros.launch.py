@@ -25,14 +25,27 @@ def generate_launch_description():
         ],
     )
 
-    node_joint_state_publisher = Node(
+    # node_joint_state_publisher = Node(
 
-        package= 'joint_state_publisher',
-        executable= 'joint_state_publisher',
-        name= 'joint_state_publisher',
-        parameters=["/robot_description"],
-        arguments=[urdf_file]
-    )   
+    #     package= 'joint_state_publisher',
+    #     executable= 'joint_state_publisher',
+    #     name= 'joint_state_publisher',
+    #     parameters=["/robot_description"],
+    #     arguments=[urdf_file]
+    # )   
+
+    joint_state_broadcaster_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        name='spawner_joint_state_broadcaster',
+        arguments=[
+            'joint_state_broadcaster',
+            '--controller-manager', '/controller_manager'
+            ],
+        output='screen'
+    )
+
+    
 
     # Spawner del controlador de effort
     effort_spawner = TimerAction(
@@ -68,7 +81,8 @@ def generate_launch_description():
 
     return LaunchDescription([
         ros_control,
-        node_joint_state_publisher,
+        # node_joint_state_publisher,
+        joint_state_broadcaster_spawner,
         effort_spawner,
         steering_spawner,
         control_node

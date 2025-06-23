@@ -9,11 +9,11 @@
           <mesh>
             <scale>1 1 1</scale>
             <!-- ESCENARIO 1 -->
-            <uri>model://Tierra/meshes/escenario1.dae</uri>
+            <!-- <uri>model://Tierra/meshes/escenario1.dae</uri> -->
             <!-- ESCENARIO 2 -->
             <!-- <uri>model://Tierra/meshes/escenario2.dae</uri> -->
             <!-- ESCENARIO 3 -->
-            <!-- <uri>model://Tierra/meshes/escenario3.dae</uri>  -->
+            <uri>model://Tierra/meshes/escenario3.dae</uri> 
           </mesh>
         </geometry>
         <material>
@@ -27,11 +27,11 @@
           <mesh>
             <scale>1 1 1</scale>
             <!-- ESCENARIO 1 -->
-            <uri>model://Tierra/meshes/escenario1.dae</uri>
+            <!-- <uri>model://Tierra/meshes/escenario1.dae</uri> -->
             <!-- ESCENARIO 2 -->
             <!-- <uri>model://Tierra/meshes/escenario2.dae</uri>  -->
             <!-- ESCENARIO 3 -->
-            <!-- <uri>model://Tierra/meshes/escenario3.dae</uri> -->
+            <uri>model://Tierra/meshes/escenario3.dae</uri>
           </mesh>
         </geometry>
         <surface>
