@@ -54,6 +54,6 @@ def generate_launch_description():
     return LaunchDescription([
         gazebo_launch,
         control_launch,
-        bridge_node,
-        rviz_node
+        bridge_node
+        # rviz_node
     ])
