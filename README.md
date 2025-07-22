@@ -13,7 +13,7 @@ El sistema operativo en el que se diseña el simulador de Panter es Ubuntu 22.04
 
 • Instalación de ROS 2 Humble de la ([web oficial ROS](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html)).
 
-• Instalación de controlador gz_ros2_control de la web oficial:
+• Instalación de controlador gz_ros2_control de la ([web oficial](https://control.ros.org/humble/doc/gz_ros2_control/doc/index.html)):
 
 ```
 sudo apt install ros-humble-gz-ros2-control ros-humble-gz-ros2-control-demos
