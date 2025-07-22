@@ -79,8 +79,10 @@ sudo apt-get install xterm
 
 Entorno de trabajo de Visual Studio Code:
 
+```
 cd panter_ws
 mkdir .vscode
+```
 
 Y podemos añadir en la carpeta .vscode, los siguientes archivos de configuración que facilitarán su uso y compilación:
 
